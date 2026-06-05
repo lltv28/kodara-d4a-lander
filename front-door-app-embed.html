@@ -1,0 +1,578 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI demo · 1:1 app UI</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Sans:ital,wght@0,400..700;1,400..600&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFDFB;--surface:#F6F3EC;--surface-2:#FBF9F5;
+  --ink:#2E2B26;--ink-2:rgba(46,43,38,.82);--ink-3:rgba(46,43,38,.70);
+  --line:rgba(46,43,38,.10);--line-2:rgba(46,43,38,.17);
+  --accent:#16A46C;--accent-ink:#106844;--accent-soft:rgba(22,164,108,.10);--accent-line:rgba(22,164,108,.22);
+  --radius:8px;--radius-lg:12px;--shadow-sm:0 1px 3px 0 rgba(0,0,0,0.1), 0 1px 2px -1px rgba(0,0,0,0.1);
+  /* app tokens (1:1 from Figma) */
+  --a900:rgba(17,24,39,.9);--a600:rgba(17,24,39,.6);--a400:rgba(17,24,39,.36);--a100:rgba(17,24,39,.09);--ablack:#111827;
+  --card-bg:rgba(255,255,255,.8);--field-bg:rgba(255,255,255,.5);
+  --fb:"Instrument Sans",sans-serif;--fd:"Instrument Serif",serif;--mono:"IBM Plex Mono",monospace;
+  --btnA:#16A46C;--btnB:#106844;--wash:#F3F4F6;--orbGlow:rgba(22,164,108,.3);--orbImg:url("app-orb.png");
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--fb);background:transparent;color:var(--ink);-webkit-font-smoothing:antialiased;display:flex;flex-direction:column;align-items:center;padding:8px 20px 16px;overflow:hidden}
+.wrap{width:100%;max-width:920px;display:flex;flex-direction:column;align-items:center}
+.below{margin-bottom:36px;text-align:center;max-width:620px}
+.below-eyebrow{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--accent-ink);display:flex;align-items:center;justify-content:center;gap:9px;margin-bottom:14px}
+.below-eyebrow::before{content:"";width:12px;height:1.5px;background:var(--accent)}
+.below-h{font-family:var(--fd);font-weight:700;font-size:clamp(40px,5.2vw,66px);line-height:1.1;letter-spacing:-.025em;margin-bottom:12px}
+.below-sub{font-size:clamp(19px,1.9vw,24px);color:var(--ink-2);line-height:1.6;margin-bottom:24px}
+.industry{width:max-content;max-width:min(840px,92vw);position:relative;left:50%;transform:translateX(-50%)}
+.industry .ik{font-family:var(--mono);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-3);display:block;text-align:center;margin-bottom:12px}
+.industry-row{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap}
+.pill{font:inherit;font-size:15px;font-weight:600;padding:10px 18px;border-radius:var(--radius);border:1px solid var(--line-2);background:#fff;color:var(--ink-2);cursor:pointer;transition:all .15s ease;flex:none}
+.pill:hover{border-color:var(--ink-3);color:var(--ink);background:var(--surface-2)}
+.pill.active{border-color:var(--ink);background:var(--ink);color:#fff;box-shadow:var(--shadow-sm)}
+
+.demo-card{width:100%;border:1px solid var(--line-2);border-radius:24px;background:#fff;box-shadow:var(--shadow-sm);padding:34px 40px}
+.split{display:flex;align-items:stretch;gap:44px}
+@media(max-width:820px){.split{flex-direction:column;gap:28px}.demo-card{padding:24px}}
+.panel{flex:1;min-width:0;display:flex;flex-direction:column}
+.slist{flex:1;display:flex;flex-direction:column}
+.step{flex:1;display:grid;grid-template-columns:44px 1fr;gap:18px;align-items:center;transition:opacity .3s ease}
+.step:not(.active):not(.done){opacity:.5}
+.srail{position:relative;align-self:stretch;display:flex;align-items:center;justify-content:center}
+.srail::before,.srail::after{content:"";position:absolute;left:50%;transform:translateX(-50%);width:2px;background:var(--line);transition:background .45s ease}
+.srail::before{top:0;bottom:calc(50% + 25px)}
+.srail::after{top:calc(50% + 25px);bottom:0}
+.step:first-child .srail::before{display:none}
+.step:last-child .srail::after{display:none}
+.step.active .srail::before,.step.done .srail::before{background:var(--accent)}
+.step.done .srail::after{background:var(--accent)}
+.snum{position:relative;z-index:1;width:44px;height:44px;border-radius:50%;border:2px solid var(--line-2);background:#fff;color:var(--ink-3);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;flex:none;transition:.3s}
+.step.active .snum{border-color:var(--accent);color:var(--accent-ink);box-shadow:0 0 0 4px var(--accent-soft)}
+.step.done .snum{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:none}
+.sline{display:none}
+.sbody{padding-bottom:0}
+.s-t{font-size:24px;font-weight:600;color:var(--ink);letter-spacing:-.015em;line-height:1.22}
+.s-d{font-size:16px;color:var(--ink-2);line-height:1.45;margin-top:6px}
+
+/* ───── 1:1 app screen ───── */
+.app{width:390px;height:812px;flex:none;border-radius:48px;border:1px solid var(--a100);background:#fff;overflow:hidden;position:relative;display:flex;flex-direction:column;box-shadow:0 50px 90px -34px rgba(46,38,28,.42);font-weight:500}
+.app-bg{position:absolute;inset:0;z-index:0;pointer-events:none;transition:opacity .6s ease}
+.app-bg.g{background:linear-gradient(180deg,#fff 0%,var(--wash) 63%);opacity:1}
+.app-bg.o{background:linear-gradient(180deg,#fff 0%,#f4e6d3 63%);opacity:0}
+.app.turn-user .app-bg.g{opacity:0}
+.app.turn-user .app-bg.o{opacity:1}
+.app-top{position:relative;z-index:6;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(255,255,255,.45);border-bottom:1px solid rgba(26,26,26,.04)}
+.app-status{display:flex;justify-content:space-between;align-items:center;padding:16px 22px 4px;font-weight:600;font-size:15px;color:var(--ablack)}
+.app-status .ic{display:flex;align-items:center;gap:6px}
+.app-head{display:flex;align-items:center;justify-content:space-between;padding:14px 24px 16px}
+.app-iconbtn{width:28px;height:28px;border-radius:999px;background:var(--a100);display:flex;align-items:center;justify-content:center;color:var(--a600)}
+.app-iconbtn svg{width:18px;height:18px}
+.app-title{font-weight:500;font-size:16px;color:var(--a600);letter-spacing:-.15px}
+.app-chat{position:relative;z-index:1;flex:1;overflow-y:auto;padding:14px 24px 440px;display:flex;flex-direction:column;gap:14px;scrollbar-width:none}
+.app-chat::-webkit-scrollbar{display:none}
+.m{opacity:0;transform:translateY(8px);transition:opacity .4s ease,transform .4s ease}
+.m.pending{display:none}
+.m.in{opacity:1;transform:none}
+.ai-text{font-weight:500;font-size:16px;line-height:28px;color:var(--ablack);max-width:330px;letter-spacing:-.2px}
+.user-pill{align-self:flex-end;background:var(--a100);padding:12px 20px;border-radius:32px;font-weight:500;font-size:16px;line-height:24px;color:var(--a900);letter-spacing:-.2px;max-width:80%}
+.user-typing{align-self:flex-end;background:var(--a100);padding:15px 18px;border-radius:32px;display:flex;gap:5px}
+.user-typing:not(.in){display:none}
+.user-typing span{width:6px;height:6px;border-radius:50%;background:var(--a400);animation:utd 1.2s infinite}
+.user-typing span:nth-child(2){animation-delay:.15s}.user-typing span:nth-child(3){animation-delay:.3s}
+@keyframes utd{0%,60%,100%{opacity:.3;transform:translateY(0)}30%{opacity:1;transform:translateY(-2px)}}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.card{background:var(--card-bg);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:20px;border-radius:16px;display:flex;flex-direction:column;gap:8px;opacity:0;transform:translateY(8px);transition:opacity .4s ease,transform .4s ease}
+.card.in{opacity:1;transform:none}
+.card .cl{font-size:12px;line-height:16px;color:var(--a600);font-weight:500}
+.card .cv{font-size:20px;line-height:28px;color:var(--a900);font-weight:500}
+.timediv{text-align:center;color:var(--a400);font-size:12px;font-weight:500;letter-spacing:-.1px;margin:6px 0 2px}
+.reco{background:var(--card-bg);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:16px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.reco-l{display:flex;flex-direction:column;gap:2px;min-width:0}
+.reco-k{font-size:11px;color:var(--accent-ink);font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.reco-t{font-size:16px;color:var(--a900);font-weight:600;letter-spacing:-.1px}
+.reco-r{display:flex;align-items:center;gap:10px;flex:none}
+.reco-p{font-size:20px;color:var(--a900);font-weight:600}
+.reco-go{width:36px;height:36px;border-radius:50%;background:radial-gradient(circle at 50% 72%,#2e9d6f,#0c3d26 78%);color:#fff;display:flex;align-items:center;justify-content:center;flex:none;box-shadow:0 4px 12px -3px rgba(12,61,38,.5)}
+.orbzone{position:relative;z-index:1;min-height:158px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:12px;flex:none;padding-bottom:22px}
+.vtrans{min-height:44px;display:flex;flex-wrap:wrap;gap:5px 7px;justify-content:center;align-items:center;padding:0 28px;max-width:100%}
+.vtrans .w{opacity:0;transform:translateY(5px);transition:opacity .3s ease,transform .3s ease;font-size:17px;font-weight:500;color:var(--a900);letter-spacing:-.2px}
+.vtrans .w.in{opacity:1;transform:none}
+.orb{position:relative;width:84px;height:84px;border-radius:50%;background:var(--orbImg) center/cover no-repeat;box-shadow:0 18px 40px -12px var(--orbGlow);animation:orbBreathe 4s ease-in-out infinite}
+.orb::after{content:"";position:absolute;inset:0;border-radius:50%;pointer-events:none;box-shadow:0 0 0 0 rgba(201,138,74,0)}
+.orb.listening::after{animation:listenPulse 1.7s ease-out infinite}
+@keyframes listenPulse{0%{box-shadow:0 0 0 0 rgba(201,138,74,.5)}100%{box-shadow:0 0 0 20px rgba(201,138,74,0)}}
+@keyframes orbBreathe{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+/* stylized talking AI avatar (test) — replaces the orb on one theme */
+.avatar{position:relative;width:92px;height:92px;border-radius:50%;display:none;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 30%,#fff3e8,#ffd9bd 58%,#eeb892);box-shadow:0 18px 40px -12px var(--orbGlow);animation:orbBreathe 4s ease-in-out infinite}
+.app.avatar-mode .avatar{display:flex}
+.app.avatar-mode .orb{display:none}
+.av-face{position:relative;width:100%;height:100%}
+.av-eye{position:absolute;top:42%;width:9px;height:11px;border-radius:50%;background:#3a2f2a;transform-origin:center;animation:avblink 5.5s infinite}
+.av-eye.l{left:31%}.av-eye.r{right:31%}
+.av-eye::after{content:"";position:absolute;top:2px;left:2.5px;width:3px;height:3px;border-radius:50%;background:rgba(255,255,255,.85)}
+@keyframes avblink{0%,93%,100%{transform:scaleY(1)}96%{transform:scaleY(.1)}}
+.av-brow{position:absolute;top:37%;width:11px;height:2px;border-radius:2px;background:#3a2f2a;opacity:.5}
+.av-brow.l{left:30%}.av-brow.r{right:30%}
+.av-mouth{position:absolute;left:50%;top:62%;width:24px;height:6px;background:#9a4b42;border-radius:0 0 14px 14px/0 0 16px 16px;transform:translateX(-50%)}
+.avatar.talking .av-mouth{animation:avtalk .25s ease-in-out infinite alternate}
+@keyframes avtalk{from{height:4px;width:22px}to{height:14px;width:26px}}
+.av-ring{position:absolute;inset:-6px;border-radius:50%;border:2px solid var(--accent);opacity:0;pointer-events:none}
+.avatar.talking .av-ring{animation:avring 1.3s ease-out infinite}
+@keyframes avring{0%{opacity:.5;transform:scale(1)}100%{opacity:0;transform:scale(1.2)}}
+/* realistic photo avatar variant */
+.avatar.photo{background:url("avatar-finance.jpg") center 32%/cover}
+.avatar.photo .av-face{display:none}
+.avatar.photo.talking{animation:avbob .55s ease-in-out infinite}
+@keyframes avbob{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-1.5px) scale(1.015)}}
+.av-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:50%;display:none}
+.avatar.photo .av-vid{display:block}
+.app-input{position:relative;z-index:6;display:flex;gap:8px;align-items:center;padding:0 16px 22px;opacity:.55}
+.inp-plus{width:56px;height:56px;border-radius:48px;background:var(--field-bg);border:1px solid var(--a100);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 7px 15px rgba(0,0,0,.04),0 27px 27px -12px rgba(0,0,0,.05);display:flex;align-items:center;justify-content:center;color:var(--a600);flex:none}
+.inp-field{flex:1;height:56px;border-radius:48px;background:var(--field-bg);border:1px solid var(--a100);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 7px 15px rgba(0,0,0,.04),0 27px 27px -12px rgba(0,0,0,.05);display:flex;align-items:center;gap:8px;padding:6px 6px 6px 20px}
+.inp-ph{flex:1;font-size:16px;color:var(--a400);letter-spacing:-.16px}
+.inp-mic{width:44px;height:44px;border-radius:24px;display:flex;align-items:center;justify-content:center;color:var(--a600);flex:none}
+.inp-x{width:44px;height:44px;border-radius:24px;background:#fff;display:flex;align-items:center;justify-content:center;color:var(--a900);flex:none}
+.inp-mic svg,.inp-x svg,.inp-plus svg{width:22px;height:22px}
+
+/* low-ticket offer card (ported from repo .chat-recommendation/.rec-cta) */
+.ocard{background:var(--card-bg);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 8px 22px rgba(46,38,28,.06)}
+.ocard-chip{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;background:var(--accent-soft);border:1px solid var(--accent-line);color:var(--accent-ink);font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:5px 10px;border-radius:100px}
+.ocard-chip .dot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.ocard-title{font-size:18px;font-weight:600;color:var(--a900);letter-spacing:-.2px;line-height:1.2}
+.ocard-sub{font-size:13.5px;color:var(--a600);line-height:1.45}
+.ocard-bullets{display:flex;flex-direction:column;gap:9px}
+.ocard-bullet{display:flex;align-items:flex-start;gap:9px;font-size:14px;color:var(--a900);line-height:1.35}
+.ocard-bullet .bi{width:18px;height:18px;border-radius:50%;background:var(--accent-soft);color:var(--accent-ink);display:flex;align-items:center;justify-content:center;flex:none;margin-top:1px}
+.ocard-cta{display:flex;align-items:center;justify-content:center;gap:7px;width:100%;padding:14px;border:none;border-radius:13px;background:linear-gradient(180deg,var(--btnA),var(--btnB));color:#fff;font:inherit;font-size:15px;font-weight:600;letter-spacing:-.1px;cursor:pointer;box-shadow:0 6px 16px -4px rgba(12,61,38,.45);margin-top:2px}
+.ocard-cta .px{opacity:.82;font-weight:500}
+.ocard-cta.sold{background:linear-gradient(180deg,#1a9a61,#0f6b43);pointer-events:none}
+/* blurred auto-checkout sheet */
+.pay-overlay{position:absolute;inset:0;z-index:36;display:flex;align-items:flex-end;justify-content:center;pointer-events:none}
+.pay-backdrop{position:absolute;inset:0;background:rgba(20,18,16,.42);opacity:0;transition:opacity .35s ease}
+.pay-overlay.in .pay-backdrop{opacity:1}
+.pay-sheet{position:relative;width:100%;background:#fff;border-radius:28px 28px 0 0;padding:12px 20px 22px;box-shadow:0 -20px 50px rgba(0,0,0,.22);transform:translateY(102%);transition:transform .42s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;gap:11px}
+.pay-overlay.in .pay-sheet{transform:none}
+.pay-grab{width:38px;height:5px;border-radius:3px;background:var(--a100);align-self:center;margin-bottom:2px}
+.pay-head{display:flex;flex-direction:column;gap:3px;padding:0 1px 4px}
+.pay-merch{font-size:11px;font-weight:700;color:var(--a600);text-transform:uppercase;letter-spacing:.06em}
+.pay-amt{font-size:18px;font-weight:600;color:var(--a900);display:flex;justify-content:space-between;align-items:baseline;letter-spacing:-.2px}
+.pay-amt b{font-weight:700}
+.pay-body{display:flex;flex-direction:column;gap:7px}
+.pay-body label{font-size:11.5px;font-weight:600;color:var(--a600);margin-top:3px}
+.pay-field{display:flex;align-items:center;gap:8px;min-height:46px;padding:0 14px;border:1px solid var(--a100);border-radius:11px;background:#fbfbfa;font-size:15px;color:var(--a900);font-variant-numeric:tabular-nums;overflow:hidden}
+.pay-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pv{letter-spacing:.06em;white-space:nowrap}
+.pv.blurred{filter:blur(4.5px)}
+.cardbrand{margin-left:auto;font-size:11px;font-weight:800;color:#1a1f71;letter-spacing:.5px}
+.pay-btn{margin-top:6px;width:100%;padding:15px;border:none;border-radius:13px;background:linear-gradient(180deg,var(--btnA),var(--btnB));color:#fff;font:inherit;font-size:15.5px;font-weight:600;box-shadow:0 8px 18px -5px rgba(12,61,38,.5);display:flex;align-items:center;justify-content:center;gap:9px}
+.pay-spin{width:16px;height:16px;border-radius:50%;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;animation:payspin .7s linear infinite}
+@keyframes payspin{to{transform:rotate(360deg)}}
+.pay-secure{display:flex;align-items:center;justify-content:center;gap:6px;font-size:11.5px;color:var(--a400);font-weight:500}
+.pay-secure svg{width:13px;height:13px}
+.pay-success{position:absolute;inset:0;background:#fff;border-radius:28px 28px 0 0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;opacity:0;transition:opacity .3s ease}
+.pay-success.in{opacity:1}
+.pay-success-ic{width:60px;height:60px;border-radius:50%;background:var(--accent-soft);color:var(--accent-ink);display:flex;align-items:center;justify-content:center}
+.pay-success-t{font-size:18px;font-weight:600;color:var(--a900)}
+.pay-success-s{font-size:13px;color:var(--a600);font-variant-numeric:tabular-nums}
+/* booking card (ported from repo .chat-booking) */
+.bk{background:var(--card-bg);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--a100);border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:14px;box-shadow:0 10px 24px rgba(46,38,28,.06)}
+.bk-title{font-size:16.5px;font-weight:600;color:var(--a900);letter-spacing:-.2px;line-height:1.3}
+.bk-meta{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--a600)}
+.bk-meta .it{display:inline-flex;align-items:center;gap:5px}
+.bk-meta svg{color:var(--a600);flex:none}
+.bk-stage{display:flex;flex-direction:column;gap:12px}
+.bk-label{font-size:11px;font-weight:700;color:var(--accent-ink);letter-spacing:.5px;text-transform:uppercase}
+.bk-summary{padding:11px 13px;background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:10px;font-size:13px;font-weight:600;color:var(--accent-ink);line-height:1.4}
+.bk-back{align-self:flex-start;display:inline-flex;align-items:center;gap:3px;border:none;background:none;color:var(--a600);font:inherit;font-size:12.5px;font-weight:500;cursor:pointer;padding:0}
+.bk-days{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.bk-day{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 2px;background:#fff;border:1px solid var(--a100);border-radius:10px;cursor:pointer;font:inherit;transition:border-color .18s,background .18s,box-shadow .18s}
+.bk-day.sel{border-color:var(--accent);background:var(--accent-soft);box-shadow:0 0 0 3px var(--accent-soft)}
+.bk-day .dow{font-size:10px;font-weight:600;color:var(--a600);text-transform:uppercase;letter-spacing:.4px}
+.bk-day .num{font-size:15px;font-weight:600;color:var(--a900);font-variant-numeric:tabular-nums}
+.bk-day.sel .dow,.bk-day.sel .num{color:var(--accent-ink)}
+.bk-times{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.bk-time{padding:12px;background:#fff;border:1px solid var(--a100);border-radius:10px;font:inherit;font-size:14px;font-weight:500;color:var(--a900);cursor:pointer;text-align:center;font-variant-numeric:tabular-nums;transition:border-color .18s,background .18s,color .18s}
+.bk-time.sel{border-color:var(--accent);background:var(--accent-soft);color:var(--accent-ink)}
+.bk-form{display:flex;flex-direction:column;gap:10px}
+.bk-field{display:flex;flex-direction:column;gap:5px}
+.bk-flabel{font-size:12px;font-weight:600;color:var(--a600)}
+.bk-input{padding:11px 13px;border:1px solid var(--a100);border-radius:10px;background:#fff;font:inherit;font-size:14px;color:var(--a900);outline:none}
+.bk-input::placeholder{color:var(--a400)}
+.bk-input:focus{border-color:var(--accent-line)}
+.bk-submit{width:100%;padding:14px;border:none;border-radius:12px;background:linear-gradient(180deg,var(--btnA),var(--btnB));color:#fff;font:inherit;font-size:15px;font-weight:600;cursor:pointer;box-shadow:0 6px 16px -4px rgba(12,61,38,.45)}
+.bk-success{display:flex;flex-direction:column;align-items:center;text-align:center;gap:9px;padding:8px 0 2px}
+.bk-success-ic{width:52px;height:52px;border-radius:50%;background:var(--accent-soft);color:var(--accent-ink);display:flex;align-items:center;justify-content:center}
+.bk-success-title{font-size:17px;font-weight:600;color:var(--a900)}
+.bk-success-body{font-size:13px;color:var(--a600);line-height:1.5}
+.bk-success-meta{padding:11px 13px;background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:10px;font-size:13px;color:var(--accent-ink);font-weight:600}
+/* mobile tap cursor (fingertip + ripple) */
+.tapcursor{position:absolute;z-index:45;left:0;top:0;width:27px;height:27px;margin:-13.5px 0 0 -13.5px;border-radius:50%;pointer-events:none;opacity:0;background:radial-gradient(circle at 50% 42%,rgba(26,26,26,.11),rgba(26,26,26,.05));border:1px solid rgba(26,26,26,.15);transition:left .45s cubic-bezier(.5,0,.2,1),top .45s cubic-bezier(.5,0,.2,1),opacity .25s ease,transform .14s ease}
+.tapcursor.show{opacity:.85}
+.tapcursor.tap{transform:scale(.72)}
+.tapcursor::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1.5px solid rgba(26,26,26,.16);opacity:0;pointer-events:none}
+.tapcursor.tap::after{animation:tapRipple .5s ease-out}
+@keyframes tapRipple{0%{opacity:.34;transform:scale(.6)}100%{opacity:0;transform:scale(1.5)}}
+/* "auto-playing demo" badge (notch chip) */
+.demobadge{position:absolute;top:11px;left:50%;transform:translateX(-50%);z-index:25;display:inline-flex;align-items:center;gap:6px;background:rgba(26,26,26,.82);color:#fff;font-size:11px;font-weight:600;padding:5px 11px;border-radius:100px;pointer-events:none;box-shadow:0 2px 8px rgba(0,0,0,.18);white-space:nowrap}
+.demobadge .d{width:6px;height:6px;border-radius:50%;background:#5cc998;animation:demoPulse 1.8s ease-in-out infinite}
+@keyframes demoPulse{0%,100%{box-shadow:0 0 0 0 rgba(92,201,152,.55)}50%{box-shadow:0 0 0 4px rgba(92,201,152,0)}}
+/* tap-blocker that swallows real taps + explains itself */
+.tapblock{position:absolute;inset:0;z-index:30;background:transparent;cursor:default}
+.tapblock-hint{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scale(.96);display:inline-flex;align-items:center;gap:8px;background:rgba(26,26,26,.9);color:#fff;font-size:13.5px;font-weight:600;letter-spacing:-.1px;padding:11px 16px;border-radius:100px;opacity:0;pointer-events:none;transition:opacity .25s ease,transform .25s ease;box-shadow:0 10px 28px rgba(0,0,0,.28);max-width:84%;text-align:center;line-height:1.3}
+.tapblock-hint svg{width:14px;height:14px;flex:none}
+.tapblock.hint .tapblock-hint{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.diag{position:fixed;top:12px;right:12px;font-size:12px;color:var(--ink-2);background:#fff;border:1px solid var(--line-2);border-radius:100px;padding:6px 12px;display:flex;gap:9px;align-items:center;box-shadow:var(--shadow-sm);z-index:9}
+.diag b{color:var(--ink)}.diag button{font:inherit;font-size:12px;font-weight:600;border:1px solid var(--accent-line);background:var(--accent-soft);color:var(--accent-ink);border-radius:100px;padding:3px 11px;cursor:pointer}
+</style></head><body>
+
+
+
+
+<div class="wrap">
+  <div class="below">
+    <h2 class="below-h">Watch it turn a stranger into a sale.</h2>
+    <p class="below-sub">When a new lead shows up, your AI does what you’d do on a first call — it asks the right questions, works out what they need, and points them to the next step. On its own, for hundreds at once.</p>
+    <div class="industry"><span class="ik">Try it for your world:</span><div class="industry-row"><button class="pill active" data-ind="finance" aria-pressed="true">Financial advisor</button><button class="pill" data-ind="doctor" aria-pressed="false">Doctor</button><button class="pill" data-ind="mortgage" aria-pressed="false">Mortgage broker</button><button class="pill" data-ind="lawyer" aria-pressed="false">Lawyer</button><button class="pill" data-ind="consultant" aria-pressed="false">Business consultant</button></div></div>
+  </div>
+
+  <div class="demo-card">
+    <div class="split">
+      <div class="panel">
+        <div class="slist">
+          <div class="step" data-step="1"><div class="srail"><span class="snum">1</span><span class="sline"><i></i></span></div><div class="sbody"><div class="s-t">Talks to every lead</div><div class="s-d">Meets each one in a real, consultative conversation.</div></div></div>
+          <div class="step" data-step="2"><div class="srail"><span class="snum">2</span><span class="sline"><i></i></span></div><div class="sbody"><div class="s-t">Figures out their problem</div><div class="s-d">Runs the numbers and shows them where they really stand.</div></div></div>
+          <div class="step" data-step="3"><div class="srail"><span class="snum">3</span><span class="sline"><i></i></span></div><div class="sbody"><div class="s-t">Sells them a first step</div><div class="s-d">Starts them with a small $10–100 offer — like day one with a client.</div></div></div>
+          <div class="step" data-step="4"><div class="srail"><span class="snum">4</span></div><div class="sbody"><div class="s-t">Ascends them to the right level</div><div class="s-d">After 24–48h of trust, books a high-ticket call or starts the monthly AI.</div></div></div>
+        </div>
+      </div>
+
+      <div class="app">
+        <div class="app-bg g"></div>
+        <div class="app-bg o"></div>
+        <div class="app-top">
+          <div class="app-status"><span>9:41</span><span class="ic">
+            <svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg>
+            <svg width="16" height="11" viewBox="0 0 16 12" fill="currentColor"><path d="M8 2.5c2.1 0 4 .8 5.4 2.1l1.2-1.3C13 1.6 10.6.6 8 .6S3 1.6 1.4 3.3l1.2 1.3C4 3.3 5.9 2.5 8 2.5z" opacity=".9"/><path d="M8 6.1c1.1 0 2.1.4 2.9 1.1l1.2-1.3C11 4.8 9.6 4.2 8 4.2s-3 .6-4.1 1.7l1.2 1.3C5.9 6.5 6.9 6.1 8 6.1z"/><circle cx="8" cy="9.6" r="1.4"/></svg>
+            <svg width="25" height="12" viewBox="0 0 25 12" fill="none"><rect x="1" y="1" width="20" height="10" rx="2.7" stroke="currentColor" stroke-width="1" opacity=".4"/><rect x="2.5" y="2.5" width="15.5" height="7" rx="1.4" fill="currentColor"/><rect x="22.3" y="4" width="1.6" height="4" rx=".8" fill="currentColor" opacity=".5"/></svg>
+          </span></div>
+          <div class="app-head">
+            <span class="app-iconbtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></span>
+            <span class="app-title" id="appTitle">Your financial spot</span>
+            <span class="app-iconbtn"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="19" cy="12" r="1.7"/></svg></span>
+          </div>
+        </div>
+
+        <div class="app-chat" id="chat">
+          <div class="m timediv" data-m="sum">After a 30-second consult…</div>
+          <div class="m ai-text" data-m="a3"></div>
+          <div class="m cards" data-m="cards">
+            <div class="card" data-c="0"><div class="cl">Portfolio value</div><div class="cv">$284,120</div></div>
+            <div class="card" data-c="1"><div class="cl">Idle cash</div><div class="cv">$61,000</div></div>
+            <div class="card" data-c="2"><div class="cl">Annual fees</div><div class="cv">$4,100</div></div>
+            <div class="card" data-c="3"><div class="cl">Net return</div><div class="cv">5.1%</div></div>
+          </div>
+          <div class="m ai-text" data-m="a4"></div>
+          <div class="m ai-text" data-m="a5"></div>
+          <div class="m ocard" data-m="reco">
+            <span class="ocard-chip"><span class="dot"></span>Recommended first step</span>
+            <div class="ocard-title">Portfolio Leak Audit</div>
+            <div class="ocard-sub">A 12-minute breakdown of exactly where your money is leaking — and the first move to plug it.</div>
+            <div class="ocard-bullets">
+              <div class="ocard-bullet"><span class="bi"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>The 3 funds quietly bleeding fees</div>
+              <div class="ocard-bullet"><span class="bi"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>What to move them into instead</div>
+              <div class="ocard-bullet"><span class="bi"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Your new projected return</div>
+            </div>
+            <button class="ocard-cta">Get the audit <span class="px">· $27</span> <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7H11M11 7L7 3M11 7L7 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+          <div class="m timediv" data-m="time">2 days later</div>
+          <div class="m ai-text" data-m="a6"></div>
+          <div class="m bk" data-m="route"></div>
+        </div>
+
+        <div class="orbzone"><div class="vtrans" id="vtrans"></div><div class="orb"></div><div class="avatar photo" id="avatar" aria-hidden="true"><video class="av-vid" muted autoplay loop playsinline preload="auto" poster="avatar-finance.jpg"><source src="avatar-finance.mp4" type="video/mp4"></video><div class="av-face"><span class="av-brow l"></span><span class="av-brow r"></span><span class="av-eye l"></span><span class="av-eye r"></span><span class="av-mouth"></span></div><div class="av-ring"></div></div></div>
+        <div class="tapcursor" id="tapcursor"></div>
+        <div class="demobadge"><span class="d"></span>Auto-playing demo</div>
+        <div class="tapblock" id="tapblock"><div class="tapblock-hint"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>This plays on its own — just watch</div></div>
+        <div class="app-input">
+          <span class="inp-plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          <div class="inp-field">
+            <span class="inp-ph">Ask me anything…</span>
+            <span class="inp-mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4"/></svg></span>
+            <span class="inp-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+'use strict';
+const PREFERS_REDUCED=!!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches);
+const REDUCE=false;
+const PACE=1.35; /* global slow-down knob: 1 = original, higher = slower (pauses, typing, booking) */
+const CHK_W='<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 6"/></svg>';
+const RECO_ARROW='<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7H11M11 7L7 3M11 7L7 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const BULLET_CHK='<svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const INDUSTRIES={
+  finance:{label:'Financial advisor',appTitle:'Your financial spot',role:'With your advisor',
+    a3:'I’ve run your numbers. Here’s where your money actually stands:',
+    a4:'The problem isn’t your returns. It’s the $4,100 a year you’re quietly leaking in fees.',
+    a5:'Here’s where I’d start you — a quick audit that shows the exact funds to move:',
+    a6:'You came back twice and asked how to fix the fees yourself — that’s the sign you’re ready. Let’s talk.',
+    cards:[['Portfolio value','$284,120'],['Idle cash','$61,000'],['Annual fees','$4,100'],['Net return','5.1%']],
+    offer:{title:'Portfolio Leak Audit',price:'$27',cta:'Get the audit',sub:'A 12-minute breakdown of exactly where your money is leaking — and the first move to plug it.',bullets:['The 3 funds quietly bleeding fees','What to move them into instead','Your new projected return']}},
+  doctor:{label:'Doctor',appTitle:'Your health snapshot',role:'With your doctor',
+    a3:'I’ve gone through your intake. Here’s what your numbers say:',
+    a4:'The fatigue isn’t random — it tracks straight back to your sleep and low vitamin D.',
+    a5:'Here’s where I’d start you — a short reset built around exactly these markers:',
+    a6:'You logged your sleep every night this week — that’s the sign you’re ready to go deeper. Let’s talk.',
+    cards:[['Resting HR','74 bpm'],['Sleep (avg)','5h 50m'],['Vitamin D','21 ng/mL'],['Energy score','42/100']],
+    offer:{title:'The 7-Day Energy Reset',price:'$29',cta:'Get the reset',sub:'A short protocol targeting the two markers dragging your energy down — sleep and vitamin D.',bullets:['The 3 changes that move your numbers first','A simple sleep + supplement plan','What to retest in 30 days']}},
+  mortgage:{label:'Mortgage broker',appTitle:'Your mortgage snapshot',role:'With your broker',
+    a3:'I’ve pulled your numbers. Here’s where your mortgage actually stands:',
+    a4:'You’re sitting about 0.8% above today’s rates — that’s roughly $310 a month you’re overpaying.',
+    a5:'Here’s where I’d start you — a quick refinance check that shows your exact savings:',
+    a6:'You ran the savings twice this week — that’s the sign you’re ready. Let’s talk.',
+    cards:[['Current rate','6.9%'],['Balance','$418,000'],['Monthly payment','$2,940'],['Save / mo','~$310']],
+    offer:{title:'The Refinance Rate Check',price:'$27',cta:'Get the check',sub:'A 10-minute breakdown of what you’d save by refinancing — and whether it’s worth doing right now.',bullets:['Your rate vs today’s market','Exact monthly + lifetime savings','Whether the closing costs pencil out']}},
+  lawyer:{label:'Lawyer',appTitle:'Your estate snapshot',role:'With your attorney',
+    a3:'I’ve reviewed what you shared. Here’s where your estate plan actually stands:',
+    a4:'The real risk isn’t taxes — it’s the missing power of attorney leaving $340k exposed.',
+    a5:'Here’s where I’d start you — a quick review that maps exactly what to fix first:',
+    a6:'You came back to check that exposure twice — that’s the sign you’re ready. Let’s talk.',
+    cards:[['Will','Outdated · 2016'],['Power of attorney','Missing'],['Assets exposed','$340,000'],['Plan score','38/100']],
+    offer:{title:'The Estate Gap Review',price:'$49',cta:'Get the review',sub:'A clear breakdown of the gaps in your current plan — and the first document to fix.',bullets:['The clauses leaving assets exposed','What to update before anything else','A prioritized fix list']}},
+  consultant:{label:'Business consultant',appTitle:'Your business snapshot',role:'With your consultant',
+    a3:'I’ve mapped your numbers. Here’s where your business actually stands:',
+    a4:'Growth isn’t the problem — you’re capped because almost everything still runs through you.',
+    a5:'Here’s where I’d start you — a quick map of the first system to take off your plate:',
+    a6:'You opened that map three times this week — that’s the sign you’re ready to scale. Let’s talk.',
+    cards:[['Monthly revenue','$82,000'],['Owner hours/wk','61 hrs'],['Profit margin','11%'],['Capacity used','98%']],
+    offer:{title:'The Capacity Map',price:'$49',cta:'Get the map',sub:'A breakdown of where your time leaks — and the first system to delegate this month.',bullets:['The tasks eating your week','The first role to hand off','What to systemize first']}}
+};
+let activeInd='finance';
+const THEME={
+  finance:{accent:'#16A46C',ink:'#0F7A4F',soft:'rgba(22,164,108,.10)',line:'rgba(22,164,108,.24)',wash:'#e6edea',btnA:'#1faf78',btnB:'#0f8052',orbGlow:'rgba(16,80,50,.42)',orbImg:'url("app-orb.png")'},
+  doctor:{accent:'#0EA5A4',ink:'#0A6E6D',soft:'rgba(14,165,164,.10)',line:'rgba(14,165,164,.24)',wash:'#e2edee',btnA:'#15b1b0',btnB:'#0a7b7a',orbGlow:'rgba(10,92,90,.42)',orbImg:'url("app-orb-doctor.png")'},
+  mortgage:{accent:'#2563EB',ink:'#1D4FB8',soft:'rgba(37,99,235,.10)',line:'rgba(37,99,235,.24)',wash:'#e7ecf7',btnA:'#3a73ee',btnB:'#1f51b8',orbGlow:'rgba(28,64,150,.42)',orbImg:'url("app-orb.png")'},
+  lawyer:{accent:'#4E5AC8',ink:'#343FA0',soft:'rgba(78,90,200,.10)',line:'rgba(78,90,200,.24)',wash:'#e8e9f4',btnA:'#5c68d2',btnB:'#38439e',orbGlow:'rgba(42,50,120,.42)',orbImg:'url("app-orb-lawyer.png")'},
+  consultant:{accent:'#C0853C',ink:'#8A5E27',soft:'rgba(192,133,60,.12)',line:'rgba(192,133,60,.26)',wash:'#f1e9db',btnA:'#cc9148',btnB:'#94642c',orbGlow:'rgba(120,80,30,.42)',orbImg:'url("app-orb-consultant.png")'}
+};
+function applyTheme(key){const t=THEME[key]||THEME.finance,r=document.documentElement.style;r.setProperty('--accent',t.accent);r.setProperty('--accent-ink',t.ink);r.setProperty('--accent-soft',t.soft);r.setProperty('--accent-line',t.line);r.setProperty('--wash',t.wash);r.setProperty('--btnA',t.btnA);r.setProperty('--btnB',t.btnB);r.setProperty('--orbGlow',t.orbGlow);r.setProperty('--orbImg',t.orbImg);const ap=document.querySelector('.app');if(ap)ap.classList.add('avatar-mode');}
+function setAppTitle(D){const t=document.getElementById('appTitle');if(t)t.textContent=D.appTitle;}
+function renderCards(D){const wrap=q('[data-m="cards"]');[...wrap.querySelectorAll('.card')].forEach((c,i)=>{const d=D.cards[i];if(!d)return;c.querySelector('.cl').textContent=d[0];c.querySelector('.cv').textContent=d[1];});}
+function renderReco(D){const o=D.offer;q('[data-m="reco"]').innerHTML='<span class="ocard-chip"><span class="dot"></span>Recommended first step</span><div class="ocard-title">'+o.title+'</div><div class="ocard-sub">'+o.sub+'</div><div class="ocard-bullets">'+o.bullets.map(b=>'<div class="ocard-bullet"><span class="bi">'+BULLET_CHK+'</span>'+b+'</div>').join('')+'</div><button class="ocard-cta">'+o.cta+' <span class="px">· '+o.price+'</span> '+RECO_ARROW+'</button>';}
+const chat=document.getElementById('chat');
+const app=document.querySelector('.app');
+function turn(who){app.classList.toggle('turn-user',who==='user');}
+const q=s=>document.querySelector(s),qa=s=>[...document.querySelectorAll(s)];
+const steps=[1,2,3,4].map(n=>document.querySelector('.step[data-step="'+n+'"]'));
+function setStep(n){steps.forEach((s,k)=>{const i=k+1;s.classList.toggle('active',i===n);s.classList.toggle('done',i<n);});}
+function sleep(ms){return new Promise(r=>setTimeout(r,ms));}
+/* ── pinning: exactly ONE eased scroll per message (no re-snap, no re-anchor) ── */
+let lastEl=null,lastPin=true,_scrollAnim=null,_scrollGen=0;
+function smoothScrollTo(target,duration){
+  if(_scrollAnim)cancelAnimationFrame(_scrollAnim);
+  const start=chat.scrollTop,maxScroll=chat.scrollHeight-chat.clientHeight,clamped=Math.max(0,Math.min(target,maxScroll)),delta=clamped-start;
+  if(Math.abs(delta)<1)return;
+  if(REDUCE){chat.scrollTop=clamped;return;}
+  const dur=duration||600,t0=performance.now();
+  const ease=t=>t<0.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+  const stepF=now=>{const t=Math.min(1,(now-t0)/dur);chat.scrollTop=start+delta*ease(t);if(t<1)_scrollAnim=requestAnimationFrame(stepF);else _scrollAnim=null;};
+  _scrollAnim=requestAnimationFrame(stepF);
+}
+function offsetTopIn(el){return chat.scrollTop+(el.getBoundingClientRect().top-chat.getBoundingClientRect().top);}
+function anchorTop(el){
+  if(!el)return;
+  const gen=++_scrollGen;
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    if(gen!==_scrollGen)return;
+    const target=offsetTopIn(el)-16,distance=Math.abs(target-chat.scrollTop),dur=Math.max(380,Math.min(820,distance*1.9));
+    smoothScrollTo(target,dur);
+  }));
+}
+function ensureVisible(el){
+  if(!el)return;
+  requestAnimationFrame(()=>{
+    const elTop=offsetTopIn(el),elBottom=elTop+el.offsetHeight,viewTop=chat.scrollTop,viewBottom=viewTop+chat.clientHeight;
+    if(elBottom>viewBottom-24)smoothScrollTo(elBottom-chat.clientHeight+32,420);
+    else if(elTop<viewTop+12)smoothScrollTo(elTop-16,420);
+  });
+}
+function focusFade(){const items=[...chat.querySelectorAll('.m.in')];const n=items.length;items.forEach((el,i)=>{const d=n-1-i;el.style.opacity=d===0?'':(d===1?'.5':(d===2?'.28':'.18'));});}
+function scrollDown(){/* anchoring happens once in show(); intentional no-op so a message never re-scrolls */}
+/* ── voice-style transcription above the orb (user's turn) ── */
+function clearTranscript(){const vt=document.getElementById('vtrans');if(vt)vt.innerHTML='';const o=document.querySelector('.orb');if(o)o.classList.remove('listening');}
+async function sayUser(text,W){
+  const orb=document.querySelector('.orb'),vt=document.getElementById('vtrans');
+  orb.classList.add('listening');vt.innerHTML='';
+  const words=text.split(/\s+/).filter(Boolean);
+  for(let i=0;i<words.length;i++){
+    const sp=document.createElement('span');sp.className='w';sp.textContent=words[i];vt.appendChild(sp);
+    void sp.offsetWidth;sp.classList.add('in');
+    if(!await W(230))return false;
+  }
+  return true;
+}
+
+/* ── Calendly-style booking (ported from repo .chat-booking, auto-played) ── */
+function typeInto(input,text,alive,done){let i=0;const id=setInterval(()=>{if(!alive()){clearInterval(id);return;}i++;input.value=text.slice(0,i);if(i>=text.length){clearInterval(id);if(done)done();}},45*PACE);}
+function buildBooking(mount,alive,onDone){
+  const role=(INDUSTRIES[activeInd]&&INDUSTRIES[activeInd].role)||'With your advisor';
+  mount.innerHTML='<div class="bk-title">Book your strategy call</div>'
+    +'<div class="bk-meta"><span class="it"><svg width="12" height="12" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.3"/><path d="M7 4.2V7L8.8 8.2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>30 min</span><span class="it"><svg width="12" height="12" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="5" r="2.3" stroke="currentColor" stroke-width="1.3"/><path d="M2.5 12.2C2.5 9.8 4.4 8.3 7 8.3C9.6 8.3 11.5 9.8 11.5 12.2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>'+role+'</span><span class="it"><svg width="12" height="12" viewBox="0 0 14 14" fill="none"><rect x="1.5" y="3.5" width="8" height="7" rx="1.3" stroke="currentColor" stroke-width="1.3"/><path d="M9.5 6L12.5 4.3V9.7L9.5 8" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>Google Meet</span></div>'
+    +'<div class="bk-stage"></div>';
+  const stage=mount.querySelector('.bk-stage'),state={};
+  const days=[];let d=new Date();
+  while(days.length<7){d.setDate(d.getDate()+1);if(d.getDay()===0)continue;days.push({date:new Date(d),dow:d.toLocaleDateString('en-US',{weekday:'short'}).slice(0,3),num:d.getDate()});}
+  const fmt=x=>x.toLocaleDateString('en-US',{weekday:'long',month:'short',day:'numeric'});
+  const T=(fn,ms)=>setTimeout(()=>{if(alive())fn();},ms*PACE);
+  const cur=document.getElementById('tapcursor');
+  const moveCursor=el=>{const ar=mount.closest('.app').getBoundingClientRect(),er=el.getBoundingClientRect();cur.style.left=(er.left-ar.left+er.width/2)+'px';cur.style.top=(er.top-ar.top+er.height/2)+'px';};
+  function tap(el,done){if(!el){if(done)done();return;}const first=!cur.classList.contains('show');if(first){cur.style.transition='none';moveCursor(el);void cur.offsetWidth;cur.style.transition='';cur.classList.add('show');}else moveCursor(el);T(()=>{cur.classList.add('tap');T(()=>{cur.classList.remove('tap');if(done)done();},170);},first?300:460);}
+  const BACK='<svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M8.5 3L4.5 7L8.5 11" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  function renderDates(){
+    stage.innerHTML='<div class="bk-label">Select a date</div><div class="bk-days"></div>';
+    const grid=stage.querySelector('.bk-days');
+    days.forEach(dd=>{const btn=document.createElement('button');btn.type='button';btn.className='bk-day';btn.innerHTML='<span class="dow">'+dd.dow+'</span><span class="num">'+dd.num+'</span>';btn.onclick=()=>{state.date=dd;grid.querySelectorAll('.bk-day').forEach(x=>x.classList.remove('sel'));btn.classList.add('sel');T(renderTimes,560);};grid.appendChild(btn);});
+    T(()=>{const b=grid.querySelectorAll('.bk-day')[1];if(b)tap(b,()=>b.click());},950);
+  }
+  function renderTimes(){
+    const slots=['9:00 AM','10:30 AM','12:00 PM','1:30 PM','3:00 PM','4:30 PM'];
+    stage.innerHTML='<button class="bk-back">'+BACK+'Back to dates</button><div class="bk-label">Available times</div><div class="bk-summary">'+fmt(state.date.date)+'</div><div class="bk-times"></div>';
+    stage.querySelector('.bk-back').onclick=renderDates;
+    const grid=stage.querySelector('.bk-times');
+    slots.forEach(s=>{const btn=document.createElement('button');btn.type='button';btn.className='bk-time';btn.textContent=s;btn.onclick=()=>{state.time=s;grid.querySelectorAll('.bk-time').forEach(x=>x.classList.remove('sel'));btn.classList.add('sel');T(renderConfirm,560);};grid.appendChild(btn);});
+    T(()=>{const b=grid.querySelectorAll('.bk-time')[2];if(b)tap(b,()=>b.click());},1000);
+  }
+  function renderConfirm(){
+    stage.innerHTML='<button class="bk-back">'+BACK+'Back to times</button><div class="bk-label">Confirm your booking</div><div class="bk-summary">'+fmt(state.date.date)+' at '+state.time+'</div><div class="bk-form"><div class="bk-field"><span class="bk-flabel">Your name</span><input class="bk-input" data-name placeholder="First and last name"></div><div class="bk-field"><span class="bk-flabel">Email</span><input class="bk-input" data-email placeholder="you@example.com"></div><button class="bk-submit">Confirm booking</button></div>';
+    stage.querySelector('.bk-back').onclick=renderTimes;
+    const nameI=stage.querySelector('[data-name]'),emailI=stage.querySelector('[data-email]'),sub=stage.querySelector('.bk-submit');
+    sub.onclick=()=>{if(nameI.value&&emailI.value){state.name=nameI.value;state.email=emailI.value;renderSuccess();}};
+    T(()=>tap(nameI,()=>typeInto(nameI,'Jordan Avery',alive,()=>T(()=>tap(emailI,()=>typeInto(emailI,'jordan.avery@gmail.com',alive,()=>T(()=>tap(sub,()=>sub.click()),450))),300))),750);
+  }
+  function renderSuccess(){cur.classList.remove('show','tap');
+    stage.innerHTML='<div class="bk-success"><div class="bk-success-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></div><div class="bk-success-title">You’re booked in</div><div class="bk-success-body">A confirmation with the Google Meet link is on its way to '+state.email+'.</div><div class="bk-success-meta">'+state.date.date.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'})+' at '+state.time+'</div></div>';
+    if(onDone)T(onDone,800);
+  }
+  renderDates();
+}
+function stream(el,text,cps,alive){return new Promise(res=>{
+  const av=document.getElementById('avatar');if(av)av.classList.add('talking');
+  const fin=()=>{if(av)av.classList.remove('talking');res();};
+  el.textContent='';const node=document.createTextNode('');el.appendChild(node);const t0=performance.now();
+  requestAnimationFrame(function tick(now){
+    if(alive&&!alive()){node.data=text;fin();return;}
+    const k=Math.min(text.length,Math.floor((now-t0)/1000*(cps/PACE)));node.data=text.slice(0,k);
+    if(k<text.length)requestAnimationFrame(tick);else fin();
+  });
+});}
+const show=(sel,pin=true)=>{const el=q(sel);el.classList.remove('pending');void el.offsetWidth;el.classList.add('in');lastEl=el;lastPin=pin;focusFade();if(pin)anchorTop(el);else ensureVisible(el);return el;};
+/* generic cursor tap on an element (no state change) */
+async function tapAt(el,W){
+  const cur=document.getElementById('tapcursor');if(!cur||!el)return true;
+  const app=el.closest('.app'),ar=app.getBoundingClientRect();
+  const place=()=>{const er=el.getBoundingClientRect();cur.style.left=(er.left-ar.left+er.width/2)+'px';cur.style.top=(er.top-ar.top+er.height/2)+'px';};
+  const first=!cur.classList.contains('show');
+  if(first){cur.style.transition='none';place();void cur.offsetWidth;cur.style.transition='';cur.classList.add('show');}else place();
+  if(!await W(first?520:440))return false;
+  cur.classList.add('tap');if(!await W(170))return false;cur.classList.remove('tap');
+  return true;
+}
+async function typeChars(el,text,W){el.textContent='';for(let i=0;i<text.length;i++){el.textContent=text.slice(0,i+1);if(!await W(34))return false;}return true;}
+function buildPayHTML(o){const full=o.price+'.00';return '<div class="pay-backdrop"></div><div class="pay-sheet"><div class="pay-grab"></div><div class="pay-head"><div class="pay-merch">Kodara · secure checkout</div><div class="pay-amt"><span>'+o.title+'</span><b>'+full+'</b></div></div><div class="pay-body"><label>Card information</label><div class="pay-field"><span class="pv blurred" data-cardnum></span><span class="cardbrand" data-brand></span></div><div class="pay-row"><div class="pay-field"><span class="pv blurred" data-exp></span></div><div class="pay-field"><span class="pv blurred" data-cvc></span></div></div><label>Name on card</label><div class="pay-field"><span class="pv blurred" data-name></span></div></div><button class="pay-btn">Pay '+full+'</button><div class="pay-secure"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Encrypted &amp; secure</div><div class="pay-success"><div class="pay-success-ic"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></div><div class="pay-success-t">Payment confirmed</div><div class="pay-success-s">'+full+' · '+o.title+'</div></div></div>';}
+/* blurred checkout sheet: slides up, auto-fills card details, pays, confirms */
+async function payFlow(app,W){
+  const ov=document.createElement('div');ov.className='pay-overlay';ov.innerHTML=buildPayHTML(INDUSTRIES[activeInd].offer);app.appendChild(ov);
+  const die=()=>{ov.remove();return false;};
+  void ov.offsetWidth;ov.classList.add('in');
+  const cur0=document.getElementById('tapcursor');if(cur0)cur0.classList.remove('show');
+  if(!await W(540))return die();
+  if(!await typeChars(ov.querySelector('[data-cardnum]'),'4242 4242 4242 4242',W))return die();
+  ov.querySelector('[data-brand]').textContent='VISA';if(!await W(160))return die();
+  if(!await typeChars(ov.querySelector('[data-exp]'),'12 / 28',W))return die();
+  if(!await typeChars(ov.querySelector('[data-cvc]'),'123',W))return die();
+  if(!await W(120))return die();
+  if(!await typeChars(ov.querySelector('[data-name]'),'Jordan Avery',W))return die();
+  if(!await W(260))return die();
+  const payBtn=ov.querySelector('.pay-btn');
+  if(!await tapAt(payBtn,W))return die();
+  payBtn.classList.add('processing');payBtn.innerHTML='<span class="pay-spin"></span>Processing…';
+  const cur=document.getElementById('tapcursor');if(cur)cur.classList.remove('show');
+  if(!await W(1150))return die();
+  ov.querySelector('.pay-success').classList.add('in');
+  if(!await W(1250))return die();
+  ov.classList.remove('in');
+  if(!await W(440))return die();
+  ov.remove();return true;
+}
+/* tap-to-buy: tap the offer, run the blurred checkout, then flip the button to Purchased */
+async function tapBuy(btn,W){
+  if(!await tapAt(btn,W))return false;
+  if(!await payFlow(btn.closest('.app'),W))return false;
+  btn.classList.add('sold');btn.innerHTML=CHK_W+' Purchased';
+  const cur=document.getElementById('tapcursor');if(cur)cur.classList.remove('show');
+  if(!await W(420))return false;
+  return true;
+}
+
+let gen=0;
+async function play(){
+  const g=gen,W=ms=>new Promise(r=>setTimeout(()=>r(g===gen),ms*PACE)),alive=()=>g===gen;
+  qa('.m').forEach(m=>{m.classList.remove('in');m.classList.add('pending');m.style.opacity='';});
+  qa('.card').forEach(c=>c.classList.remove('in'));lastEl=null;
+  q('[data-m="route"]').innerHTML='';
+  qa('.pay-overlay').forEach(o=>o.remove());
+  const D=INDUSTRIES[activeInd];
+  setAppTitle(D);renderCards(D);renderReco(D);
+  qa('[data-m="a3"],[data-m="a4"],[data-m="a5"],[data-m="a6"]').forEach(e=>e.textContent='');
+  clearTranscript();const _tc=document.getElementById('tapcursor');if(_tc)_tc.classList.remove('show','tap');turn('ai');setStep(0);chat.scrollTop=0;
+  if(!await W(500))return;
+
+  // 1 · Talks — compressed into a one-line consult summary so the demo opens on the action
+  setStep(1);
+  show('[data-m="sum"]',false);if(!await W(900))return;
+
+  // 2 · Figures out — runs the numbers
+  setStep(2);
+  show('[data-m="a3"]');await stream(q('[data-m="a3"]'),D.a3,55,alive);if(!alive())return;scrollDown();if(!await W(450))return;
+  show('[data-m="cards"]',false);const cards=qa('.card');for(let i=0;i<cards.length;i++){cards[i].classList.add('in');if(!await W(180))return;}
+  if(!await W(700))return;
+  show('[data-m="a4"]');await stream(q('[data-m="a4"]'),D.a4,55,alive);if(!alive())return;scrollDown();if(!await W(950))return;
+
+  // 3 · Sells a first step — and the lead buys it on the spot
+  setStep(3);
+  show('[data-m="a5"]');await stream(q('[data-m="a5"]'),D.a5,55,alive);if(!alive())return;if(!await W(400))return;
+  const recoBtn=q('[data-m="reco"]').querySelector('.ocard-cta');
+  show('[data-m="reco"]');if(!await W(1500))return;
+  if(recoBtn&&!await tapBuy(recoBtn,W))return;
+  if(!await W(1500))return;
+
+  // 4 · Ascends — books the call (Calendly card, auto-played)
+  setStep(4);
+  show('[data-m="time"]');if(!await W(650))return;
+  show('[data-m="a6"]');await stream(q('[data-m="a6"]'),D.a6,55,alive);if(!alive())return;if(!await W(550))return;
+  steps[3].classList.add('done');
+  const routeEl=q('[data-m="route"]');
+  await new Promise(res=>{
+    routeEl.classList.remove('pending');
+    buildBooking(routeEl,alive,res);
+    void routeEl.offsetWidth;routeEl.classList.add('in');lastEl=routeEl;lastPin=true;focusFade();anchorTop(routeEl);
+  });
+  if(!alive())return;
+  await W(3200);
+}
+async function loop(){const g=gen;do{await play();if(g!==gen)return;await sleep(900);}while(g===gen);}
+function start(){gen++;loop();}
+(function(){const tb=document.getElementById('tapblock');if(!tb)return;let _h;const showHint=()=>{tb.classList.add('hint');clearTimeout(_h);_h=setTimeout(()=>tb.classList.remove('hint'),1700);};tb.addEventListener('pointerdown',showHint);})();
+document.querySelectorAll('.industry .pill').forEach(p=>p.addEventListener('click',()=>{const k=p.getAttribute('data-ind');if(!INDUSTRIES[k]||k===activeInd)return;activeInd=k;applyTheme(k);document.querySelectorAll('.industry .pill').forEach(x=>{const on=x===p;x.classList.toggle('active',on);x.setAttribute('aria-pressed',on?'true':'false');});start();}));
+applyTheme(activeInd);
+start();
+(function(){var v=document.querySelector('.av-vid');if(!v)return;var set=function(){try{v.playbackRate=0.9;}catch(e){}};set();['loadedmetadata','loadeddata','play'].forEach(function(ev){v.addEventListener(ev,set);});})();
+/* report height to the parent lander so the iframe can size to content */
+function reportHeight(){var h=Math.ceil(document.body.scrollHeight)+2;parent.postMessage({fdAppHeight:h},'*');}
+window.addEventListener('load',reportHeight);window.addEventListener('resize',reportHeight);
+setTimeout(reportHeight,300);setTimeout(reportHeight,1200);
+</script>
+</body></html>
