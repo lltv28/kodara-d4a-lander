@@ -18,10 +18,10 @@
   --dark:#262320; --dark-2:#1F1C18;
   --radius:12px; --radius-sm:10px; --radius-lg:12px;
   --maxw:1120px; --w-content:880px; --w-prose:740px;
-  --fs-scale:1.16; /* one knob — scales the ENTIRE type system (reading tiers + headings) */
-  --fs-base:calc(19px * var(--fs-scale)); /* drives the reading tiers below */
-  --fs-display:clamp(calc(52px*var(--fs-scale)),8vw,calc(92px*var(--fs-scale))); --fs-h2:clamp(calc(40px*var(--fs-scale)),5.2vw,calc(66px*var(--fs-scale))); --fs-h3:clamp(calc(30px*var(--fs-scale)),3.4vw,calc(46px*var(--fs-scale))); --fs-title:clamp(calc(22px*var(--fs-scale)),2.2vw,calc(28px*var(--fs-scale))); --fs-lead:clamp(calc(20px*var(--fs-scale)),1.95vw,calc(25px*var(--fs-scale)));
-  --fs-body:var(--fs-base); --fs-sm:calc(var(--fs-base) - 2px); --fs-xs:calc(var(--fs-base) - 4px); --fs-micro:calc(var(--fs-base) - 6px); --fs-stat:clamp(calc(23px*var(--fs-scale)),2.2vw,calc(28px*var(--fs-scale)));
+  /* Type scale — baked for a 40+ audience. Reading tiers step down from --fs-base; headings are fluid clamps. */
+  --fs-base:22px;
+  --fs-display:clamp(60px,8vw,107px); --fs-h2:clamp(46px,5.2vw,77px); --fs-h3:clamp(35px,3.4vw,53px); --fs-title:clamp(26px,2.2vw,32px); --fs-lead:clamp(23px,1.95vw,29px);
+  --fs-body:var(--fs-base); --fs-sm:calc(var(--fs-base) - 2px); --fs-xs:calc(var(--fs-base) - 4px); --fs-micro:calc(var(--fs-base) - 6px); --fs-stat:clamp(27px,2.2vw,32px);
   --shadow-mockup: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
   --shadow-sm: 0 1px 3px 0 rgba(0,0,0,0.1), 0 1px 2px -1px rgba(0,0,0,0.1);
   --font-display:"Instrument Serif",serif;
@@ -560,7 +560,7 @@ h1.headline{font-family:var(--font-display);font-weight:700;font-size:var(--fs-d
   }
 
   /* 5. Monospace Utility Text */
-  .tl-num, .chrome-status, .reco-price small, .seal-k, .eyebrow, .pill, .gtag, .rep-score span, .rep-verdict .lab, .rep-metric .ml, .day-k, .bk-by, .chk-by, .chk-plan .pk, .vs-tag, .player-tag, .player-dur, .footer-col h4 {
+  .chrome-status, .reco-price small, .seal-k, .eyebrow, .pill, .gtag, .rep-score span, .rep-verdict .lab, .rep-metric .ml, .day-k, .bk-by, .chk-by, .chk-plan .pk, .vs-tag, .player-tag, .player-dur, .footer-col h4 {
     font-family: var(--mono) !important;
     font-size: 11px !important;
     letter-spacing: 0.05em !important;
@@ -615,7 +615,7 @@ h1.headline{font-family:var(--font-display);font-weight:700;font-size:var(--fs-d
   <div class="wrap">
 
     <div class="fd-embed rv" id="gallery">
-      <iframe id="fdframe" class="fd-frame" src="front-door-app-embed.html?v=8" title="See the AI in action" loading="lazy" scrolling="no"></iframe>
+      <iframe id="fdframe" class="fd-frame" src="front-door-app-embed.html?v=9" title="See the AI in action" loading="lazy" scrolling="no"></iframe>
     </div>
   </div>
 </section>
