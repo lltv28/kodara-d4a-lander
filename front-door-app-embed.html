@@ -127,7 +127,7 @@ body{font-family:var(--fb);background:transparent;color:var(--ink);-webkit-font-
 .avatar.photo .av-vid{display:block}
 .app-input{position:relative;z-index:6;display:flex;gap:8px;align-items:center;padding:0 16px 22px}
 .inp-plus{width:56px;height:56px;border-radius:48px;background:var(--field-bg);border:1px solid var(--a100);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 7px 15px rgba(0,0,0,.04),0 27px 27px -12px rgba(0,0,0,.05);display:flex;align-items:center;justify-content:center;color:var(--a600);flex:none}
-.inp-field{flex:1;height:56px;border-radius:48px;background:var(--field-bg);border:1px solid var(--a100);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 7px 15px rgba(0,0,0,.04),0 27px 27px -12px rgba(0,0,0,.05);display:flex;align-items:center;justify-content:center;gap:10px;padding:6px}
+.inp-field{flex:1;height:56px;border-radius:48px;background:var(--field-bg);border:1px solid var(--a100);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 7px 15px rgba(0,0,0,.04),0 27px 27px -12px rgba(0,0,0,.05);display:flex;align-items:center;gap:11px;padding:6px 18px 6px 6px}
 .inp-ph{flex:1;font-size:16px;color:var(--a400);letter-spacing:-.16px}
 .inp-mic{width:44px;height:44px;border-radius:24px;display:flex;align-items:center;justify-content:center;color:var(--a600);flex:none}
 .inp-x{width:44px;height:44px;border-radius:24px;background:#fff;display:flex;align-items:center;justify-content:center;color:var(--a900);flex:none}
@@ -135,6 +135,8 @@ body{font-family:var(--fb);background:transparent;color:var(--ink);-webkit-font-
 .inp-mic.live{background:var(--accent);color:#fff;position:relative;animation:micBreathe 3.6s ease-in-out infinite}
 @keyframes micBreathe{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 34%,transparent);transform:scale(1)}50%{box-shadow:0 0 0 8px color-mix(in srgb,var(--accent) 0%,transparent);transform:scale(1.045)}}
 .listen-label{font-size:16px;font-weight:500;color:var(--a600);letter-spacing:-.16px;white-space:nowrap}
+.inp-kb{margin-left:auto;width:30px;height:30px;display:flex;align-items:center;justify-content:center;color:var(--a400);flex:none}
+.inp-kb svg{width:24px;height:24px;display:block}
 
 /* low-ticket offer card (ported from repo .chat-recommendation/.rec-cta) */
 .ocard{background:var(--card-bg);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 8px 22px rgba(46,38,28,.06)}
@@ -300,6 +302,7 @@ body{font-family:var(--fb);background:transparent;color:var(--ink);-webkit-font-
           <div class="inp-field">
             <span class="inp-mic live"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4"/></svg></span>
             <span class="listen-label">Tap to talk</span>
+            <span class="inp-kb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2.5" y="6.5" width="19" height="11" rx="2.3"/><g fill="currentColor" stroke="none"><circle cx="6.5" cy="10.2" r="1"/><circle cx="10" cy="10.2" r="1"/><circle cx="13.5" cy="10.2" r="1"/><circle cx="17" cy="10.2" r="1"/></g><path d="M8 14h8" stroke-linecap="round"/></svg></span>
           </div>
         </div>
       </div>
