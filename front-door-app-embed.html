@@ -13,7 +13,10 @@
 @font-face{font-family:'Instrument Serif';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/instrument-serif-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:'Instrument Serif';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/instrument-serif-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
 :root{
-  --bg:#FFFDFB;--surface:#F6F3EC;--surface-2:#FBF9F5;
+  --bg:#FFFFFF;--surface:#F4F5F6;--surface-2:#FAFBFC;
+  /* shared type + spacing scale — matches the parent page so framing is consistent */
+  --fs-micro:.875rem;--fs-xs:1rem;--fs-sm:1.125rem;--fs-body:1.375rem;--fs-lead:clamp(1.5rem, 1.2rem + 1vw, 1.75rem);--fs-title:clamp(1.625rem, 1.35rem + .9vw, 2rem);
+  --sp-3:.75rem;--sp-4:1rem;--sp-5:1.5rem;--sp-6:2rem;--sp-7:3rem;
   --ink:#2E2B26;--ink-2:rgba(46,43,38,.82);--ink-3:rgba(46,43,38,.70);
   --line:rgba(46,43,38,.10);--line-2:rgba(46,43,38,.17);
   --accent:#16A46C;--accent-ink:#106844;--accent-soft:rgba(22,164,108,.10);--accent-line:rgba(22,164,108,.22);
@@ -33,8 +36,8 @@ body{font-family:var(--fb);background:transparent;color:var(--ink);-webkit-font-
 .below-eyebrow::before{content:"";width:12px;height:1.5px;background:var(--accent)}
 /* vw resolves against the iframe width (~1064px), narrower than the parent page,
    so a higher coefficient is needed to match the parent section <h2> (~68px desktop) */
-.below-h{font-family:var(--fd);font-weight:700;font-size:clamp(2.375rem, 1.5rem + 4.3vw, 4.75rem);line-height:1.1;letter-spacing:-.025em;margin-bottom:12px}
-.below-sub{font-size:clamp(1.5rem, 1.2rem + 1vw, 1.75rem);color:var(--ink-2);line-height:1.6;margin-bottom:24px}
+.below-h{font-family:var(--fd);font-weight:700;font-size:clamp(2.375rem, 1.5rem + 4.3vw, 4.75rem);line-height:1.1;letter-spacing:-.025em;margin-bottom:var(--sp-5)}
+.below-sub{font-size:var(--fs-lead);color:var(--ink-2);line-height:1.6;margin-bottom:var(--sp-6)}
 .industry{width:max-content;max-width:min(840px,92vw);position:relative;left:50%;transform:translateX(-50%)}
 .industry .ik{font-family:var(--mono);font-size:.8125rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-3);display:block;text-align:center;margin-bottom:12px}
 .industry-row{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap}
@@ -62,8 +65,8 @@ body{font-family:var(--fb);background:transparent;color:var(--ink);-webkit-font-
 .step.done .snum{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:none}
 .sline{display:none}
 .sbody{padding-bottom:0}
-.s-t{font-size:1.75rem;font-weight:600;color:var(--ink);letter-spacing:-.015em;line-height:1.22}
-.s-d{font-size:1.1875rem;color:var(--ink-2);line-height:1.45;margin-top:6px}
+.s-t{font-size:var(--fs-title);font-weight:500;color:var(--ink);letter-spacing:-.015em;line-height:1.22}
+.s-d{font-size:var(--fs-sm);color:var(--ink-2);line-height:1.45;margin-top:6px}
 .below-h,.below-sub,.s-t,.s-d{text-wrap:balance}
 
 /* ───── 1:1 app screen ───── */
