@@ -136,11 +136,12 @@ body{font-family:var(--fb);background:transparent;color:var(--ink);-webkit-font-
 @keyframes micPulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 50%,transparent)}75%,100%{box-shadow:0 0 0 13px transparent}}
 .listen-label{font-size:16px;font-weight:600;color:var(--accent-ink);letter-spacing:-.16px;white-space:nowrap}
 .wave{flex:1;display:flex;align-items:center;justify-content:space-between;height:22px;margin-left:2px;overflow:hidden}
-.wave i{width:3px;height:5px;border-radius:2px;background:var(--accent);opacity:.8;animation:wv 1s ease-in-out infinite}
+.wave i{width:3px;height:5px;border-radius:2px;background:var(--accent);opacity:.8;animation:wv 1s ease-in-out infinite;transition:height .25s ease}
 .wave i:nth-child(3n+1){animation-delay:-.15s}
 .wave i:nth-child(3n+2){animation-delay:-.55s;animation-duration:1.15s}
 .wave i:nth-child(3n+3){animation-delay:-.85s;animation-duration:.9s}
 @keyframes wv{0%,100%{height:5px}50%{height:20px}}
+.app.ai-speaking .wave i,.app.entered .wave i{animation:none;height:5px}
 
 /* low-ticket offer card (ported from repo .chat-recommendation/.rec-cta) */
 .ocard{background:var(--card-bg);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 8px 22px rgba(46,38,28,.06)}
@@ -468,8 +469,8 @@ function buildBooking(mount,alive,onDone){
   renderDates();
 }
 function stream(el,text,cps,alive){return new Promise(res=>{
-  const av=document.getElementById('avatar');if(av)av.classList.add('talking');
-  const fin=()=>{if(av)av.classList.remove('talking');res();};
+  const av=document.getElementById('avatar');if(av)av.classList.add('talking');app.classList.add('ai-speaking');
+  const fin=()=>{if(av)av.classList.remove('talking');app.classList.remove('ai-speaking');res();};
   el.textContent='';const node=document.createTextNode('');el.appendChild(node);const t0=performance.now();
   requestAnimationFrame(function tick(now){
     if(alive&&!alive()){node.data=text;fin();return;}
@@ -536,7 +537,7 @@ async function play(){
   const D=INDUSTRIES[activeInd];
   setAppTitle(D);renderCards(D);renderReco(D);
   qa('[data-m="a3"],[data-m="a4"],[data-m="a5"],[data-m="a6"]').forEach(e=>e.textContent='');
-  clearTranscript();const _tc=document.getElementById('tapcursor');if(_tc)_tc.classList.remove('show','tap');turn('ai');setStep(0);chat.scrollTop=0;
+  clearTranscript();const _tc=document.getElementById('tapcursor');if(_tc)_tc.classList.remove('show','tap');turn('ai');setStep(0);chat.scrollTop=0;app.classList.remove('entered','ai-speaking');
   if(!await W(500))return;
 
   // 1 · Talks — compressed into a one-line consult summary so the demo opens on the action
@@ -556,6 +557,7 @@ async function play(){
   const recoBtn=q('[data-m="reco"]').querySelector('.ocard-cta');
   show('[data-m="reco"]');if(!await W(1500))return;
   if(recoBtn&&!await tapBuy(recoBtn,W))return;
+  app.classList.add('entered');
   if(!await W(1500))return;
 
   // 4 · Ascends — books the call (Calendly card, auto-played)
