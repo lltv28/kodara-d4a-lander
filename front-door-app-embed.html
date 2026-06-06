@@ -1,7 +1,17 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>AI demo · 1:1 app UI</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Sans:ital,wght@0,400..700;1,400..600&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="preload" href="fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/instrument-serif-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+/* self-hosted fonts — latin + latin-ext, normal weights only */
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/ibm-plex-mono-500-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/ibm-plex-mono-500-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/ibm-plex-mono-600-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/ibm-plex-mono-600-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Instrument Sans';font-style:normal;font-weight:400 700;font-stretch:100%;font-display:swap;src:url(fonts/instrument-sans-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Instrument Sans';font-style:normal;font-weight:400 700;font-stretch:100%;font-display:swap;src:url(fonts/instrument-sans-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Instrument Serif';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/instrument-serif-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Instrument Serif';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/instrument-serif-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
 :root{
   --bg:#FFFDFB;--surface:#F6F3EC;--surface-2:#FBF9F5;
   --ink:#2E2B26;--ink-2:rgba(46,43,38,.82);--ink-3:rgba(46,43,38,.70);
@@ -289,7 +299,7 @@ body{font-family:var(--fb);background:transparent;color:var(--ink);-webkit-font-
           <div class="m bk" data-m="route"></div>
         </div>
 
-        <div class="orbzone"><div class="vtrans" id="vtrans"></div><div class="orb"></div><div class="avatar photo" id="avatar" aria-hidden="true"><video class="av-vid" muted autoplay loop playsinline preload="auto" poster="avatar-finance.jpg"><source src="avatar-finance.mp4" type="video/mp4"></video><div class="av-face"><span class="av-brow l"></span><span class="av-brow r"></span><span class="av-eye l"></span><span class="av-eye r"></span><span class="av-mouth"></span></div><div class="av-ring"></div></div></div>
+        <div class="orbzone"><div class="vtrans" id="vtrans"></div><div class="orb"></div><div class="avatar photo" id="avatar" aria-hidden="true"><video class="av-vid" muted autoplay loop playsinline preload="metadata" poster="avatar-finance.jpg"><source src="avatar-finance.mp4" type="video/mp4"></video><div class="av-face"><span class="av-brow l"></span><span class="av-brow r"></span><span class="av-eye l"></span><span class="av-eye r"></span><span class="av-mouth"></span></div><div class="av-ring"></div></div></div>
         <div class="tapcursor" id="tapcursor"></div>
         <div class="demobadge"><span class="d"></span>Auto-playing demo</div>
         <div class="tapblock" id="tapblock"><div class="tapblock-hint"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>This plays on its own — just watch</div></div>
