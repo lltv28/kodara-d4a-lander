@@ -189,10 +189,10 @@ h1.headline{font-family:var(--font-display);font-weight:700;font-size:var(--fs-d
 .story:nth-child(even) .story-photo{order:2}
 .story-photo{width:140px;height:140px;border-radius:50%;overflow:hidden;flex:none;background:var(--accent-soft);border:1px solid var(--accent-line);display:flex;align-items:center;justify-content:center;color:var(--accent-ink);font-family:var(--font-body);font-weight:700;font-size:46px;line-height:1}
 .story-photo img{width:100%;height:100%;object-fit:cover;display:block}
-.story .stars{color:var(--accent);letter-spacing:3px;font-size:var(--fs-sm);margin-bottom:var(--sp-4)}
-.story-q{font-family:var(--font-display);font-weight:500;font-size:var(--fs-h3);line-height:1.25;letter-spacing:-.01em;color:var(--ink)}
+.story .stars{color:var(--accent);letter-spacing:4px;font-size:var(--fs-lead);margin-bottom:var(--sp-4)}
+.story-q{font-family:var(--font-display);font-weight:500;font-size:clamp(2.25rem, 1.4rem + 3vw, 3.5rem);line-height:1.22;letter-spacing:-.01em;color:var(--ink)}
 .story-who{margin-top:var(--sp-5);display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
-.story-name{font-weight:600;font-size:var(--fs-body);color:var(--ink)}
+.story-name{font-weight:600;font-size:var(--fs-lead);color:var(--ink)}
 .story-role{font-size:var(--fs-sm);color:var(--ink-2)}
 @media(max-width:680px){
   .story,.story:nth-child(even){grid-template-columns:1fr;gap:16px}
