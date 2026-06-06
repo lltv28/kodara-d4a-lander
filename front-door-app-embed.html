@@ -125,13 +125,22 @@ body{font-family:var(--fb);background:transparent;color:var(--ink);-webkit-font-
 @keyframes avbob{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-1.5px) scale(1.015)}}
 .av-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:50%;display:none}
 .avatar.photo .av-vid{display:block}
-.app-input{position:relative;z-index:6;display:flex;gap:8px;align-items:center;padding:0 16px 22px;opacity:.55}
+.app-input{position:relative;z-index:6;display:flex;gap:8px;align-items:center;padding:0 16px 22px}
 .inp-plus{width:56px;height:56px;border-radius:48px;background:var(--field-bg);border:1px solid var(--a100);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 7px 15px rgba(0,0,0,.04),0 27px 27px -12px rgba(0,0,0,.05);display:flex;align-items:center;justify-content:center;color:var(--a600);flex:none}
-.inp-field{flex:1;height:56px;border-radius:48px;background:var(--field-bg);border:1px solid var(--a100);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 7px 15px rgba(0,0,0,.04),0 27px 27px -12px rgba(0,0,0,.05);display:flex;align-items:center;gap:8px;padding:6px 6px 6px 20px}
+.inp-field{flex:1;height:56px;border-radius:48px;background:var(--field-bg);border:1px solid var(--a100);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 7px 15px rgba(0,0,0,.04),0 27px 27px -12px rgba(0,0,0,.05);display:flex;align-items:center;gap:11px;padding:6px 20px 6px 6px}
 .inp-ph{flex:1;font-size:16px;color:var(--a400);letter-spacing:-.16px}
 .inp-mic{width:44px;height:44px;border-radius:24px;display:flex;align-items:center;justify-content:center;color:var(--a600);flex:none}
 .inp-x{width:44px;height:44px;border-radius:24px;background:#fff;display:flex;align-items:center;justify-content:center;color:var(--a900);flex:none}
 .inp-mic svg,.inp-x svg,.inp-plus svg{width:22px;height:22px}
+.inp-mic.live{background:var(--accent);color:#fff;position:relative;animation:micPulse 1.9s ease-out infinite}
+@keyframes micPulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 50%,transparent)}75%,100%{box-shadow:0 0 0 13px transparent}}
+.listen-label{font-size:16px;font-weight:600;color:var(--accent-ink);letter-spacing:-.16px;white-space:nowrap}
+.wave{flex:1;display:flex;align-items:center;justify-content:space-between;height:22px;margin-left:2px;overflow:hidden}
+.wave i{width:3px;height:5px;border-radius:2px;background:var(--accent);opacity:.8;animation:wv 1s ease-in-out infinite}
+.wave i:nth-child(3n+1){animation-delay:-.15s}
+.wave i:nth-child(3n+2){animation-delay:-.55s;animation-duration:1.15s}
+.wave i:nth-child(3n+3){animation-delay:-.85s;animation-duration:.9s}
+@keyframes wv{0%,100%{height:5px}50%{height:20px}}
 
 /* low-ticket offer card (ported from repo .chat-recommendation/.rec-cta) */
 .ocard{background:var(--card-bg);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 8px 22px rgba(46,38,28,.06)}
@@ -295,9 +304,9 @@ body{font-family:var(--fb);background:transparent;color:var(--ink);-webkit-font-
         <div class="app-input">
           <span class="inp-plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
           <div class="inp-field">
-            <span class="inp-ph">Ask me anything…</span>
-            <span class="inp-mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4"/></svg></span>
-            <span class="inp-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>
+            <span class="inp-mic live"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4"/></svg></span>
+            <span class="listen-label">Listening…</span>
+            <span class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
           </div>
         </div>
       </div>
