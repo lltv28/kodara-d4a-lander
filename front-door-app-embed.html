@@ -67,7 +67,7 @@ body{font-family:var(--fb);background:transparent;color:var(--ink);-webkit-font-
 .app-iconbtn{width:28px;height:28px;border-radius:999px;background:var(--a100);display:flex;align-items:center;justify-content:center;color:var(--a600)}
 .app-iconbtn svg{width:18px;height:18px}
 .app-title{font-weight:500;font-size:16px;color:var(--a600);letter-spacing:-.15px}
-.app-chat{position:relative;z-index:1;flex:1;overflow-y:auto;padding:14px 24px 440px;display:flex;flex-direction:column;gap:14px;scrollbar-width:none}
+.app-chat{position:relative;z-index:1;flex:1;min-height:0;overflow-y:auto;padding:14px 24px 440px;display:flex;flex-direction:column;gap:14px;scrollbar-width:none}
 .app-chat::-webkit-scrollbar{display:none}
 .m{opacity:0;transform:translateY(8px);transition:opacity .4s ease,transform .4s ease}
 .m.pending{display:none}
@@ -105,6 +105,7 @@ body{font-family:var(--fb);background:transparent;color:var(--ink);-webkit-font-
 .avatar{position:relative;width:92px;height:92px;border-radius:50%;display:none;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 30%,#fff3e8,#ffd9bd 58%,#eeb892);box-shadow:0 18px 40px -12px var(--orbGlow);animation:orbBreathe 4s ease-in-out infinite}
 .app.avatar-mode .avatar{display:flex}
 .app.avatar-mode .orb{display:none}
+.app.avatar-mode .vtrans{display:none}
 .av-face{position:relative;width:100%;height:100%}
 .av-eye{position:absolute;top:42%;width:9px;height:11px;border-radius:50%;background:#3a2f2a;transform-origin:center;animation:avblink 5.5s infinite}
 .av-eye.l{left:31%}.av-eye.r{right:31%}
@@ -125,7 +126,7 @@ body{font-family:var(--fb);background:transparent;color:var(--ink);-webkit-font-
 @keyframes avbob{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-1.5px) scale(1.015)}}
 .av-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:50%;display:none}
 .avatar.photo .av-vid{display:block}
-.app-input{position:relative;z-index:6;display:flex;justify-content:center;align-items:center;gap:18px;padding:8px 18px 72px;min-height:174px}
+.app-input{position:relative;z-index:6;display:flex;justify-content:center;align-items:center;gap:18px;padding:8px 18px 40px;min-height:0}
 .app-input::before{content:"";position:absolute;left:-12px;right:-12px;bottom:0;height:146px;z-index:-1;pointer-events:none;background:radial-gradient(74% 92% at 50% 100%,color-mix(in srgb,var(--accent) 15%,transparent),transparent 72%),radial-gradient(50% 70% at 50% 100%,rgba(255,255,255,.5),transparent 72%);filter:blur(8px)}
 .vmic{width:88px;height:88px;border-radius:50%;border:1px solid var(--a100);background:var(--field-bg);backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:blur(10px) saturate(140%);box-shadow:0 18px 40px -16px var(--orbGlow),inset 0 1px 0 rgba(255,255,255,.7);display:flex;align-items:center;justify-content:center;color:var(--accent);cursor:default;padding:0;animation:vmicBreathe 3.8s ease-in-out infinite}
 .vmic svg{width:32px;height:32px;display:block}
