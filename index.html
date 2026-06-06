@@ -420,7 +420,7 @@ h1.headline{font-family:var(--font-display);font-weight:700;font-size:var(--fs-d
 .ios-quick{width:46px;height:46px;border-radius:50%;border:none;background:rgba(255,255,255,.16);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;color:#fff;cursor:default;padding:0;box-shadow:inset 0 .5px 0 rgba(255,255,255,.25)}
 .ios-quick svg{width:22px;height:22px;display:block}
 .ios-home{position:relative;z-index:5;width:138px;height:5px;border-radius:3px;background:rgba(255,255,255,.62);margin:16px auto 10px}
-.phone-stack{position:relative;z-index:1;margin:16px 12px 0;flex:1;--cardh:82px;--gap:10px;--slot:calc(var(--cardh) + var(--gap));min-height:calc(var(--cardh)*3 + var(--gap)*2);overflow:hidden;-webkit-mask-image:linear-gradient(to bottom,#000 78%,transparent);mask-image:linear-gradient(to bottom,#000 78%,transparent);font-family:-apple-system,"SF Pro Text","SF Pro Display","Inter","Segoe UI",system-ui,sans-serif}
+.phone-stack{position:relative;z-index:1;margin:16px 12px 0;flex:1;--cardh:82px;--gap:10px;--slot:calc(var(--cardh) + var(--gap));min-height:calc(var(--cardh)*3 + var(--gap)*2);overflow:hidden;-webkit-mask-image:linear-gradient(to bottom,#000 90%,transparent);mask-image:linear-gradient(to bottom,#000 90%,transparent);font-family:-apple-system,"SF Pro Text","SF Pro Display","Inter","Segoe UI",system-ui,sans-serif}
 .nudge{position:absolute;left:0;right:0;top:0;height:var(--cardh);display:flex;gap:11px;align-items:center;padding:11px 13px;border-radius:24px;background:rgba(247,247,250,.55);backdrop-filter:blur(34px) saturate(165%);-webkit-backdrop-filter:blur(34px) saturate(165%);border:.5px solid rgba(255,255,255,.5);box-shadow:0 1px 10px rgba(20,20,30,.06),inset 0 .5px 0 rgba(255,255,255,.6);transition:transform .6s cubic-bezier(0.32, 0.72, 0, 1), opacity .3s ease, filter .6s ease, scale .6s ease;will-change:transform,opacity,filter,scale;transform-origin:center top}
 .nudge-ico{width:38px;height:38px;flex:none;background:#fff;clip-path:url(#sqClip);overflow:hidden}
 .nudge-ico svg{width:100%;height:100%;display:block}
@@ -842,6 +842,30 @@ h1.headline{font-family:var(--font-display);font-weight:700;font-size:var(--fs-d
         <span class="player-watch">Watch the 2-min story</span>
       </div>
     </div>
+    <div class="sandra two-col rv" style="margin-top:clamp(28px,3.5vw,44px)">
+      <div>
+        <h3 style="font-size:var(--fs-h3)">Leanne Ellington</h3>
+        <p style="margin-top:10px;font-size:var(--fs-body)">She's a women's weight loss coach. The AI version of her sells her own <strong>[low-ticket offer — price]</strong> that helps women [core outcome]. Then it soft-pitches her <strong>[signature program — price]</strong>. Leanne doesn't talk to a lead until one is ready to buy.</p>
+      </div>
+      <div class="player" role="img" aria-label="Leanne Ellington case study video">
+        <span class="player-tag">Leanne Ellington · women's weight loss coach</span>
+        <span class="player-dur">0:00</span>
+        <span class="player-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg></span>
+        <span class="player-watch">Watch the 2-min story</span>
+      </div>
+    </div>
+    <div class="sandra two-col rv" style="margin-top:clamp(28px,3.5vw,44px)">
+      <div>
+        <h3 style="font-size:var(--fs-h3)">Jose Fang</h3>
+        <p style="margin-top:10px;font-size:var(--fs-body)">He's a [Jose's niche]. The AI version of him sells his own <strong>[low-ticket offer — price]</strong> that [core outcome]. Then it soft-pitches his <strong>[signature program — price]</strong>. Jose doesn't talk to a lead until one is ready to buy.</p>
+      </div>
+      <div class="player" role="img" aria-label="Jose Fang case study video">
+        <span class="player-tag">Jose Fang · [niche]</span>
+        <span class="player-dur">0:00</span>
+        <span class="player-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg></span>
+        <span class="player-watch">Watch the 2-min story</span>
+      </div>
+    </div>
     <div class="proof-note rv">
       <p class="pn-text"><strong>Can we promise you the same results? No.</strong> You're smart, so you know this changes from one business to the next. Here's what we can promise: our team does the hard work, and you only pay after you've seen what your AI can do.</p>
       <div class="proof-cta">
@@ -1143,7 +1167,9 @@ const NUDGES=[
   {kind:'messages',title:'AI Coach · New text',time:'2m ago',msg:"Morning! Here's today's 10-minute start — short and doable. I'll check in tonight."},
   {kind:'mail',title:'AI Coach · New email',time:'14m ago',msg:'The one number most people get wrong — and the 2-minute fix that changes it.'},
   {kind:'messages',title:'AI Coach · New text',time:'now',msg:"Still here when you're ready — no rush."},
-  {kind:'calendar',title:'AI Coach · Call booked',time:'now',msg:'Thursday at 2:00 PM — added to your calendar.'}
+  {kind:'calendar',title:'AI Coach · Call booked',time:'now',msg:'Thursday at 2:00 PM — added to your calendar.'},
+  {kind:'mail',title:'AI Coach · New email',time:'1h ago',msg:'Your week-one recap is ready — small wins add up faster than you think.'},
+  {kind:'messages',title:'AI Coach · New text',time:'3h ago',msg:"Quick one: which feels easier tomorrow — morning or evening? I'll build around it."}
 ];
 const nStack=document.getElementById('nudgeStack');
 let nI=2,nTimer=null;
@@ -1154,18 +1180,18 @@ function nSlot(el,s){
   el.style.scale = '1';
   el.style.filter = 'none';
   el.style.zIndex = 100 - s;
-  el.style.opacity = s >= 4 ? '0' : '1';
+  el.style.opacity = s >= 6 ? '0' : '1';
   el.style.transitionDelay = (s * 40) + 'ms';
 }
 function nCard(i){const n=NUDGES[i];const el=document.createElement('div');el.className='nudge';el.dataset.title=n.title;el.innerHTML='<div class="nudge-ico">'+NGLYPH[n.kind]+'</div><div class="nudge-body"><div class="nudge-meta"><span class="nudge-title">'+n.title+'</span><span class="nudge-time">'+n.time+'</span></div><div class="nudge-msg">'+n.msg+'</div></div>';return el;}
-function nInit(){nStack.innerHTML='';for(let s=0;s<4;s++){const el=nCard(nMod(nI-s));nStack.appendChild(el);}
+function nInit(){nStack.innerHTML='';for(let s=0;s<6;s++){const el=nCard(nMod(nI-s));nStack.appendChild(el);}
 [...nStack.children].forEach((el,s)=>nSlot(el,s));}
 function nTick(){
   const cards = [...nStack.children];
   cards.forEach(el=>{
     const s=(+el.dataset.slot||0)+1;
     nSlot(el,s);
-    if(s>=4){el.style.opacity='0';setTimeout(()=>el.remove(),560);}
+    if(s>=6){el.style.opacity='0';setTimeout(()=>el.remove(),560);}
   });
   nI=nMod(nI+1);
   const el=nCard(nI);
