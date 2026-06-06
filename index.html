@@ -57,6 +57,8 @@ a{color:inherit;text-decoration:none}
 h2{font-family:var(--font-display);font-weight:700;font-size:var(--fs-h2);line-height:1.1;letter-spacing:-.025em;color:var(--ink);text-shadow:0.3px 0 0 currentColor}
 h3{font-family:var(--font-body);font-weight:700;font-size:var(--fs-h3);letter-spacing:-.015em;line-height:1.2;color:var(--ink)}
 h1.headline,h2,h3{text-wrap:balance}
+/* balance multi-line text so the last line is never a 1-2 word orphan */
+.sub,.subhead,.glead,.story-q,.tl-title,.tl-done,.tl-yourpart,.ev-followup,.chan-d,.faq summary,.proof-note .pn-text,.footer-legal p{text-wrap:balance}
 .sub{font-size:var(--fs-lead);color:var(--ink-2);line-height:1.6;margin-top:var(--space-heading);max-width:60ch}
 p{color:var(--ink-2);text-wrap:pretty;max-width:var(--measure)}
 .hero p,.final p,.gwrap p,.seal p,.section-head[style*="text-align:center"] p{margin-inline:auto}
@@ -150,22 +152,12 @@ h1.headline{font-family:var(--font-display);font-weight:700;font-size:var(--fs-d
 .final-micro{margin-top:var(--sp-4);font-size:var(--fs-xs);color:rgba(255,255,255,.55)}
 
 /* footer */
-.footer{background:var(--surface);border-top:1px solid var(--line);padding:64px 0 40px}
-.footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:clamp(28px,4vw,56px)}
-.footer .brand{margin-bottom:var(--sp-4)}
-.footer-tag{font-size:var(--fs-sm);color:var(--ink-2);max-width:34ch;line-height:1.6}
-.footer-col h4{font-size:var(--fs-micro);font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);margin-bottom:var(--sp-4)}
-.footer-col a{display:block;padding:6px 0;font-size:var(--fs-sm);color:var(--ink-2)}
-.footer-col a:hover{color:var(--ink)}
-.footer-bottom{margin-top:var(--sp-7);padding-top:var(--sp-5);border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:var(--fs-xs);color:var(--ink-3)}
-@media(max-width:760px){.footer-grid{grid-template-columns:1fr 1fr}}
+.footer{background:var(--surface);border-top:1px solid var(--line);padding:48px 0 44px}
+.footer-legal{max-width:var(--w-content);margin:0 auto;text-align:center}
+.footer-legal p{font-size:var(--fs-micro);line-height:1.65;color:var(--ink-3);max-width:none;margin:0 auto 12px}
+.footer-legal p:last-child{margin-bottom:0}
 
 /* sticky cta */
-.sticky{position:fixed;left:0;right:0;bottom:0;z-index:55;background:rgba(38,35,32,.97);backdrop-filter:blur(10px);border-top:1px solid rgba(255,255,255,.08);transform:translateY(120%);transition:transform .25s ease;padding:12px 0;padding-bottom:calc(12px + env(safe-area-inset-bottom))}
-.sticky.show{transform:none}
-.sticky-inner{display:flex;align-items:center;justify-content:space-between;gap:16px}
-.sticky-txt{color:#fff;font-size:var(--fs-sm);font-weight:500}
-@media(max-width:560px){.sticky-txt{font-size:var(--fs-xs)}}
 
 /* reveal */
 .js .rv{opacity:0;transform:translateY(14px);transition:opacity .55s cubic-bezier(.2,.7,.2,1),transform .55s cubic-bezier(.2,.7,.2,1)}
@@ -232,7 +224,7 @@ h1.headline{font-family:var(--font-display);font-weight:700;font-size:var(--fs-d
 .ev-right{display:flex;justify-content:center;align-items:stretch}
 @media(max-width:860px){.everywhere{grid-template-columns:1fr;gap:clamp(30px,5vw,40px)}.ev-right{order:-1}}
 /* follow-up nudge phone — matches the "four moments" device frame (iOS lock screen) */
-.phone{width:100%;max-width:440px;aspect-ratio:440 / 956;margin:0 auto;position:relative;overflow:hidden;border-radius:54px;border:1px solid rgba(26,26,26,.12);background:#0a151c;box-shadow:0 50px 90px -34px rgba(46,38,28,.42);display:flex;flex-direction:column;font-family:-apple-system,"SF Pro Text","SF Pro Display","Inter","Segoe UI",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.phone{width:100%;max-width:440px;aspect-ratio:440 / 956;margin:0 auto;position:relative;overflow:hidden;border-radius:54px;border:2px solid rgba(0,0,0,.55);background:#0a151c;box-shadow:0 50px 90px -34px rgba(46,38,28,.42);display:flex;flex-direction:column;font-family:-apple-system,"SF Pro Text","SF Pro Display","Inter","Segoe UI",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
 .phone-bg{position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(120% 80% at 24% 8%,rgba(48,166,122,.46),transparent 56%),radial-gradient(115% 78% at 86% 92%,rgba(32,110,158,.44),transparent 58%),linear-gradient(180deg,#173129 0%,#0f2028 52%,#091319 100%)}
 .ios-island{position:absolute;top:11px;left:50%;transform:translateX(-50%);width:120px;height:35px;background:#000;border-radius:19px;z-index:8}
 .ios-island::after{content:"";position:absolute;right:12px;top:50%;transform:translateY(-50%);width:8px;height:8px;border-radius:50%;background:radial-gradient(circle at 38% 32%,#26343f,#000 78%)}
@@ -342,11 +334,6 @@ h1.headline{font-family:var(--font-display);font-weight:700;font-size:var(--fs-d
     -webkit-backdrop-filter: saturate(180%) blur(10px) !important;
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.8);
   }
-  .sticky {
-    border-top: 1px solid rgba(255,255,255,0.1) !important;
-    box-shadow: 0 -4px 24px rgba(0,0,0,0.1);
-  }
-
   /* Liquid Glass Notification Effect */
   .nudge {
     background: linear-gradient(180deg, rgba(250,250,253,0.74), rgba(244,245,249,0.70)) !important;
@@ -369,7 +356,7 @@ h1.headline{font-family:var(--font-display);font-weight:700;font-size:var(--fs-d
   }
 
   /* Mono utility labels — content (readable for the audience) */
-  .eyebrow, .pill, .seal-k, .footer-col h4, .player-tag, .player-dur {
+  .eyebrow, .pill, .seal-k, .player-tag, .player-dur {
     font-family: var(--mono) !important;
     font-size: .8125rem !important;
     letter-spacing: .04em !important;
@@ -680,36 +667,20 @@ h1.headline{font-family:var(--font-display);font-weight:700;font-size:var(--fs-d
 <!-- FOOTER -->
 <footer class="footer">
   <div class="wrap">
-    <div class="footer-grid">
-      <div>
-        <a href="#top" class="brand"><span class="brand-mark"></span>Kodara</a>
-        <p class="footer-tag">We build an AI version of you that turns cold strangers into high-paying clients. You only pay after you've seen it work.</p>
-      </div>
-      <div class="footer-col"><h4>Product</h4><a href="#what-it-is">What it is</a><a href="#how-it-works">How it works</a><a href="#proof">Proof</a><a href="#guarantee">Guarantee</a></div>
-      <div class="footer-col"><h4>Company</h4><a href="#faq">FAQ</a><a href="https://go.kodara.com/d-3-a#scroll-id-6Z-8mjZoX-6">Book a demo</a><a href="#top">Back to top</a></div>
-      <div class="footer-col"><h4>Legal</h4><a href="#">Privacy</a><a href="#">Terms</a></div>
+    <div class="footer-legal">
+      <p>© 2026 Kodara LLC - All Rights Reserved.</p>
+      <p>This site is not a part of Facebook website or Facebook, Inc. This site is NOT endorsed by Facebook in any way. FACEBOOK is a trademark of FACEBOOK, Inc.</p>
+      <p>All published marketing material is intellectual property and protected by copyright. Any duplication, reproduction, or distribution is strictly prohibited. We do not sell a business opportunity, &ldquo;get rich quick&rdquo; program or money-making system. We do not make earnings claims, efforts claims, or claims that our products will make you any money. Investing of any kind carries risk and it is possible to lose some or all of your money. The products provided are general in nature, and some strategies &amp; features may not be appropriate for all individuals or all situations. We make no representation regarding the likelihood or probability that any actual or hypothetical business activity will achieve a particular outcome or perform in any predictable manner. Any individual experiences presented are not typical. The information shared is for example purposes and is not a guarantee of a rate of return or a specific result. Your results may vary.</p>
+      <p>We use cookies to help improve, promote and protect our services. By continuing to use this site, you agree to our privacy policy and terms of use.</p>
     </div>
-    <div class="footer-bottom"><span>© 2026 Kodara</span><span>You only pay after you've seen your AI working.</span></div>
   </div>
 </footer>
-
-<!-- STICKY CTA -->
-<div class="sticky" id="sticky">
-  <div class="wrap sticky-inner">
-    <span class="sticky-txt">Pay only after you see it work.</span>
-    <a href="https://go.kodara.com/d-3-a#scroll-id-6Z-8mjZoX-6" class="btn btn-primary btn-sm">See if you qualify <svg class="arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
-  </div>
-</div>
 
 <script>
 document.documentElement.classList.add('js');
 const REDUCE_MOTION=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
 /* size the embedded AI demo iframe to its reported content height */
 window.addEventListener('message',e=>{if(e.data&&e.data.fdAppHeight){const fr=document.getElementById('fdframe');if(fr)fr.style.height=e.data.fdAppHeight+'px';}});
-/* sticky cta */
-const sticky=document.getElementById('sticky');
-function updSticky(){const y=window.scrollY,nearBottom=(window.innerHeight+y)>=document.body.offsetHeight-160;sticky.classList.toggle('show',y>700&&!nearBottom);}
-window.addEventListener('scroll',updSticky,{passive:true});updSticky();
 
 /* reveal */
 const ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target);}})},{threshold:.12});
