@@ -18,13 +18,14 @@
   --dark:#262320; --dark-2:#1F1C18;
   --radius:12px; --radius-sm:10px; --radius-lg:12px;
   --maxw:1120px; --w-content:880px; --w-prose:740px;
-  /* Spacing scale — 8pt grid (+4px half-step) and semantic tokens */
-  --sp-1:4px; --sp-2:8px; --sp-3:12px; --sp-4:16px; --sp-5:24px; --sp-6:32px; --sp-7:48px; --sp-8:64px; --sp-9:96px;
-  --space-section:clamp(100px,11.5vw,148px); --space-block:clamp(60px,6.5vw,84px); --space-head:var(--sp-8); --space-eyebrow:var(--sp-5); --space-heading:var(--sp-5); --space-para:var(--sp-5); --space-tight:var(--sp-3);
-  /* Type scale — baked for a 40+ audience. Reading tiers step down from --fs-base; headings are fluid clamps. */
-  --fs-base:22px;
-  --fs-display:clamp(60px,8vw,107px); --fs-h2:clamp(46px,5.2vw,77px); --fs-h3:clamp(35px,3.4vw,53px); --fs-title:clamp(26px,2.2vw,32px); --fs-lead:clamp(23px,1.95vw,29px);
-  --fs-body:var(--fs-base); --fs-sm:calc(var(--fs-base) - 2px); --fs-xs:calc(var(--fs-base) - 4px); --fs-micro:calc(var(--fs-base) - 6px); --fs-stat:clamp(27px,2.2vw,32px);
+  /* Spacing — 8pt grid in rem (scales with user font-size); semantic tokens drive page rhythm. Low mobile floors. */
+  --sp-1:.25rem; --sp-2:.5rem; --sp-3:.75rem; --sp-4:1rem; --sp-5:1.5rem; --sp-6:2rem; --sp-7:3rem; --sp-8:4rem; --sp-9:6rem;
+  --space-section:clamp(4rem, 2rem + 5vw, 9rem); --space-block:clamp(2.5rem, 1.5rem + 2.6vw, 5.25rem); --space-head:clamp(2.5rem, 1.5rem + 2vw, 4rem); --space-eyebrow:var(--sp-5); --space-heading:var(--sp-5); --space-para:var(--sp-5); --space-tight:var(--sp-3);
+  /* Type — rem modular scale (respects user font-size). Reading tiers ~1.22 ratio + fluid display clamps. Body 22px @16 root. */
+  --fs-micro:.875rem; --fs-xs:1rem; --fs-sm:1.125rem; --fs-body:1.375rem;
+  --fs-lead:clamp(1.5rem, 1.2rem + 1vw, 1.75rem); --fs-title:clamp(1.625rem, 1.35rem + .9vw, 2rem); --fs-stat:var(--fs-title);
+  --fs-h3:clamp(1.875rem, 1.4rem + 2vw, 3.25rem); --fs-h2:clamp(2.375rem, 1.5rem + 3.4vw, 4.75rem); --fs-display:clamp(2.5rem, 1.2rem + 6.6vw, 6.5rem);
+  --measure:66ch;
   --shadow-mockup: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
   --shadow-sm: 0 1px 3px 0 rgba(0,0,0,0.1), 0 1px 2px -1px rgba(0,0,0,0.1);
   --font-display:"Instrument Serif",serif;
@@ -49,7 +50,8 @@ h2{font-family:var(--font-display);font-weight:700;font-size:var(--fs-h2);line-h
 h3{font-family:var(--font-body);font-weight:700;font-size:var(--fs-h3);letter-spacing:-.015em;line-height:1.2;color:var(--ink)}
 h1.headline,h2,h3{text-wrap:balance}
 .sub{font-size:var(--fs-lead);color:var(--ink-2);line-height:1.6;margin-top:var(--space-heading);max-width:60ch}
-p{color:var(--ink-2);text-wrap:pretty}
+p{color:var(--ink-2);text-wrap:pretty;max-width:var(--measure)}
+.hero p,.final p,.gwrap p,.seal p,.section-head[style*="text-align:center"] p{margin-inline:auto}
 strong{color:var(--ink);font-weight:600}
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,5vw,72px);align-items:center}
 .muted{color:var(--ink-2)}
@@ -561,11 +563,18 @@ h1.headline{font-family:var(--font-display);font-weight:700;font-size:var(--fs-d
     pointer-events: none;
   }
 
-  /* 5. Monospace Utility Text */
-  .chrome-status, .reco-price small, .seal-k, .eyebrow, .pill, .gtag, .rep-score span, .rep-verdict .lab, .rep-metric .ml, .day-k, .bk-by, .chk-by, .chk-plan .pk, .vs-tag, .player-tag, .player-dur, .footer-col h4 {
+  /* 5a. Mono utility labels — content (readable for the audience) */
+  .eyebrow, .pill, .gtag, .seal-k, .footer-col h4, .player-tag, .player-dur {
     font-family: var(--mono) !important;
-    font-size: 11px !important;
-    letter-spacing: 0.05em !important;
+    font-size: .8125rem !important;
+    letter-spacing: .04em !important;
+    text-transform: uppercase !important;
+  }
+  /* 5b. Mono utility labels — inside device mockups (kept compact) */
+  .chrome-status, .reco-price small, .rep-score span, .rep-verdict .lab, .rep-metric .ml, .day-k, .bk-by, .chk-by, .chk-plan .pk, .vs-tag {
+    font-family: var(--mono) !important;
+    font-size: .6875rem !important;
+    letter-spacing: .05em !important;
     text-transform: uppercase !important;
   }
 
@@ -617,7 +626,7 @@ h1.headline{font-family:var(--font-display);font-weight:700;font-size:var(--fs-d
   <div class="wrap">
 
     <div class="fd-embed rv" id="gallery">
-      <iframe id="fdframe" class="fd-frame" src="front-door-app-embed.html?v=9" title="See the AI in action" loading="lazy" scrolling="no"></iframe>
+      <iframe id="fdframe" class="fd-frame" src="front-door-app-embed.html?v=10" title="See the AI in action" loading="lazy" scrolling="no"></iframe>
     </div>
   </div>
 </section>
