@@ -785,7 +785,7 @@ h1.headline{font-family:var(--font-display);font-weight:700;font-size:var(--fs-d
             <div class="ios-date">Monday, June 8</div>
             <div class="ios-clock">9:41</div>
           </div>
-          <svg width="0" height="0" aria-hidden="true" style="position:absolute"><defs><clipPath id="sqClip" clipPathUnits="objectBoundingBox"><path d="M.5,0 C.78,0 .92,0 .96,.04 C1,.08 1,.22 1,.5 C1,.78 1,.92 .96,.96 C.92,1 .78,1 .5,1 C.22,1 .08,1 .04,.96 C0,.92 0,.78 0,.5 C0,.22 0,.08 .04,.04 C.08,0 .22,0 .5,0 Z"/></clipPath><linearGradient id="ic-msg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#60F178"/><stop offset="1" stop-color="#1CD14B"/></linearGradient><linearGradient id="ic-mail" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#28AEFA"/><stop offset="1" stop-color="#0B72FB"/></linearGradient></defs></svg>
+          <svg width="0" height="0" aria-hidden="true" style="position:absolute"><defs><clipPath id="sqClip" clipPathUnits="objectBoundingBox"><path d="M.5,0 C.78,0 .92,0 .96,.04 C1,.08 1,.22 1,.5 C1,.78 1,.92 .96,.96 C.92,1 .78,1 .5,1 C.22,1 .08,1 .04,.96 C0,.92 0,.78 0,.5 C0,.22 0,.08 .04,.04 C.08,0 .22,0 .5,0 Z"/></clipPath><linearGradient id="ic-msg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#60F178"/><stop offset="1" stop-color="#1CD14B"/></linearGradient><linearGradient id="ic-mail" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#28AEFA"/><stop offset="1" stop-color="#0B72FB"/></linearGradient><linearGradient id="ic-wa" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2CE06B"/><stop offset="1" stop-color="#12B855"/></linearGradient></defs></svg>
           <div class="phone-stack" id="nudgeStack"></div>
           <div class="ios-bottom">
             <button class="ios-quick" type="button" tabindex="-1" aria-label="Flashlight"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.3 3.5h5.4a.5.5 0 0 1 .49.6l-.32 1.8a.9.9 0 0 1-.88.74h-3.98a.9.9 0 0 1-.88-.74l-.32-1.8a.5.5 0 0 1 .49-.6z"/><path d="M10.2 7.9h3.6l-.4 7.9a1.4 1.4 0 0 1-2.8 0z"/></svg></button>
@@ -1160,16 +1160,19 @@ var __io=new IntersectionObserver((es,ob)=>{es.forEach(e=>{if(e.isIntersecting&&
 const NGLYPH={
   messages:'<svg viewBox="0 0 24 24"><rect width="24" height="24" fill="url(#ic-msg)"/><path d="M12 5.2c-4.3 0-7.8 2.7-7.8 6.1 0 1.75.94 3.36 2.46 4.48-.18 1.07-.7 2.05-1.48 2.82 1.39 0 2.74-.49 3.8-1.3.95.31 1.97.49 3.02.49 4.3 0 7.8-2.7 7.8-6.1S16.3 5.2 12 5.2z" fill="#fff"/></svg>',
   mail:'<svg viewBox="0 0 24 24"><rect width="24" height="24" fill="url(#ic-mail)"/><g fill="none" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"><rect x="4.3" y="7.2" width="15.4" height="9.6" rx="2.4"/><path d="M4.8 8.3 12 12.8l7.2-4.5"/></g></svg>',
-  calendar:'<svg viewBox="0 0 24 24"><rect width="24" height="24" fill="#fff"/><text x="12" y="8" text-anchor="middle" font-family="-apple-system,Segoe UI,Helvetica,Arial,sans-serif" font-size="4.6" font-weight="700" letter-spacing=".2" fill="#FF3B30">MON</text><text x="12" y="19.6" text-anchor="middle" font-family="-apple-system,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="500" fill="#1d1d1f">8</text></svg>'
+  calendar:'<svg viewBox="0 0 24 24"><rect width="24" height="24" fill="#fff"/><text x="12" y="8" text-anchor="middle" font-family="-apple-system,Segoe UI,Helvetica,Arial,sans-serif" font-size="4.6" font-weight="700" letter-spacing=".2" fill="#FF3B30">MON</text><text x="12" y="19.6" text-anchor="middle" font-family="-apple-system,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" font-weight="500" fill="#1d1d1f">8</text></svg>',
+  whatsapp:'<svg viewBox="0 0 24 24"><rect width="24" height="24" fill="url(#ic-wa)"/><path fill="#fff" fill-rule="evenodd" d="M12.04 4.6c-4.1 0-7.43 3.32-7.43 7.42 0 1.3.34 2.58 1 3.71L4.6 19.4l3.78-.99a7.4 7.4 0 0 0 3.55.9h.003c4.1 0 7.43-3.33 7.43-7.43a7.38 7.38 0 0 0-2.17-5.25 7.38 7.38 0 0 0-5.25-2.18zm4.34 10.6c-.18.52-1.06.99-1.49 1.05-.38.06-.86.08-1.39-.09-.32-.1-.74-.24-1.27-.47-2.24-.97-3.71-3.23-3.82-3.38-.11-.15-.91-1.22-.91-2.32s.58-1.65.79-1.87c.21-.23.46-.29.61-.29.15 0 .31 0 .44.01.14.01.33-.05.51.39.19.46.64 1.6.7 1.72.06.11.09.25.02.4-.07.15-.11.25-.22.38-.11.13-.24.29-.34.39-.11.11-.23.24-.1.47.13.23.59.97 1.27 1.57.87.78 1.6 1.02 1.83 1.13.23.11.36.1.49-.06.13-.15.57-.66.72-.89.15-.23.3-.19.51-.11.21.08 1.33.63 1.56.74.23.11.38.17.43.27.06.1.06.55-.12 1.07z"/></svg>'
 };
 const NUDGES=[
   {kind:'messages',title:'AI Coach · New text',time:'now',msg:'Saw you grabbed the 7-Day Reset — want me to set up day 1 around your schedule?'},
+  {kind:'whatsapp',title:'AI Coach · WhatsApp',time:'now',msg:"Hey! Saw your message come through — happy to help. What would you want to fix first?"},
   {kind:'messages',title:'AI Coach · New text',time:'2m ago',msg:"Morning! Here's today's 10-minute start — short and doable. I'll check in tonight."},
   {kind:'mail',title:'AI Coach · New email',time:'14m ago',msg:'The one number most people get wrong — and the 2-minute fix that changes it.'},
   {kind:'messages',title:'AI Coach · New text',time:'now',msg:"Still here when you're ready — no rush."},
   {kind:'calendar',title:'AI Coach · Call booked',time:'now',msg:'Thursday at 2:00 PM — added to your calendar.'},
   {kind:'mail',title:'AI Coach · New email',time:'1h ago',msg:'Your week-one recap is ready — small wins add up faster than you think.'},
-  {kind:'messages',title:'AI Coach · New text',time:'3h ago',msg:"Quick one: which feels easier tomorrow — morning or evening? I'll build around it."}
+  {kind:'messages',title:'AI Coach · New text',time:'3h ago',msg:"Quick one: which feels easier tomorrow — morning or evening? I'll build around it."},
+  {kind:'whatsapp',title:'AI Coach · WhatsApp',time:'22m ago',msg:"No rush — I'll keep your spot. Just reply here whenever you're ready to start."}
 ];
 const nStack=document.getElementById('nudgeStack');
 let nI=2,nTimer=null;
