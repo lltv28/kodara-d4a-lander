@@ -18,9 +18,10 @@
   --dark:#262320; --dark-2:#1F1C18;
   --radius:12px; --radius-sm:10px; --radius-lg:12px;
   --maxw:1120px; --w-content:880px; --w-prose:740px;
-  --fs-base:19px; /* one knob for reading tiers */
-  --fs-display:clamp(52px,8vw,92px); --fs-h2:clamp(40px,5.2vw,66px); --fs-h3:clamp(30px,3.4vw,46px); --fs-title:clamp(22px,2.2vw,28px); --fs-lead:clamp(20px,1.95vw,25px);
-  --fs-body:var(--fs-base); --fs-sm:calc(var(--fs-base) - 2px); --fs-xs:calc(var(--fs-base) - 4px); --fs-micro:calc(var(--fs-base) - 6px); --fs-stat:clamp(23px,2.2vw,28px);
+  --fs-scale:1.16; /* one knob — scales the ENTIRE type system (reading tiers + headings) */
+  --fs-base:calc(19px * var(--fs-scale)); /* drives the reading tiers below */
+  --fs-display:clamp(calc(52px*var(--fs-scale)),8vw,calc(92px*var(--fs-scale))); --fs-h2:clamp(calc(40px*var(--fs-scale)),5.2vw,calc(66px*var(--fs-scale))); --fs-h3:clamp(calc(30px*var(--fs-scale)),3.4vw,calc(46px*var(--fs-scale))); --fs-title:clamp(calc(22px*var(--fs-scale)),2.2vw,calc(28px*var(--fs-scale))); --fs-lead:clamp(calc(20px*var(--fs-scale)),1.95vw,calc(25px*var(--fs-scale)));
+  --fs-body:var(--fs-base); --fs-sm:calc(var(--fs-base) - 2px); --fs-xs:calc(var(--fs-base) - 4px); --fs-micro:calc(var(--fs-base) - 6px); --fs-stat:clamp(calc(23px*var(--fs-scale)),2.2vw,calc(28px*var(--fs-scale)));
   --shadow-mockup: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
   --shadow-sm: 0 1px 3px 0 rgba(0,0,0,0.1), 0 1px 2px -1px rgba(0,0,0,0.1);
   --font-display:"Instrument Serif",serif;
