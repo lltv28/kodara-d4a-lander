@@ -1,0 +1,647 @@
+<!-- ===== Kodara d-4-a — paste into the ClickFunnels CUSTOM HTML / CODE element ===== -->
+<!-- If CF wraps this in a padded section, set that section's padding to 0 and width to full. -->
+<style>
+#kdr-lp{position:relative;box-sizing:border-box;width:100%}
+#kdr-lp *{box-sizing:border-box}
+#kdr-lp /* self-hosted fonts — latin + latin-ext,#kdr-lp normal weights only (no third-party request,#kdr-lp no render-blocking CSS) */
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url(https://lltv28.github.io/kodara-d4a-lander/fonts/ibm-plex-mono-500-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url(https://lltv28.github.io/kodara-d4a-lander/fonts/ibm-plex-mono-500-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;src:url(https://lltv28.github.io/kodara-d4a-lander/fonts/ibm-plex-mono-600-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;src:url(https://lltv28.github.io/kodara-d4a-lander/fonts/ibm-plex-mono-600-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Instrument Sans';font-style:normal;font-weight:400 700;font-stretch:100%;font-display:swap;src:url(https://lltv28.github.io/kodara-d4a-lander/fonts/instrument-sans-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Instrument Sans';font-style:normal;font-weight:400 700;font-stretch:100%;font-display:swap;src:url(https://lltv28.github.io/kodara-d4a-lander/fonts/instrument-sans-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Instrument Serif';font-style:normal;font-weight:400;font-display:swap;src:url(https://lltv28.github.io/kodara-d4a-lander/fonts/instrument-serif-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Instrument Serif';font-style:normal;font-weight:400;font-display:swap;src:url(https://lltv28.github.io/kodara-d4a-lander/fonts/instrument-serif-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+#kdr-lp{
+  --bg:#FFFFFF; --surface:#F4F5F6; --surface-2:#FAFBFC;
+  --ink:#2E2B26; --ink-2:rgba(46,43,38,.82); --ink-3:rgba(46,43,38,.70);
+  --line:rgba(46,43,38,.10); --line-2:rgba(46,43,38,.17);
+  --accent:#16A46C; --accent-ink:#106844; --accent-soft:rgba(22,164,108,.10); --accent-line:rgba(22,164,108,.22); --accent-mint:#5BC998;
+  --btnA:#1faf78; --btnB:#0f6b43;
+  --btn:#2E2B26; --btn-hover:#43403A;
+  --dark:#262320; --dark-2:#1F1C18;
+  --radius:12px; --radius-sm:10px; --radius-lg:12px;
+  --maxw:1120px; --w-content:880px; --w-prose:740px;
+  /* Spacing — 8pt grid in rem (scales with user font-size); semantic tokens drive page rhythm. Low mobile floors. */
+  --sp-1:.25rem; --sp-2:.5rem; --sp-3:.75rem; --sp-4:1rem; --sp-5:1.5rem; --sp-6:2rem; --sp-7:3rem; --sp-8:4rem; --sp-9:6rem;
+  --space-section:clamp(4rem, 2rem + 5vw, 9rem); --space-block:clamp(2.5rem, 1.5rem + 2.6vw, 5.25rem); --space-head:clamp(2.5rem, 1.5rem + 2vw, 4rem); --space-eyebrow:var(--sp-5); --space-heading:var(--sp-5); --space-para:var(--sp-5); --space-tight:var(--sp-3);
+  /* Type — rem modular scale (respects user font-size). Reading tiers ~1.22 ratio + fluid display clamps. Body 22px @16 root. */
+  --fs-micro:.875rem; --fs-xs:1rem; --fs-sm:1.125rem; --fs-body:1.375rem;
+  --fs-lead:clamp(1.5rem, 1.2rem + 1vw, 1.75rem); --fs-title:clamp(1.625rem, 1.35rem + .9vw, 2rem); --fs-stat:var(--fs-title);
+  --fs-h3:clamp(1.875rem, 1.4rem + 2vw, 3.25rem); --fs-h2:clamp(2.375rem, 1.5rem + 3.4vw, 4.75rem); --fs-display:clamp(2.5rem, 1.2rem + 6.6vw, 6.5rem);
+  --measure:66ch;
+  --shadow-mockup: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+  --shadow-sm: 0 1px 3px 0 rgba(0,0,0,0.1), 0 1px 2px -1px rgba(0,0,0,0.1);
+  --font-display:"Instrument Serif",serif;
+  --font-body:"Instrument Sans",sans-serif;
+}
+#kdr-lp *{box-sizing:border-box;margin:0;padding:0}
+#kdr-lp{-webkit-text-size-adjust:100%;scroll-behavior:smooth;overflow-x:clip}
+#kdr-lp{font-family:var(--font-body);background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:clip;font-size:var(--fs-body)}
+#kdr-lp.menu-open{overflow:hidden}
+#kdr-lp a{color:inherit;text-decoration:none}
+#kdr-lp .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+#kdr-lp .wrap-narrow{max-width:780px;margin:0 auto;padding:0 28px}
+#kdr-lp :focus-visible{outline:none;box-shadow:0 0 0 2px #fff,0 0 0 4px var(--accent)}
+#kdr-lp /* sections */
+.section{padding:var(--space-section) 0}
+#kdr-lp .section.tint{background:var(--surface)}
+#kdr-lp .section-head{max-width:var(--w-prose);margin-bottom:var(--space-head)}
+#kdr-lp .eyebrow{font-size:var(--fs-sm);font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-ink);margin-bottom:var(--space-eyebrow);display:flex;align-items:center;gap:9px}
+#kdr-lp .eyebrow::before{content:"";width:12px;height:1.5px;background:var(--accent);display:inline-block}
+#kdr-lp h2{font-family:var(--font-display);font-weight:700;font-size:var(--fs-h2);line-height:1.1;letter-spacing:-.025em;color:var(--ink);text-shadow:0.3px 0 0 currentColor}
+#kdr-lp h3{font-family:var(--font-body);font-weight:700;font-size:var(--fs-h3);letter-spacing:-.015em;line-height:1.2;color:var(--ink)}
+#kdr-lp h1.headline,#kdr-lp h2,#kdr-lp h3{text-wrap:balance}
+#kdr-lp /* balance multi-line text so the last line is never a 1-2 word orphan */
+.sub,#kdr-lp .subhead,#kdr-lp .glead,#kdr-lp .story-q,#kdr-lp .tl-title,#kdr-lp .tl-done,#kdr-lp .tl-yourpart,#kdr-lp .ev-followup,#kdr-lp .chan-d,#kdr-lp .deliver li,#kdr-lp .faq summary,#kdr-lp .faq-ans p,#kdr-lp .proof-note .pn-text,#kdr-lp .footer-legal p{text-wrap:balance}
+#kdr-lp .sub{font-size:var(--fs-lead);color:var(--ink-2);line-height:1.6;margin-top:var(--space-heading);max-width:60ch}
+#kdr-lp p{color:var(--ink-2);text-wrap:pretty;max-width:var(--measure)}
+#kdr-lp .hero p,#kdr-lp .final p,#kdr-lp .gwrap p,#kdr-lp .seal p,#kdr-lp .section-head[style*="text-align:center"] p{margin-inline:auto}
+#kdr-lp strong{color:var(--ink);font-weight:600}
+#kdr-lp .two-col{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,5vw,72px);align-items:center}
+#kdr-lp .muted{color:var(--ink-2)}
+#kdr-lp /* buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-body);font-weight:600;font-size:var(--fs-sm);border-radius:999px;cursor:pointer;transition:transform .12s ease,box-shadow .15s ease,background .15s ease,border-color .15s ease,filter .15s ease;border:1px solid transparent;line-height:1}
+#kdr-lp .btn-primary{background:linear-gradient(180deg,var(--btnA),var(--btnB));color:#fff;font-size:var(--fs-title);padding:21px 48px;box-shadow:0 8px 18px -6px rgba(12,61,38,.5),inset 0 1px 0 rgba(255,255,255,.22)}
+#kdr-lp .btn-primary:hover{filter:brightness(1.07);transform:translateY(-2px);box-shadow:0 16px 30px -8px rgba(12,61,38,.6),inset 0 1px 0 rgba(255,255,255,.28)}
+#kdr-lp .btn-primary:active{transform:translateY(0)}
+#kdr-lp .btn-ghost{background:var(--bg);color:var(--ink);padding:12px 18px;border-color:var(--line-2)}
+#kdr-lp .btn-ghost:hover{border-color:var(--ink-3);background:var(--surface)}
+#kdr-lp .btn-nav{background:var(--accent);color:#fff;padding:11px 22px;font-size:var(--fs-xs)}
+#kdr-lp .btn-nav:hover{filter:brightness(1.06);transform:translateY(-1px)}
+#kdr-lp .btn .arrow{transition:transform .15s ease}
+#kdr-lp .btn:hover .arrow{transform:translateX(3px)}
+#kdr-lp /* nav */
+.nav{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.94);backdrop-filter:saturate(160%) blur(12px);border-bottom:1px solid transparent;transition:border-color .2s ease,box-shadow .2s ease}
+#kdr-lp .nav.scrolled{border-color:var(--line);box-shadow:0 4px 20px rgba(46,38,28,.05)}
+#kdr-lp .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+#kdr-lp .brand{display:flex;align-items:center;gap:9px;font-family:var(--font-display);font-weight:700;font-size:var(--fs-title);letter-spacing:-.02em}
+#kdr-lp .brand-mark{width:24px;height:24px;border-radius:7px;background:var(--ink);position:relative;flex:none}
+#kdr-lp .brand-mark::after{content:"";position:absolute;inset:6px 6px auto 6px;height:4px;border-radius:2px;background:var(--accent)}
+#kdr-lp .brand-mark::before{content:"";position:absolute;left:6px;top:13px;width:4px;height:5px;border-radius:2px;background:#fff}
+#kdr-lp .nav-links{display:flex;align-items:center;gap:30px}
+#kdr-lp .nav-links a{display:inline-flex;align-items:center;min-height:40px;font-size:var(--fs-sm);font-weight:500;color:var(--ink-2);transition:color .15s ease}
+#kdr-lp .nav-links a:hover{color:var(--ink)}
+#kdr-lp .nav-cta{display:flex;align-items:center;gap:14px}
+#kdr-lp .nav-toggle{display:none;width:40px;height:40px;border:1px solid var(--line-2);border-radius:var(--radius-sm);background:#fff;cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:5px}
+#kdr-lp .nav-toggle span{width:17px;height:2px;background:var(--ink);border-radius:2px;transition:transform .2s ease,opacity .2s ease}
+#kdr-lp.menu-open .nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+#kdr-lp.menu-open .nav-toggle span:nth-child(2){opacity:0}
+#kdr-lp.menu-open .nav-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+#kdr-lp .nav-menu{position:absolute;top:100%;left:0;right:0;background:#fff;border-bottom:1px solid var(--line);padding:16px 28px 24px;display:flex;flex-direction:column;gap:6px;transform:translateY(-12px);opacity:0;pointer-events:none;transition:transform .2s ease,opacity .2s ease}
+#kdr-lp.menu-open .nav-menu{transform:none;opacity:1;pointer-events:auto}
+#kdr-lp .nav-menu a{padding:12px 4px;font-size:var(--fs-body);font-weight:500;border-bottom:1px solid var(--line);color:var(--ink)}
+#kdr-lp .nav-menu .btn{margin-top:14px;justify-content:center;border-bottom:none}
+#kdr-lp .nav-menu .btn-primary{color:#fff}
+@media(max-width:860px){#kdr-lp .nav-links{display:none}
+#kdr-lp .nav-cta .btn-nav{display:none}
+#kdr-lp .nav-toggle{display:flex}
+}
+#kdr-lp /* hero */
+.hero{position:relative;padding:84px 0 0;text-align:center;overflow:hidden}
+#kdr-lp .hero-inner{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto}
+#kdr-lp .pill{display:inline-flex;align-items:center;gap:8px;font-size:var(--fs-xs);font-weight:600;color:var(--accent-ink);background:var(--accent-soft);border:1px solid var(--accent-line);padding:6px 13px 6px 10px;border-radius:100px;margin-bottom:var(--sp-5);letter-spacing:-.01em}
+#kdr-lp .pill-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px rgba(30,122,84,.18)}
+#kdr-lp h1.headline{font-family:var(--font-display);font-weight:700;font-size:var(--fs-display);line-height:1.02;letter-spacing:-.03em;color:var(--ink);margin:0 auto var(--sp-5);max-width:24ch}
+#kdr-lp .headline .accent-word{color:var(--accent-ink)}
+#kdr-lp .subhead{font-size:var(--fs-lead);color:var(--ink-2);max-width:56ch;margin:0 auto var(--sp-6);line-height:1.6;font-weight:400}
+#kdr-lp .hero-actions{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+#kdr-lp .trust-line{margin-top:var(--sp-5);font-size:var(--fs-sm);color:var(--ink-2);display:inline-flex;align-items:center;gap:9px;flex-wrap:wrap;justify-content:center;font-weight:500}
+#kdr-lp .trust-line .sep{color:var(--line-2)}
+#kdr-lp .trust-line strong{color:var(--ink);font-weight:600}
+#kdr-lp .hero-glow{position:absolute;left:50%;top:300px;transform:translateX(-50%);width:1100px;height:700px;z-index:1;pointer-events:none;background:radial-gradient(60% 50% at 50% 30%,rgba(30,122,84,.07),rgba(30,122,84,0) 70%);filter:blur(20px)}
+#kdr-lp /* hero media stage */
+.mockup-stage{position:relative;z-index:2;margin-top:var(--sp-6);padding-bottom:0}
+#kdr-lp /* steps (how it works) */
+/* how we deliver · vertical timeline */
+.timeline{--tl-node:60px;--tl-gap:clamp(26px,3.4vw,38px);position:relative;margin:clamp(8px,1.5vw,20px) 0 0}
+#kdr-lp .tl-step{position:relative;display:grid;grid-template-columns:var(--tl-node) 1fr;gap:clamp(18px,2.6vw,28px);padding-bottom:var(--tl-gap)}
+#kdr-lp .tl-node{position:relative}
+#kdr-lp /* connecting spine: bottom of this node → through the gap → top of the next node */
+.timeline>:not(:last-child) .tl-node::after{content:"";position:absolute;left:50%;transform:translateX(-50%);top:var(--tl-node);bottom:calc(-1 * var(--tl-gap));width:2px;background:var(--accent-line)}
+#kdr-lp .tl-num{width:var(--tl-node);height:var(--tl-node);border-radius:50%;border:1px solid var(--accent-line);background:var(--accent-soft);color:var(--accent-ink);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;font-size:var(--fs-stat);line-height:1}
+#kdr-lp .tl-card{background:#fff;border:1px solid var(--line-2);border-radius:var(--radius-lg);padding:clamp(20px,2.4vw,28px);transition:transform .3s ease-in-out,box-shadow .3s ease-in-out}
+#kdr-lp .tl-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-mockup)}
+#kdr-lp .tl-title{font-family:var(--font-body);font-weight:500;font-size:var(--fs-title);letter-spacing:-.01em;line-height:1.18;color:var(--ink)}
+#kdr-lp .tl-card p{font-size:var(--fs-sm);color:var(--ink-2);line-height:1.6;margin-top:var(--space-tight)}
+#kdr-lp .tl-card .deliver{margin-top:var(--sp-4)}
+#kdr-lp .tl-card .lead-out{display:inline-flex;align-items:center;gap:7px;margin-top:var(--sp-4);font-weight:600;font-size:var(--fs-xs);color:var(--accent-ink)}
+#kdr-lp .tl-finish{display:grid;grid-template-columns:var(--tl-node) 1fr;gap:clamp(18px,2.6vw,28px);align-items:center}
+#kdr-lp .tl-flag{width:var(--tl-node);height:var(--tl-node);border-radius:50%;background:linear-gradient(180deg,#16A46C,#106844);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 2px rgba(16,104,68,.35),inset 0 1px 0 rgba(255,255,255,.18)}
+#kdr-lp .tl-flag svg{width:26px;height:26px}
+#kdr-lp .tl-done{font-family:var(--font-display);font-weight:500;font-size:var(--fs-h3);letter-spacing:-.01em;line-height:1.2;color:var(--ink)}
+#kdr-lp .tl-done strong{color:var(--accent-ink)}
+#kdr-lp .tl-yourpart{margin:var(--sp-6) auto 0;max-width:660px;background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:var(--radius);padding:22px 30px;font-size:var(--fs-lead);color:var(--ink-2);line-height:1.45;text-align:center}
+#kdr-lp .tl-yourpart strong{color:var(--accent-ink)}
+@media(max-width:560px){#kdr-lp .timeline{--tl-node:46px}
+#kdr-lp .tl-num,#kdr-lp .tl-flag{font-size:24px}
+}
+#kdr-lp /* final cta */
+.final{background:linear-gradient(158deg,#222320,#131412);color:#fff;text-align:center}
+#kdr-lp .final h2{color:#fff;font-weight:400;text-shadow:none}
+#kdr-lp .final .sub{color:rgba(255,255,255,.72);margin:var(--sp-4) auto var(--sp-6)}
+#kdr-lp .final .eyebrow{color:var(--accent-mint);justify-content:center}
+#kdr-lp .final .eyebrow::before{background:var(--accent-mint)}
+#kdr-lp /* primary CTA keeps its green gradient pill on dark sections too */
+.final-micro{margin-top:var(--sp-4);font-size:var(--fs-xs);color:rgba(255,255,255,.55)}
+#kdr-lp /* footer */
+.footer{background:var(--surface);border-top:1px solid var(--line);padding:48px 0 44px}
+#kdr-lp .footer-legal{max-width:var(--w-content);margin:0 auto;text-align:center}
+#kdr-lp .footer-legal p{font-size:var(--fs-micro);line-height:1.65;color:var(--ink-3);max-width:none;margin:0 auto 12px}
+#kdr-lp .footer-legal p:last-child{margin-bottom:0}
+#kdr-lp /* sticky cta */
+
+/* reveal */
+.js .rv{opacity:0;transform:translateY(14px);transition:opacity .55s cubic-bezier(.2,.7,.2,1),transform .55s cubic-bezier(.2,.7,.2,1)}
+#kdr-lp .rv.in{opacity:1;transform:none}
+#kdr-lp.js .rv-g>*{opacity:0;transform:translateY(14px);transition:opacity .55s cubic-bezier(.2,.7,.2,1),transform .55s cubic-bezier(.2,.7,.2,1)}
+#kdr-lp .rv-g.in>*{opacity:1;transform:none;transition-delay:calc(var(--i,0)*70ms)}
+@media(max-width:760px){#kdr-lp .two-col{grid-template-columns:1fr;gap:36px}
+}
+@media(max-width:600px){#kdr-lp .wrap,#kdr-lp .wrap-narrow{padding:0 18px}
+#kdr-lp .hero{padding-top:54px}
+#kdr-lp .hero-actions{flex-direction:column;align-items:stretch}
+}
+#kdr-lp /* embedded auto-playing AI demo (isolated iframe) */
+.fd-embed{margin-top:0}
+#kdr-lp .fd-frame{display:block;width:100%;border:0;background:transparent;height:auto;min-height:600px;transition:height .25s ease}
+#kdr-lp /* proof */
+.sandra{border:1px solid var(--line-2);border-radius:var(--radius-lg);padding:clamp(22px,3vw,36px);gap:clamp(28px,4vw,48px);background:#fff}
+#kdr-lp .player{position:relative;aspect-ratio:16/10;background:linear-gradient(150deg,#2b2824,#3c372f);border-radius:var(--radius);overflow:hidden}
+#kdr-lp .player-tag{position:absolute;top:12px;left:12px;background:rgba(0,0,0,.42);color:#fff;font-size:var(--fs-micro);font-weight:500;padding:4px 9px;border-radius:100px;backdrop-filter:blur(4px)}
+#kdr-lp .player-dur{position:absolute;top:12px;right:12px;background:rgba(0,0,0,.42);color:#fff;font-size:var(--fs-micro);padding:4px 8px;border-radius:6px}
+#kdr-lp .player-play{position:absolute;inset:0;margin:auto;width:56px;height:56px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;color:var(--ink);box-shadow:0 8px 24px rgba(0,0,0,.3)}
+#kdr-lp .player-play svg{margin-left:3px}
+#kdr-lp .player-watch{position:absolute;left:0;right:0;bottom:16px;text-align:center;color:rgba(255,255,255,.85);font-size:var(--fs-xs)}
+#kdr-lp /* proof · testimonial story strips (one per row,#kdr-lp alternating photo side) */
+.stories{margin-top:var(--space-block);border-top:1px solid var(--line)}
+#kdr-lp .story{display:grid;grid-template-columns:140px 1fr;gap:clamp(24px,4vw,52px);align-items:center;padding:var(--space-block) 0;border-bottom:1px solid var(--line)}
+#kdr-lp .story:nth-child(even){grid-template-columns:1fr 140px}
+#kdr-lp .story:nth-child(even) .story-photo{order:2}
+#kdr-lp .story-photo{width:140px;height:140px;border-radius:50%;overflow:hidden;flex:none;background:var(--accent-soft);border:1px solid var(--accent-line);display:flex;align-items:center;justify-content:center;color:var(--accent-ink);font-family:var(--font-body);font-weight:700;font-size:46px;line-height:1}
+#kdr-lp .story-photo img{width:100%;height:100%;object-fit:cover;display:block}
+#kdr-lp .story .stars{color:var(--accent);letter-spacing:4px;font-size:var(--fs-lead);margin-bottom:var(--sp-4)}
+#kdr-lp .story-q{font-family:var(--font-display);font-weight:500;font-size:clamp(2.25rem, 1.4rem + 3vw, 3.5rem);line-height:1.22;letter-spacing:-.01em;color:var(--ink)}
+#kdr-lp .story-who{margin-top:var(--sp-5);display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+#kdr-lp .story-name{font-weight:600;font-size:var(--fs-lead);color:var(--ink)}
+#kdr-lp .story-role{font-size:var(--fs-sm);color:var(--ink-2)}
+@media(max-width:680px){#kdr-lp .story,#kdr-lp .story:nth-child(even){grid-template-columns:1fr;gap:16px}
+#kdr-lp .story:nth-child(even) .story-photo{order:0}
+#kdr-lp .story-photo{width:88px;height:88px;font-size:32px}
+}
+#kdr-lp .proof-note{margin-top:var(--space-block);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--sp-6);border-top:1px solid var(--line);padding-top:var(--sp-7)}
+#kdr-lp .proof-note .pn-text{max-width:58ch;font-size:var(--fs-sm);flex:1;min-width:280px}
+#kdr-lp .proof-cta{flex:none}
+#kdr-lp .section-cta{display:flex;justify-content:center;margin-top:var(--space-block)}
+#kdr-lp .proof-cta .micro{font-size:var(--fs-xs);color:var(--ink-2);margin-top:var(--sp-3);max-width:34ch}
+#kdr-lp /* deliver list */
+.deliver{list-style:none;margin-top:16px;display:flex;flex-direction:column;gap:10px}
+#kdr-lp .deliver li{position:relative;padding-left:24px;font-size:var(--fs-sm);color:var(--ink-2);line-height:1.55}
+#kdr-lp .deliver li::before{content:"";position:absolute;left:0;top:8px;width:13px;height:13px;border-radius:50%;background:var(--accent-soft);border:1px solid var(--accent-line)}
+#kdr-lp .deliver li::after{content:"";position:absolute;left:4px;top:11px;width:5px;height:5px;border-radius:50%;background:var(--accent)}
+#kdr-lp /* live everywhere + follow-up · split layout */
+.everywhere{display:grid;grid-template-columns:1fr minmax(330px,440px);gap:clamp(36px,5vw,64px);align-items:stretch}
+#kdr-lp .ev-left h2{max-width:22ch}
+#kdr-lp .ev-left .sub{margin:12px 0 0}
+#kdr-lp .chan-list{list-style:none;margin-top:var(--space-para);display:flex;flex-direction:column}
+#kdr-lp .chan{display:flex;align-items:center;gap:15px;padding:13px 0;border-bottom:1px solid var(--line)}
+#kdr-lp .chan:last-child{border-bottom:none}
+#kdr-lp .chan-ico{width:42px;height:42px;border-radius:var(--radius-sm);background:var(--accent-soft);border:1px solid var(--accent-line);color:var(--accent-ink);display:flex;align-items:center;justify-content:center;flex:none}
+#kdr-lp .chan-ico svg{width:21px;height:21px}
+#kdr-lp .chan-t{font-weight:600;font-size:var(--fs-body);color:var(--ink)}
+#kdr-lp .chan-d{font-size:var(--fs-sm);color:var(--ink-2);line-height:1.45}
+#kdr-lp .ev-followup{margin-top:var(--space-para);font-size:var(--fs-sm);color:var(--ink-2);line-height:1.55;max-width:48ch}
+#kdr-lp .ev-followup strong{color:var(--ink)}
+#kdr-lp .ev-right{display:flex;justify-content:center;align-items:stretch}
+@media(max-width:860px){#kdr-lp .everywhere{grid-template-columns:1fr;gap:clamp(30px,5vw,40px)}
+#kdr-lp .ev-right{order:-1}
+}
+#kdr-lp /* follow-up nudge phone — matches the "four moments" device frame (iOS lock screen) */
+.phone{width:100%;max-width:440px;aspect-ratio:440 / 956;margin:0 auto;position:relative;overflow:hidden;border-radius:54px;border:3px solid #a3a3a3;background:#0a151c;box-shadow:0 50px 90px -34px rgba(46,38,28,.42);display:flex;flex-direction:column;font-family:-apple-system,"SF Pro Text","SF Pro Display","Inter","Segoe UI",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+#kdr-lp .phone-bg{position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(120% 80% at 24% 8%,rgba(48,166,122,.46),transparent 56%),radial-gradient(115% 78% at 86% 92%,rgba(32,110,158,.44),transparent 58%),linear-gradient(180deg,#173129 0%,#0f2028 52%,#091319 100%)}
+#kdr-lp .ios-island{position:absolute;top:11px;left:50%;transform:translateX(-50%);width:120px;height:35px;background:#000;border-radius:19px;z-index:8}
+#kdr-lp .ios-island::after{content:"";position:absolute;right:12px;top:50%;transform:translateY(-50%);width:8px;height:8px;border-radius:50%;background:radial-gradient(circle at 38% 32%,#26343f,#000 78%)}
+#kdr-lp .phone-status{position:relative;z-index:6;display:flex;justify-content:space-between;align-items:center;padding:14px 24px 0;height:46px;color:#fff;font-family:-apple-system,BlinkMacSystemFont,sans-serif}
+#kdr-lp .phone-status .carrier{font-size:12px;font-weight:600;letter-spacing:-0.01em;opacity:0.9}
+#kdr-lp .phone-status .ic{display:flex;align-items:center;gap:6px}
+#kdr-lp .phone-status svg{display:block}
+#kdr-lp .ios-lock{position:relative;z-index:5;text-align:center;color:#fff;padding:4px 0 0}
+#kdr-lp .ios-pad{width:14px;height:17px;margin:0 auto 10px;display:block;opacity:0.9}
+#kdr-lp .ios-date{font-size:17px;font-weight:600;letter-spacing:-0.02em;color:rgba(255,255,255,0.94)}
+#kdr-lp .ios-clock{font-size:82px;line-height:1;font-weight:700;letter-spacing:-0.05em;color:#fff;font-variant-numeric:tabular-nums;margin-top:2px;text-shadow:0 0 40px rgba(0,0,0,0.15)}
+#kdr-lp .ios-bottom{position:relative;z-index:5;display:flex;justify-content:space-between;align-items:center;padding:0 32px;margin-top:18px}
+#kdr-lp .ios-quick{width:46px;height:46px;border-radius:50%;border:none;background:rgba(255,255,255,.16);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;color:#fff;cursor:default;padding:0;box-shadow:inset 0 .5px 0 rgba(255,255,255,.25)}
+#kdr-lp .ios-quick svg{width:22px;height:22px;display:block}
+#kdr-lp .ios-home{position:relative;z-index:5;width:138px;height:5px;border-radius:3px;background:rgba(255,255,255,.62);margin:16px auto 10px}
+#kdr-lp .phone-stack{position:relative;z-index:1;margin:16px 12px 0;flex:1;--cardh:82px;--gap:10px;--slot:calc(var(--cardh) + var(--gap));min-height:calc(var(--cardh)*3 + var(--gap)*2);overflow:hidden;-webkit-mask-image:linear-gradient(to bottom,#000 90%,transparent);mask-image:linear-gradient(to bottom,#000 90%,transparent);font-family:-apple-system,"SF Pro Text","SF Pro Display","Inter","Segoe UI",system-ui,sans-serif}
+#kdr-lp .nudge{position:absolute;left:0;right:0;top:0;height:var(--cardh);display:flex;gap:11px;align-items:center;padding:11px 13px;border-radius:24px;background:rgba(247,247,250,.55);backdrop-filter:blur(12px) saturate(165%);-webkit-backdrop-filter:blur(12px) saturate(165%);border:.5px solid rgba(255,255,255,.5);box-shadow:0 1px 10px rgba(20,20,30,.06),inset 0 .5px 0 rgba(255,255,255,.6);transition:transform .55s cubic-bezier(0.32, 0.72, 0, 1), opacity .35s ease;will-change:transform,opacity;transform-origin:center top;backface-visibility:hidden}
+#kdr-lp .nudge-ico{width:38px;height:38px;flex:none;background:#fff;clip-path:url(#sqClip);overflow:hidden}
+#kdr-lp .nudge-ico svg{width:100%;height:100%;display:block}
+#kdr-lp .nudge-body{flex:1;min-width:0}
+#kdr-lp .nudge-meta{display:flex;align-items:baseline;gap:8px}
+#kdr-lp .nudge-title{font-weight:600;color:#000;font-size:15px;letter-spacing:-.24px;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#kdr-lp .nudge-time{margin-left:auto;color:rgba(60,60,67,.6);font-size:13px;font-weight:400;letter-spacing:-.08px;flex:none}
+#kdr-lp .nudge-msg{font-size:15px;color:#000;margin-top:1px;line-height:1.28;letter-spacing:-.24px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+#kdr-lp /* dark section (guarantee) */
+.section.dark{background:linear-gradient(158deg,#222320,#131412);color:rgba(255,255,255,.78);border-top-color:rgba(255,255,255,.08)}
+#kdr-lp .section.dark h2{color:#fff;font-weight:400;text-shadow:none}
+#kdr-lp .section.dark .eyebrow{color:var(--accent-mint)}
+#kdr-lp .section.dark .eyebrow::before{background:var(--accent-mint)}
+#kdr-lp .section.dark strong{color:#fff}
+#kdr-lp .section.dark .deliver li{color:rgba(255,255,255,.8)}
+#kdr-lp /* guarantee — centered seal */
+.gwrap{max-width:680px;margin:0 auto;text-align:center}
+#kdr-lp .gwrap .eyebrow{justify-content:center}
+#kdr-lp .seal{max-width:320px;margin:clamp(8px,2vw,18px) auto clamp(26px,3.5vw,38px);padding:40px 24px;border-radius:var(--radius-lg);position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);box-shadow:var(--shadow-mockup)}
+#kdr-lp .seal::before{content:"";position:absolute;inset:6px;border-radius:calc(var(--radius-lg) - 4px);border:1px solid rgba(255,255,255,0.05);pointer-events:none;}
+#kdr-lp .seal-k{font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--accent-mint);margin-bottom:7px}
+#kdr-lp .seal-num{font-family:var(--font-display);font-weight:400;font-size:clamp(52px,9vw,70px);line-height:.88;color:#fff;letter-spacing:.01em}
+#kdr-lp .seal-unit{font-size:13px;color:rgba(255,255,255,.78);font-weight:500;margin-top:3px}
+#kdr-lp .seal-div{width:46px;height:1px;background:rgba(91,201,152,.38);margin:12px 0}
+#kdr-lp .seal-or{font-size:13.5px;font-weight:600;color:var(--accent-mint)}
+#kdr-lp .glead{margin:16px auto 0;max-width:46ch;font-size:var(--fs-lead);color:rgba(255,255,255,.8)}
+#kdr-lp /* faq */
+.faq details{border-bottom:1px solid var(--line)}
+#kdr-lp .faq summary{cursor:pointer;list-style:none;padding:22px 40px 22px 0;position:relative;font-family:var(--font-body);font-weight:600;font-size:var(--fs-title);color:var(--ink);letter-spacing:-.01em}
+#kdr-lp .faq summary::-webkit-details-marker{display:none}
+#kdr-lp .faq summary::after{content:"+";position:absolute;right:6px;top:19px;font-size:var(--fs-stat);font-weight:400;color:var(--ink-3);transition:transform .2s ease}
+#kdr-lp .faq details[open] summary::after{transform:rotate(45deg);color:var(--accent-ink)}
+#kdr-lp .faq-ans{padding:0 40px 22px 0}
+#kdr-lp .faq-ans p{font-size:var(--fs-sm);color:var(--ink-2);line-height:1.6}
+#kdr-lp .faq details[open] .faq-ans{animation:faqIn .25s ease}
+@keyframes faqIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){#kdr-lp *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto}
+#kdr-lp .rv,#kdr-lp .rv-g>*{opacity:1;transform:none}
+#kdr-lp .nudge{transition-duration:.62s,.32s!important}
+}
+#kdr-lp{
+    --mono: "IBM Plex Mono", monospace;
+    --grid-opacity: 0.12;
+  }
+#kdr-lp /* 1. Sub-Pixel Grid Pattern */
+  body::after{
+    content: "";
+    position:absolute;
+    inset: 0;
+    z-index: 1;
+    background-image: 
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 30px 30px;
+    mask-image: radial-gradient(ellipse at center, black, transparent 90%);
+    opacity: var(--grid-opacity);
+    pointer-events: none;
+  }
+#kdr-lp /* 2. Shimmer Border CTA */
+  .btn-primary{
+    position: relative;
+    overflow: hidden;
+  }
+#kdr-lp .btn-primary::after{
+    content: "";
+    position: absolute;
+    inset: -1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transform: translateX(-100%);
+    transition: none;
+  }
+#kdr-lp .btn-primary:hover::after{
+    transform: translateX(100%);
+    transition: transform 0.5s ease;
+  }
+#kdr-lp /* 4. Glassmorphism Refinement (Aave-inspired Liquid Glass) */
+  .nav{
+    border-bottom: 1px solid var(--line-2) !important;
+    background: rgba(255, 255, 255, 0.72) !important;
+    backdrop-filter: saturate(180%) blur(10px) !important;
+    -webkit-backdrop-filter: saturate(180%) blur(10px) !important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.8);
+  }
+#kdr-lp /* Liquid Glass Notification Effect */
+  .nudge{
+    background: linear-gradient(180deg, rgba(250,250,253,0.74), rgba(244,245,249,0.70)) !important;
+    backdrop-filter: blur(12px) saturate(140%) !important;
+    -webkit-backdrop-filter: blur(12px) saturate(140%) !important;
+    border: 0.5px solid rgba(255, 255, 255, 0.45) !important;
+    box-shadow:
+      0 4px 14px -2px rgba(0,0,0,0.10),
+      inset 0 0.5px 0 0 rgba(255,255,255,0.55) !important;
+  }
+#kdr-lp .nudge::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    z-index: -1;
+    background: linear-gradient(165deg, rgba(255,255,255,0.15) 0%, transparent 40%);
+    pointer-events: none;
+  }
+#kdr-lp /* Mono utility labels — content (readable for the audience) */
+  .eyebrow,#kdr-lp .pill,#kdr-lp .seal-k,#kdr-lp .player-tag,#kdr-lp .player-dur{
+    font-family: var(--mono) !important;
+    font-size: .8125rem !important;
+    letter-spacing: .04em !important;
+    text-transform: uppercase !important;
+  }
+</style>
+
+<div id="kdr-lp">
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="hero-inner rv in">
+      <h1 class="headline">We build an AI version of you that turns strangers into <span class="accent-word">high-paying clients</span>, 24/7.</h1>
+      <p class="subhead">It talks to every lead, figures out what they need, and points them to the right thing to buy. You only pay after you've seen it work.</p>
+    </div>
+  </div>
+
+  <div class="mockup-stage">
+    <div class="wrap">
+      <!-- VSL video embed -->
+      <div style="max-width:880px;margin:0 auto;position:relative;z-index:2;border-radius:16px;overflow:hidden;box-shadow:var(--shadow-mockup);background:#000">
+        <div id="vidalytics_embed_4hHzEVevwBW1xOyh" style="width: 100%; position:relative; padding-top: 56.25%;"></div>
+        
+      </div>
+      <!-- Scheduler embed -->
+      <div id="book" style="max-width:880px;margin:var(--space-block) auto 0;position:relative;z-index:2;scroll-margin-top:24px">
+        <!-- iClosed inline widget begin -->
+        <div class="iclosed-widget" data-url="https://app.iclosed.io/e/kodara/done-for-you-digital-labor-ai-demo" title="Done-For-You AI Product Demo" style="width: 100%; height: 620px"></div>
+        
+        <!-- iClosed inline widget end -->
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- WHAT IT IS + DEMO -->
+<section class="section" id="what-it-is">
+  <div class="wrap">
+
+    <div class="fd-embed rv" id="gallery">
+      <iframe id="fdframe" class="fd-frame" src="https://lltv28.github.io/kodara-d4a-lander/front-door-app-embed.html?v=10" title="See the AI in action" loading="lazy" scrolling="no"></iframe>
+    </div>
+    <div class="section-cta rv"><a href="#book" class="btn btn-primary">Get A Free Live Demo</a></div>
+  </div>
+</section>
+<!-- HOW WE DELIVER -->
+<section class="section tint" id="how-it-works">
+  <div class="wrap">
+    <div class="section-head rv">
+      
+      <h2>Live and selling in under 30 days.</h2>
+      <p class="sub">Three steps, all done for you.</p>
+    </div>
+    <div class="timeline rv-g">
+      <div class="tl-step">
+        <div class="tl-node"><div class="tl-num">01</div></div>
+        <div class="tl-card">
+          <div class="tl-title">We build your AI brain</div>
+          <p>We turn everything you've already made into an AI that sells for you, and you approve every word.</p>
+          <ul class="deliver">
+            <li>Trained on your calls, courses, podcasts and notes</li>
+            <li>Talks to your leads 24/7, in your own voice</li>
+            <li>You okay what it can and can't say, and can even add a video avatar</li>
+          </ul>
+          <span class="lead-out"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Usually live in about two weeks</span>
+        </div>
+      </div>
+      <div class="tl-step">
+        <div class="tl-node"><div class="tl-num">02</div></div>
+        <div class="tl-card">
+          <div class="tl-title">We turn it into a selling system</div>
+          <p>Every lead gets the right offer at the right price, and the AI does the selling.</p>
+          <ul class="deliver">
+            <li>Lays out the offer and handles the objections you'd normally field</li>
+            <li>Texts and emails that follow up for days</li>
+            <li>Live alerts the moment a lead is ready to buy</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-step">
+        <div class="tl-node"><div class="tl-num">03</div></div>
+        <div class="tl-card">
+          <div class="tl-title">We fill it with buyers</div>
+          <p>Then we fill it with new customers every day, using the same systems that have generated over <strong>$100 million</strong> for our clients.</p>
+          <ul class="deliver">
+            <li><strong>Your sales page, built for you.</strong> The whole path from ad click to sale, ready on day one.</li>
+            <li><strong>Your organic content.</strong> Your AI avatar makes videos and posts in your voice.</li>
+            <li><strong>Wake up your old contacts.</strong> We re-engage the people already in your email list. Usually the first money you see.</li>
+            <li><strong>Paid ads, done with you.</strong> We build the creative; you set the budget; we only turn them on once it's proven without paid ads.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-finish">
+        <div class="tl-node"><div class="tl-flag"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 5h12l-2.2 3.5L17 12H5"/></svg></div></div>
+        <div class="tl-done">You're live and collecting revenue, <strong>in under 30 days.</strong></div>
+      </div>
+    </div>
+    <p class="tl-yourpart rv"><strong>Your part: about an hour a week.</strong> You review &amp; approve our work. We handle everything fully done-for-you.</p>
+    <div class="section-cta rv"><a href="#book" class="btn btn-primary">Get A Free Live Demo</a></div>
+  </div>
+</section>
+<!-- EVERYWHERE (multi-channel notification phone) -->
+<section class="section tint" id="why">
+  <div class="wrap">
+    <div class="everywhere rv">
+      <div class="ev-left">
+        
+        <h2>Chat, email, text — one AI, answering everywhere at once.</h2>
+        <p class="sub">The same AI version of you answers in chat, email, and text. It keeps following up while you sleep.</p>
+        <ul class="chan-list">
+          <li class="chan"><div class="chan-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11.5a7.5 7.5 0 0 1-10.6 6.8L4 20l1.7-4.4A7.5 7.5 0 1 1 20 11.5z"/></svg></div><div class="chan-tx"><div class="chan-t">Web chat</div><div class="chan-d">On your site, ready the second they land.</div></div></li>
+          <li class="chan"><div class="chan-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="m3.8 7 8.2 5.6L20.2 7"/></svg></div><div class="chan-tx"><div class="chan-t">Email</div><div class="chan-d">Replies and follow-ups in your voice.</div></div></li>
+          <li class="chan"><div class="chan-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6.5" y="3" width="11" height="18" rx="2.6"/><path d="M10.5 18.2h3"/></svg></div><div class="chan-tx"><div class="chan-t">WhatsApp &amp; SMS</div><div class="chan-d">Right where they already check.</div></div></li>
+          <li class="chan"><div class="chan-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="8.5 8 5 12 8.5 16"/><polyline points="15.5 8 19 12 15.5 16"/></svg></div><div class="chan-tx"><div class="chan-t">Website</div><div class="chan-d">Drop it into any page or funnel.</div></div></li>
+          <li class="chan"><div class="chan-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="11.5" rx="2"/><path d="M8.5 20h7M12 16v4"/></svg></div><div class="chan-tx"><div class="chan-t">Desktop app</div><div class="chan-d">Mac &amp; Windows, a click away.</div></div></li>
+        </ul>
+        <p class="ev-followup"><strong>And it keeps following up on its own.</strong> One lead, nudged across channels until they're ready.</p>
+      </div>
+      <div class="ev-right">
+        <!-- Aave-inspired Liquid Glass SVG Filter -->
+        <svg width="0" height="0" style="position:absolute;">
+          <filter id="liquid-glass" x="-20%" y="-20%" width="140%" height="140%">
+            <!-- Add a fine grain/noise to simulate physical material surface -->
+            <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" result="noise" />
+            <feColorMatrix in="noise" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0" result="faint-noise" />
+            <feComposite operator="in" in="faint-noise" in2="SourceGraphic" result="surface-grain" />
+
+            <!-- Simulate Specular Highlights and Rim Lighting -->
+            <feComponentTransfer in="SourceGraphic" result="lighting">
+              <feFuncR type="linear" slope="1.1" intercept="0.02" />
+              <feFuncG type="linear" slope="1.1" intercept="0.02" />
+              <feFuncB type="linear" slope="1.1" intercept="0.02" />
+            </feComponentTransfer>
+
+            <feMerge>
+              <feMergeNode in="lighting" />
+              <feMergeNode in="surface-grain" />
+            </feMerge>
+          </filter>
+        </svg>
+
+        <div class="phone">
+          <div class="phone-bg" aria-hidden="true"></div>
+          <div class="ios-island" aria-hidden="true"></div>
+          <div class="phone-status">
+            <span class="carrier">Kodara Mobile</span>
+            <span class="ic">
+              <svg width="17" height="12" viewBox="0 0 17 12" fill="currentColor"><path d="M1 10h1.5v1H1v-1zm3-2h1.5v3H4v-3zm3-2h1.5v5H7V6zm3-2h1.5v7H10V4zm3-2h1.5v9H13V2z"/></svg>
+              <svg width="17" height="12" viewBox="0 0 17 12" fill="currentColor"><path d="M8.5 2.5a6 6 0 0 1 4.5 2.1l1.1-1.2A7.5 7.5 0 0 0 8.5 1 7.5 7.5 0 0 0 2.9 3.4l1.1 1.2a6 6 0 0 1 4.5-2.1z"/><path d="M8.5 5.5a3 3 0 0 1 2.2 1l1.1-1.2A4.5 4.5 0 0 0 8.5 4 4.5 4.5 0 0 0 4.7 5.3l1.1 1.2a3 3 0 0 1 2.7-1z"/><circle cx="8.5" cy="9" r="1.5"/></svg>
+              <svg width="25" height="12" viewBox="0 0 25 12" fill="none"><rect x="0.5" y="1" width="21" height="10" rx="2.5" stroke="currentColor" stroke-width="1" opacity="0.35"/><rect x="2.5" y="2.5" width="15" height="7" rx="1" fill="currentColor"/><path d="M22.5 4.5c0.8 0.2 0.8 2.8 0 3" fill="currentColor" opacity="0.4"/></svg>
+            </span>
+          </div>
+          <div class="ios-lock">
+            <svg class="ios-pad" viewBox="0 0 24 28" fill="none" aria-hidden="true"><rect x="4.5" y="12.5" width="15" height="12.5" rx="3" fill="#fff"/><path d="M7.8 12.5V8.7a4.2 4.2 0 0 1 8.4 0v3.8" stroke="#fff" stroke-width="2.3"/></svg>
+            <div class="ios-date">Monday, June 8</div>
+            <div class="ios-clock">9:41</div>
+          </div>
+          <svg width="0" height="0" aria-hidden="true" style="position:absolute"><defs><clipPath id="sqClip" clipPathUnits="objectBoundingBox"><path d="M.5,0 C.78,0 .92,0 .96,.04 C1,.08 1,.22 1,.5 C1,.78 1,.92 .96,.96 C.92,1 .78,1 .5,1 C.22,1 .08,1 .04,.96 C0,.92 0,.78 0,.5 C0,.22 0,.08 .04,.04 C.08,0 .22,0 .5,0 Z"/></clipPath><linearGradient id="ic-msg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#60F178"/><stop offset="1" stop-color="#1CD14B"/></linearGradient><linearGradient id="ic-mail" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#28AEFA"/><stop offset="1" stop-color="#0B72FB"/></linearGradient><linearGradient id="ic-wa" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2CE06B"/><stop offset="1" stop-color="#12B855"/></linearGradient></defs></svg>
+          <div class="phone-stack" id="nudgeStack"></div>
+          <div class="ios-bottom">
+            <button class="ios-quick" type="button" tabindex="-1" aria-label="Flashlight"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.3 3.5h5.4a.5.5 0 0 1 .49.6l-.32 1.8a.9.9 0 0 1-.88.74h-3.98a.9.9 0 0 1-.88-.74l-.32-1.8a.5.5 0 0 1 .49-.6z"/><path d="M10.2 7.9h3.6l-.4 7.9a1.4 1.4 0 0 1-2.8 0z"/></svg></button>
+            <button class="ios-quick" type="button" tabindex="-1" aria-label="Camera"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8.9 5.3 8 7H5.5A2.5 2.5 0 0 0 3 9.5v6.2A2.5 2.5 0 0 0 5.5 18.2h13A2.5 2.5 0 0 0 21 15.7V9.5A2.5 2.5 0 0 0 18.5 7H16l-.9-1.7z"/><circle cx="12" cy="12.5" r="3.2" fill="#11242b"/></svg></button>
+          </div>
+          <div class="ios-home" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+    <div class="section-cta rv"><a href="#book" class="btn btn-primary">Get A Free Live Demo</a></div>
+  </div>
+</section>
+<!-- PROOF -->
+<section class="section" id="proof">
+  <div class="wrap">
+    <div class="section-head rv">
+      
+      <h2>This is already working for business owners like you.</h2>
+      <p style="margin-top:var(--sp-4);font-size:var(--fs-xs);color:var(--ink-3);line-height:1.5">The information shared is for example purposes and is not a guarantee of a specific result.<br>Your results may vary.</p>
+    </div>
+    <div class="stories rv-g">
+      <div class="story">
+        <div class="story-photo"><!-- swap for <img src="https://lltv28.github.io/kodara-d4a-lander/scotty.jpg" alt="Scotty T"> -->S</div>
+        <div class="story-body">
+          <div class="stars">★★★★★</div>
+          <p class="story-q">Pre-sold 17 high-paying clients before his AI was even finished.</p>
+          <div class="story-who"><span class="story-name">Scotty T</span><span class="story-role">Business funding consultant</span></div>
+        </div>
+      </div>
+      <div class="story">
+        <div class="story-photo"><!-- swap for <img src="https://lltv28.github.io/kodara-d4a-lander/mike.jpg" alt="Mike B"> -->M</div>
+        <div class="story-body">
+          <div class="stars">★★★★★</div>
+          <p class="story-q">Replaced six figures of contractors and agencies with his AI.</p>
+          <div class="story-who"><span class="story-name">Mike B</span><span class="story-role">Marketing agency owner</span></div>
+        </div>
+      </div>
+      <div class="story">
+        <div class="story-photo"><!-- swap for <img src="https://lltv28.github.io/kodara-d4a-lander/leanne.jpg" alt="Leanne E"> -->L</div>
+        <div class="story-body">
+          <div class="stars">★★★★★</div>
+          <p class="story-q">Replaced a free webinar that wasn't converting with an AI that sells around the clock.</p>
+          <div class="story-who"><span class="story-name">Leanne E</span><span class="story-role">Women's weight loss coach</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="sandra two-col rv" style="margin-top:var(--space-block)">
+      <div>
+        <h3 style="font-size:var(--fs-h3)">Sandra Parker</h3>
+        <p style="margin-top:var(--space-heading);font-size:var(--fs-body)">She's a sobriety coach. The AI version of her sells her own <strong>£17 product (about $22)</strong> that helps people understand why they have a drinking problem. Then it soft-pitches her <strong>£6,000 coaching program (about $7,600)</strong>. Sandra doesn't talk to a lead until one is ready to buy.</p>
+      </div>
+      <div class="player" role="img" aria-label="Sandra Parker case study video">
+        <span class="player-tag">Sandra Parker · sobriety coach</span>
+        <span class="player-dur">2:31</span>
+        <span class="player-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg></span>
+        <span class="player-watch">Watch the 2-min story</span>
+      </div>
+    </div>
+    <div class="sandra two-col rv" style="margin-top:var(--space-block)">
+      <div>
+        <h3 style="font-size:var(--fs-h3)">Leanne Ellington</h3>
+        <p style="margin-top:var(--space-heading);font-size:var(--fs-body)">She's a women's weight loss coach. The AI version of her sells her own <strong>[low-ticket offer — price]</strong> that helps women [core outcome]. Then it soft-pitches her <strong>[signature program — price]</strong>. Leanne doesn't talk to a lead until one is ready to buy.</p>
+      </div>
+      <div class="player" role="img" aria-label="Leanne Ellington case study video">
+        <span class="player-tag">Leanne Ellington · women's weight loss coach</span>
+        <span class="player-dur">0:00</span>
+        <span class="player-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg></span>
+        <span class="player-watch">Watch the 2-min story</span>
+      </div>
+    </div>
+    <div class="sandra two-col rv" style="margin-top:var(--space-block)">
+      <div>
+        <h3 style="font-size:var(--fs-h3)">Jose Fang</h3>
+        <p style="margin-top:var(--space-heading);font-size:var(--fs-body)">He's a [Jose's niche]. The AI version of him sells his own <strong>[low-ticket offer — price]</strong> that [core outcome]. Then it soft-pitches his <strong>[signature program — price]</strong>. Jose doesn't talk to a lead until one is ready to buy.</p>
+      </div>
+      <div class="player" role="img" aria-label="Jose Fang case study video">
+        <span class="player-tag">Jose Fang · [niche]</span>
+        <span class="player-dur">0:00</span>
+        <span class="player-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg></span>
+        <span class="player-watch">Watch the 2-min story</span>
+      </div>
+    </div>
+    <div class="proof-note rv">
+      <p class="pn-text"><strong>Can we promise you the same results? No.</strong> You're smart, so you know this changes from one business to the next. Here's what we can promise: our team does the hard work, and you only pay after you've seen what your AI can do.</p>
+      <div class="proof-cta">
+        <a href="#book" class="btn btn-primary">Get A Free Live Demo</a>
+        <p class="micro">Book a free demo call. We'll show you what your AI would look like in your business.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- GUARANTEE -->
+<section class="section dark" id="guarantee">
+  <div class="wrap">
+    <div class="gwrap rv">
+      
+      <h2>We build first. You pay after.</h2>
+      <p class="glead">Most companies make you pay tens of thousands up front, then hope it works. <strong>We do the opposite.</strong></p>
+      <div class="section-cta rv"><a href="#book" class="btn btn-primary">Get A Free Live Demo</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section tint" id="faq">
+  <div class="wrap">
+    <div class="section-head rv">
+      
+      <h2>Frequently Asked Questions</h2>
+    </div>
+    <div class="faq rv">
+      <details><summary>How is this different from ChatGPT or a regular chatbot?</summary><div class="faq-ans"><p>Every chatbot, including ChatGPT, has the same flaw: they wait. Your client has to know the right question to ask, and when they ask, they get generic advice that sounds like a robot wrote it. Your AI works the other way. We train it on your content, your voice, and the way you think, and it goes first. It asks your leads the right questions, the same ones you'd ask a new client. It's like having your brain in a box your clients keep on their desk.</p></div></details>
+      <details><summary>Won't a cheap first offer hurt my main, high-priced offer?</summary><div class="faq-ans"><p>It feeds it. The small first offer is how a stranger first gets their foot in the door and tries your work. The people who buy at $20 are the ones who trust you enough to buy at $20,000 later. In their mind it's not a new decision, just an upgrade. It brings you more big clients, not fewer.</p></div></details>
+      <details><summary>What if I don't have enough people coming in?</summary><div class="faq-ans"><p>That's Step 3 — we bring you the people. We start by waking up the old contacts already in your email list, which is usually the first money you see. Then we bring in new people with sales pages, social posts, and paid ads.</p></div></details>
+      <details><summary>How do you get me clients?</summary><div class="faq-ans"><p>We build the whole marketing system around your AI: the sales page, the posts from your avatar, the wake-up emails for your old contacts, and paid ads once the rest is working. We fix the gaps in what you're already doing, then bring in new people on top, using the same systems we've used to make over $100 million for our clients.</p></div></details>
+      <details><summary>How much of my time does this take?</summary><div class="faq-ans"><p>Very little, because we do it for you. All we ask is about one hour a week: you give our team feedback and share anything new that keeps your AI up to date. The whole point is a business that can run without you.</p></div></details>
+      <details><summary>What if I'm not technical?</summary><div class="faq-ans"><p>You don't need to be. You don't touch funnels, automations, ad tools, or AI tools. Our team handles all of it. Your job is to be the expert. Our job is to grow you.</p></div></details>
+      <details><summary>Who owns the AI, and what happens to my data?</summary><div class="faq-ans"><p>You own the AI version of you that we build. It's trained on your work alone. Your content and your clients' data stay yours.</p></div></details>
+      <details><summary>What kinds of businesses does this work for?</summary><div class="faq-ans"><p>Any expert whose personal time is the bottleneck: coaches, consultants, doctors, financial advisors, mortgage brokers, retirement planners, healthcare practitioners. Anyone whose work runs on judgment, trust, and one-on-one relationships. If your business depends on you being personally available to make money, it's built for you.</p></div></details>
+    </div>
+    <div class="section-cta rv"><a href="#book" class="btn btn-primary">Get A Free Live Demo</a></div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="section final">
+  <div class="wrap-narrow rv">
+    
+    <h2>See what this looks like, built for your business.</h2>
+    <p class="sub">Every month you wait, most of your leads keep walking. Take two minutes on the application, and if it's a fit, we'll build you a live demo on a free call.</p>
+    <a href="#book" class="btn btn-primary">Get A Free Live Demo</a>
+    <p class="final-micro">You only pay after you've seen your AI working.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-legal">
+      <p>© 2026 Kodara LLC - All Rights Reserved.</p>
+      <p>This site is not a part of Facebook website or Facebook, Inc. This site is NOT endorsed by Facebook in any way. FACEBOOK is a trademark of FACEBOOK, Inc.</p>
+      <p>All published marketing material is intellectual property and protected by copyright. Any duplication, reproduction, or distribution is strictly prohibited. We do not sell a business opportunity, &ldquo;get rich quick&rdquo; program or money-making system. We do not make earnings claims, efforts claims, or claims that our products will make you any money. Investing of any kind carries risk and it is possible to lose some or all of your money. The products provided are general in nature, and some strategies &amp; features may not be appropriate for all individuals or all situations. We make no representation regarding the likelihood or probability that any actual or hypothetical business activity will achieve a particular outcome or perform in any predictable manner. Any individual experiences presented are not typical. The information shared is for example purposes and is not a guarantee of a rate of return or a specific result. Your results may vary.</p>
+      <p>We use cookies to help improve, promote and protect our services. By continuing to use this site, you agree to our privacy policy and terms of use.</p>
+    </div>
+  </div>
+</footer>
+</div>
