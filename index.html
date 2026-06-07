@@ -128,8 +128,8 @@ h1.headline{font-family:var(--font-display);font-weight:700;font-size:var(--fs-d
 /* connecting spine: bottom of this node → through the gap → top of the next node */
 .timeline>:not(:last-child) .tl-node::after{content:"";position:absolute;left:50%;transform:translateX(-50%);top:var(--tl-node);bottom:calc(-1 * var(--tl-gap));width:2px;background:var(--accent-line)}
 .tl-num{width:var(--tl-node);height:var(--tl-node);border-radius:50%;border:1px solid var(--accent-line);background:var(--accent-soft);color:var(--accent-ink);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;font-size:var(--fs-stat);line-height:1}
-.tl-card{background:#fff;border:1px solid var(--line-2);border-radius:var(--radius-lg);padding:clamp(20px,2.4vw,28px);transition:transform .15s ease,box-shadow .15s ease}
-.tl-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-mockup)}
+.tl-card{background:#fff;border:1px solid var(--line-2);border-radius:var(--radius-lg);padding:clamp(20px,2.4vw,28px);box-shadow:var(--shadow-mockup);transition:transform .25s ease,box-shadow .25s ease}
+.tl-card:hover{transform:translateY(-2px);box-shadow:0 26px 34px -6px rgba(0,0,0,.14),0 10px 14px -6px rgba(0,0,0,.12)}
 .tl-title{font-family:var(--font-body);font-weight:500;font-size:var(--fs-title);letter-spacing:-.01em;line-height:1.18;color:var(--ink)}
 .tl-card p{font-size:var(--fs-sm);color:var(--ink-2);line-height:1.6;margin-top:var(--space-tight)}
 .tl-card .deliver{margin-top:var(--sp-4)}
