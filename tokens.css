@@ -1,0 +1,53 @@
+/* Kodara design tokens — single source of truth.
+   Edit THIS file, then run `node build-cf.mjs`: it re-inlines this block into
+   index.html and front-door-app-embed.html (between the tokens markers) and
+   regenerates the ClickFunnels embeds. Never edit the inlined copies. */
+:root{
+  /* neutrals — warm ink (marketing layer; the in-app demo UI keeps its own cool-gray neutrals) */
+  --bg:#FFFFFF; --surface:#F4F5F6; --surface-2:#FAFBFC;
+  --ink:#2E2B26; --ink-2:rgba(46,43,38,.82); --ink-3:rgba(46,43,38,.70);
+  --line:rgba(46,43,38,.10); --line-2:rgba(46,43,38,.17);
+  /* accent */
+  --accent:#16A46C; --accent-ink:#106844; --accent-mint:#5BC998;
+  --accent-soft:rgba(22,164,108,.10); --accent-line:rgba(22,164,108,.22);
+  /* dark sections */
+  --dark:#222320; --dark-2:#131412;
+  /* buttons */
+  --btnA:#1faf78; --btnB:#0f6b43;
+  --grad-btn:linear-gradient(180deg,var(--btnA),var(--btnB));
+  /* shadows */
+  --shadow-accent:0 8px 18px -6px rgba(12,61,38,.5);
+  --shadow-accent-lift:0 16px 30px -8px rgba(12,61,38,.6);
+  --shadow-accent-sm:0 6px 16px -4px rgba(12,61,38,.45);
+  --shadow-mockup:0 20px 25px -5px rgba(0,0,0,0.1),0 8px 10px -6px rgba(0,0,0,0.1);
+  --shadow-sm:0 1px 3px 0 rgba(0,0,0,0.1),0 1px 2px -1px rgba(0,0,0,0.1);
+  --shadow-device:0 50px 90px -34px rgba(46,43,38,.42);
+  /* radius scale */
+  --r-sm:10px; --r-md:12px; --r-lg:16px; --r-xl:24px; --r-pill:999px;
+  /* z-index (page layer) */
+  --z-nav:60; --z-overlay:40;
+  /* motion */
+  --ease-out:cubic-bezier(.2,.7,.2,1);
+  --ease-spring:cubic-bezier(.32,.72,0,1);
+  --ease-move:cubic-bezier(.5,0,.2,1);
+  --dur-fast:.15s; --dur-base:.3s; --dur-slow:.55s;
+  /* type — rem modular scale (respects user font-size); body 22px @16 root */
+  --fs-micro:.875rem; --fs-xs:1rem; --fs-sm:1.125rem; --fs-body:1.375rem;
+  --fs-lead:clamp(1.5rem, 1.2rem + 1vw, 1.75rem);
+  --fs-title:clamp(1.625rem, 1.35rem + .9vw, 2rem);
+  --fs-h3:clamp(1.875rem, 1.4rem + 2vw, 3.25rem);
+  --fs-h2:clamp(2.375rem, 1.5rem + 3.4vw, 4.75rem);
+  --fs-display:clamp(2.5rem, 1.2rem + 6.6vw, 6.5rem);
+  --fs-label:.8125rem;
+  /* tracking */
+  --track-tight:-.015em; --track-tighter:-.025em;
+  /* spacing — 8pt grid in rem (scales with user font-size) */
+  --sp-1:.25rem; --sp-2:.5rem; --sp-3:.75rem; --sp-4:1rem; --sp-5:1.5rem; --sp-6:2rem; --sp-7:3rem; --sp-8:4rem; --sp-9:6rem;
+  /* fonts */
+  --font-display:"Instrument Serif",serif;
+  --font-body:"Instrument Sans",sans-serif;
+  --mono:"IBM Plex Mono",monospace;
+  /* decorative grid */
+  --grid-opacity:0.12;
+}
+/* Breakpoints cannot be custom properties. Canonical set: 600 / 760 / 860 px max-width. */

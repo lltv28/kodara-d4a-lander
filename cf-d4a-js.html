@@ -70,11 +70,11 @@ function nTick(){
   el.style.transition='';
   nSlot(el,0);
 }
-function nStart(){if(nTimer)return;nTimer=setInterval(nTick,4000);}
+function nStart(){if(REDUCE_MOTION||nTimer)return;nTimer=setInterval(nTick,4000);}
 function nStop(){if(nTimer){clearInterval(nTimer);nTimer=null;}}
 nInit();
 let nKicked=false;
-new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){if(!nKicked){nKicked=true;setTimeout(nTick,350);}nStart();}else nStop();})},{threshold:.3}).observe(nStack);
+new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){if(!nKicked&&!REDUCE_MOTION){nKicked=true;setTimeout(nTick,350);}nStart();}else nStop();})},{threshold:.3}).observe(nStack);
 
 /* smooth-scroll the CTAs to the on-page scheduler (scoped; no global html rule needed) */
 document.querySelectorAll('#kdr-lp a[href="#book"]').forEach(function(a){a.addEventListener('click',function(ev){ev.preventDefault();var t=document.getElementById('book');if(t)t.scrollIntoView({behavior:'smooth',block:'start'});});});

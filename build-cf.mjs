@@ -5,6 +5,20 @@ import { dirname, join } from 'node:path';
 const ROOT = dirname(fileURLToPath(import.meta.url));   // repo dir (this script's folder)
 const BASE = 'https://lltv28.github.io/kodara-d4a-lander/';
 const SCOPE = '#kdr-lp';
+
+/* ---- 0. sync the shared tokens block (tokens.css) into both HTML sources ---- */
+const TOKENS = readFileSync(join(ROOT, 'tokens.css'), 'utf8').trim();
+const T_START = '/* == tokens:auto — synced from tokens.css; edit tokens.css, not this block == */';
+const T_END = '/* == /tokens:auto == */';
+for (const f of ['index.html', 'front-door-app-embed.html']) {
+  const p = join(ROOT, f);
+  const html = readFileSync(p, 'utf8');
+  const a = html.indexOf(T_START), b = html.indexOf(T_END);
+  if (a === -1 || b === -1 || b < a) throw new Error(`tokens markers missing or malformed in ${f}`);
+  const next = html.slice(0, a + T_START.length) + '\n' + TOKENS + '\n' + html.slice(b);
+  if (next !== html) { writeFileSync(p, next); console.log(`tokens synced into ${f}`); }
+}
+
 const src = readFileSync(join(ROOT, 'index.html'), 'utf8');
 
 /* ---- 1. extract the <style> block ---- */
@@ -40,8 +54,7 @@ function scopeSelector(sel) {
   if (sel === '*') return SCOPE + ' *';
   if (sel === 'html' || sel === 'body') return SCOPE;
   if (sel === 'body::after') return SCOPE + '::after';
-  if (sel.startsWith('body.menu-open')) return SCOPE + sel.slice(4);   // #kdr-lp.menu-open
-  if (sel.startsWith('body.')) return SCOPE + sel.slice(4);
+  if (sel.startsWith('body.')) return SCOPE + sel.slice(4);   // e.g. body.x -> #kdr-lp.x
   if (sel.startsWith('.js ')) return SCOPE + '.js ' + sel.slice(4);    // class moved onto wrapper
   if (sel.startsWith('html ')) return SCOPE + ' ' + sel.slice(5);
   if (sel.startsWith('body ')) return SCOPE + ' ' + sel.slice(5);
@@ -51,7 +64,10 @@ function scopeRuleBlock(blockCss) {
   const rules = splitTopRules(blockCss);
   let out = '';
   for (const r of rules) {
-    const p = r.prelude;
+    /* comments may precede a selector (e.g. the tokens block header) — strip them
+       so they can't contaminate the prelude match */
+    const p = r.prelude.replace(/\/\*[\s\S]*?\*\//g, '').trim();
+    if (!p) continue;
     if (p.startsWith('@')) {
       const at = p.split(/[\s({]/)[0].toLowerCase();
       if (at === '@font-face' || at === '@keyframes' || at === '@-webkit-keyframes' || at === '@page') {
