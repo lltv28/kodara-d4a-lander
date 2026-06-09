@@ -1,8 +1,11 @@
 import { readFileSync, writeFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { dirname, join } from 'node:path';
 
+const ROOT = dirname(fileURLToPath(import.meta.url));   // repo dir (this script's folder)
 const BASE = 'https://lltv28.github.io/kodara-d4a-lander/';
 const SCOPE = '#kdr-lp';
-const src = readFileSync('C:\\Users\\lucas\\AppData\\Local\\Temp\\d4a-review\\index.html', 'utf8');
+const src = readFileSync(join(ROOT, 'index.html'), 'utf8');
 
 /* ---- 1. extract the <style> block ---- */
 const styleM = src.match(/<style>([\s\S]*?)<\/style>/);
@@ -94,14 +97,14 @@ let jsOut = scripts.map((s) => {
 const htmlEl = `<!-- ===== Kodara d-4-a — paste into the ClickFunnels CUSTOM HTML / CODE element ===== -->\n` +
   `<!-- If CF wraps this in a padded section, set that section's padding to 0 and width to full. -->\n` +
   `<style>\n${scoped}</style>\n\n<div id="kdr-lp">\n${body}\n</div>\n`;
-writeFileSync('C:\\Users\\lucas\\AppData\\Local\\Temp\\d4a-review\\cf-d4a-html.html', htmlEl);
+writeFileSync(join(ROOT, 'cf-d4a-html.html'), htmlEl);
 
 const jsEl = `<!-- ===== Kodara d-4-a — paste into the ClickFunnels FOOTER / CUSTOM JS slot (runs after the HTML element) ===== -->\n${jsOut}\n`;
-writeFileSync('C:\\Users\\lucas\\AppData\\Local\\Temp\\d4a-review\\cf-d4a-js.html', jsEl);
+writeFileSync(join(ROOT, 'cf-d4a-js.html'), jsEl);
 
 /* combined standalone — for local render-testing AND for CF setups that execute inline scripts */
 const combined = `<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="UTF-8" />\n<meta name="viewport" content="width=device-width, initial-scale=1.0" />\n<title>Kodara · An AI Version of You</title>\n</head>\n<body>\n<style>\n${scoped}</style>\n\n<div id="kdr-lp">\n${body}\n</div>\n\n${jsOut}\n</body>\n</html>\n`;
-writeFileSync('C:\\Users\\lucas\\AppData\\Local\\Temp\\d4a-review\\cf-d4a-combined.html', combined);
+writeFileSync(join(ROOT, 'cf-d4a-combined.html'), combined);
 
 console.log('scripts extracted:', scripts.length);
 console.log('css rules scoped, files written: cf-d4a-html.html, cf-d4a-js.html, cf-d4a-combined.html');
