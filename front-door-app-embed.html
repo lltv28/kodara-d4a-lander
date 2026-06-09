@@ -308,7 +308,7 @@ body{font-family:var(--fb);background:transparent;color:var(--ink);-webkit-font-
 <div class="wrap">
   <div class="below">
     <h2 class="below-h">Watch it turn a stranger into a sale.</h2>
-    <p class="below-sub">When a new lead shows up, your AI does what you’d do on a first call — it asks the right questions, works out what they need, and points them to the next step. On its own, for hundreds at once.</p>
+    <p class="below-sub">When a new lead shows up, your AI does what you’d do on a first call: it asks the questions you’d ask, then walks them to the next step. On its own, for hundreds at once.</p>
     <div class="industry"><span class="ik">Try it for your world:</span><div class="industry-row"><button class="pill active" data-ind="finance" aria-pressed="true">Financial advisor</button><button class="pill" data-ind="doctor" aria-pressed="false">Doctor</button><button class="pill" data-ind="mortgage" aria-pressed="false">Mortgage broker</button><button class="pill" data-ind="lawyer" aria-pressed="false">Lawyer</button><button class="pill" data-ind="consultant" aria-pressed="false">Business consultant</button></div></div>
   </div>
 
@@ -316,7 +316,7 @@ body{font-family:var(--fb);background:transparent;color:var(--ink);-webkit-font-
     <div class="split">
       <div class="panel">
         <div class="slist">
-          <div class="step" data-step="1"><div class="srail"><span class="snum">1</span><span class="sline"><i></i></span></div><div class="sbody"><div class="s-t">Talks to every lead</div><div class="s-d">Meets each one in a real, consultative conversation.</div></div></div>
+          <div class="step" data-step="1"><div class="srail"><span class="snum">1</span><span class="sline"><i></i></span></div><div class="sbody"><div class="s-t">Talks to every lead</div><div class="s-d">Has a real conversation with each one, like you would.</div></div></div>
           <div class="step" data-step="2"><div class="srail"><span class="snum">2</span><span class="sline"><i></i></span></div><div class="sbody"><div class="s-t">Figures out their problem</div><div class="s-d">Runs the numbers and shows them where they really stand.</div></div></div>
           <div class="step" data-step="3"><div class="srail"><span class="snum">3</span><span class="sline"><i></i></span></div><div class="sbody"><div class="s-t">Sells them a first step</div><div class="s-d">Starts them with a small $10–100 offer — like day one with a client.</div></div></div>
           <div class="step" data-step="4"><div class="srail"><span class="snum">4</span></div><div class="sbody"><div class="s-t">Ascends them to the right level</div><div class="s-d">After 24–48h of trust, books a high-ticket call or starts the monthly AI.</div></div></div>
@@ -392,38 +392,38 @@ const INDUSTRIES={
   finance:{label:'Financial advisor',appTitle:'Your financial spot',role:'With your advisor',
     a3:'I’ve run your numbers. Here’s where your money actually stands:',
     a4:'The problem isn’t your returns. It’s the $4,100 a year you’re quietly leaking in fees.',
-    a5:'Here’s where I’d start you — a quick audit that shows the exact funds to move:',
-    a6:'You came back twice and asked how to fix the fees yourself — that’s the sign you’re ready. Let’s talk.',
+    a5:'Here’s where I’d start you. A quick audit that shows the exact funds to move:',
+    a6:'You came back twice and asked how to fix the fees yourself. I think you’re ready. Want to talk it through?',
     cards:[['Portfolio value','$284,120'],['Idle cash','$61,000'],['Annual fees','$4,100'],['Net return','5.1%']],
-    offer:{title:'Portfolio Leak Audit',price:'$27',cta:'Get the audit',sub:'A 12-minute breakdown of exactly where your money is leaking — and the first move to plug it.',bullets:['The 3 funds quietly bleeding fees','What to move them into instead','Your new projected return']}},
+    offer:{title:'Portfolio Leak Audit',price:'$27',cta:'Get the audit',sub:'A 12-minute breakdown of exactly where your money is leaking, and the first move to plug it.',bullets:['The 3 funds quietly bleeding fees','What to move them into instead','Your new projected return']}},
   doctor:{label:'Doctor',appTitle:'Your health snapshot',role:'With your doctor',
     a3:'I’ve gone through your intake. Here’s what your numbers say:',
-    a4:'The fatigue isn’t random — it tracks straight back to your sleep and low vitamin D.',
-    a5:'Here’s where I’d start you — a short reset built around exactly these markers:',
-    a6:'You logged your sleep every night this week — that’s the sign you’re ready to go deeper. Let’s talk.',
+    a4:'The fatigue isn’t random. It tracks straight back to your sleep and low vitamin D.',
+    a5:'Here’s where I’d start you. A short reset built around exactly these markers:',
+    a6:'You logged your sleep every night this week. I think you’re ready to go deeper. Want to talk it through?',
     cards:[['Resting HR','74 bpm'],['Sleep (avg)','5h 50m'],['Vitamin D','21 ng/mL'],['Energy score','42/100']],
-    offer:{title:'The 7-Day Energy Reset',price:'$29',cta:'Get the reset',sub:'A short protocol targeting the two markers dragging your energy down — sleep and vitamin D.',bullets:['The 3 changes that move your numbers first','A simple sleep + supplement plan','What to retest in 30 days']}},
+    offer:{title:'The 7-Day Energy Reset',price:'$29',cta:'Get the reset',sub:'A short protocol targeting the two markers dragging your energy down: sleep and vitamin D.',bullets:['The 3 changes that move your numbers first','A simple sleep + supplement plan','What to retest in 30 days']}},
   mortgage:{label:'Mortgage broker',appTitle:'Your mortgage snapshot',role:'With your broker',
     a3:'I’ve pulled your numbers. Here’s where your mortgage actually stands:',
-    a4:'You’re sitting about 0.8% above today’s rates — that’s roughly $310 a month you’re overpaying.',
-    a5:'Here’s where I’d start you — a quick refinance check that shows your exact savings:',
-    a6:'You ran the savings twice this week — that’s the sign you’re ready. Let’s talk.',
+    a4:'You’re sitting about 0.8% above today’s rates. That’s roughly $310 a month you’re overpaying.',
+    a5:'Here’s where I’d start you. A quick refinance check that shows your exact savings:',
+    a6:'You ran the savings twice this week. I think you’re ready. Want to talk it through?',
     cards:[['Current rate','6.9%'],['Balance','$418,000'],['Monthly payment','$2,940'],['Save / mo','~$310']],
-    offer:{title:'The Refinance Rate Check',price:'$27',cta:'Get the check',sub:'A 10-minute breakdown of what you’d save by refinancing — and whether it’s worth doing right now.',bullets:['Your rate vs today’s market','Exact monthly + lifetime savings','Whether the closing costs pencil out']}},
+    offer:{title:'The Refinance Rate Check',price:'$27',cta:'Get the check',sub:'A 10-minute breakdown of what you’d save by refinancing, and whether it’s worth doing right now.',bullets:['Your rate vs today’s market','Exact monthly + lifetime savings','Whether the closing costs pencil out']}},
   lawyer:{label:'Lawyer',appTitle:'Your estate snapshot',role:'With your attorney',
     a3:'I’ve reviewed what you shared. Here’s where your estate plan actually stands:',
-    a4:'The real risk isn’t taxes — it’s the missing power of attorney leaving $340k exposed.',
-    a5:'Here’s where I’d start you — a quick review that maps exactly what to fix first:',
-    a6:'You came back to check that exposure twice — that’s the sign you’re ready. Let’s talk.',
+    a4:'The real risk isn’t taxes. It’s the missing power of attorney leaving $340k exposed.',
+    a5:'Here’s where I’d start you. A quick review that maps exactly what to fix first:',
+    a6:'You came back to check that exposure twice. I think you’re ready. Want to talk it through?',
     cards:[['Will','Outdated · 2016'],['Power of attorney','Missing'],['Assets exposed','$340,000'],['Plan score','38/100']],
-    offer:{title:'The Estate Gap Review',price:'$49',cta:'Get the review',sub:'A clear breakdown of the gaps in your current plan — and the first document to fix.',bullets:['The clauses leaving assets exposed','What to update before anything else','A prioritized fix list']}},
+    offer:{title:'The Estate Gap Review',price:'$49',cta:'Get the review',sub:'A clear breakdown of the gaps in your current plan, and the first document to fix.',bullets:['The clauses leaving assets exposed','What to update before anything else','A prioritized fix list']}},
   consultant:{label:'Business consultant',appTitle:'Your business snapshot',role:'With your consultant',
     a3:'I’ve mapped your numbers. Here’s where your business actually stands:',
-    a4:'Growth isn’t the problem — you’re capped because almost everything still runs through you.',
-    a5:'Here’s where I’d start you — a quick map of the first system to take off your plate:',
-    a6:'You opened that map three times this week — that’s the sign you’re ready to scale. Let’s talk.',
+    a4:'You’re capped because almost everything still runs through you. The growth is there waiting.',
+    a5:'Here’s where I’d start you. A quick map of the first system to take off your plate:',
+    a6:'You opened that map three times this week. I think you’re ready. Want to talk it through?',
     cards:[['Monthly revenue','$82,000'],['Owner hours/wk','61 hrs'],['Profit margin','11%'],['Capacity used','98%']],
-    offer:{title:'The Capacity Map',price:'$49',cta:'Get the map',sub:'A breakdown of where your time leaks — and the first system to delegate this month.',bullets:['The tasks eating your week','The first role to hand off','What to systemize first']}}
+    offer:{title:'The Capacity Map',price:'$49',cta:'Get the map',sub:'A breakdown of where your time leaks, and the first system to delegate this month.',bullets:['The tasks eating your week','The first role to hand off','What to systemize first']}}
 };
 let activeInd='finance';
 /* one color + one orb per industry — every other accent value is derived in CSS */
