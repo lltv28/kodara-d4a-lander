@@ -639,7 +639,7 @@ h1.headline{font-family:var(--font-display);font-weight:700;font-size:var(--fs-d
     <div class="faq rv">
       <details><summary>How is this different from ChatGPT or a regular chatbot?</summary><div class="faq-ans"><p>Every chatbot, including ChatGPT, has the same flaw: they wait. Your client has to know the right question to ask, and when they ask, they get generic advice that sounds like a robot wrote it. Your AI works the other way. We train it on your content, your voice, and the way you think, and it goes first. It asks your leads the right questions, the same ones you'd ask a new client. It's like having your brain in a box your clients keep on their desk.</p></div></details>
       <details><summary>Won't a cheap first offer hurt my main, high-priced offer?</summary><div class="faq-ans"><p>It feeds it. The small first offer is how a stranger first gets their foot in the door and tries your work. The people who buy at $20 are the ones who trust you enough to buy at $20,000 later. In their mind it's not a new decision, just an upgrade. It brings you more big clients, not fewer.</p></div></details>
-      <details><summary>What if I don't have enough people coming in?</summary><div class="faq-ans"><p>That's Step 3 — we bring you the people. We start by waking up the old contacts already in your email list, which is usually the first money you see. Then we bring in new people with sales pages, social posts, and paid ads.</p></div></details>
+      <details><summary>What if I don't have enough people coming in?</summary><div class="faq-ans"><p>That's Step 3: we bring you the people. We start by waking up the old contacts already in your email list, which is usually the first money you see. Then we bring in new people with sales pages, social posts, and paid ads.</p></div></details>
       <details><summary>How do you get me clients?</summary><div class="faq-ans"><p>We build the whole marketing system around your AI: the sales page, the posts from your avatar, the wake-up emails for your old contacts, and paid ads once the rest is working. We fix the gaps in what you're already doing, then bring in new people on top, using the same systems we've used to make over $100 million for our clients.</p></div></details>
       <details><summary>How much of my time does this take?</summary><div class="faq-ans"><p>Very little, because we do it for you. All we ask is about one hour a week: you give our team feedback and share anything new that keeps your AI up to date. The whole point is a business that can run without you.</p></div></details>
       <details><summary>What if I'm not technical?</summary><div class="faq-ans"><p>You don't need to be. You don't touch funnels, automations, ad tools, or AI tools. Our team handles all of it. Your job is to be the expert. Our job is to grow you.</p></div></details>
@@ -692,15 +692,15 @@ const NGLYPH={
   whatsapp:'<svg viewBox="0 0 24 24"><rect width="24" height="24" fill="url(#ic-wa)"/><path fill="#fff" fill-rule="evenodd" d="M12.04 4.6c-4.1 0-7.43 3.32-7.43 7.42 0 1.3.34 2.58 1 3.71L4.6 19.4l3.78-.99a7.4 7.4 0 0 0 3.55.9h.003c4.1 0 7.43-3.33 7.43-7.43a7.38 7.38 0 0 0-2.17-5.25 7.38 7.38 0 0 0-5.25-2.18zm4.34 10.6c-.18.52-1.06.99-1.49 1.05-.38.06-.86.08-1.39-.09-.32-.1-.74-.24-1.27-.47-2.24-.97-3.71-3.23-3.82-3.38-.11-.15-.91-1.22-.91-2.32s.58-1.65.79-1.87c.21-.23.46-.29.61-.29.15 0 .31 0 .44.01.14.01.33-.05.51.39.19.46.64 1.6.7 1.72.06.11.09.25.02.4-.07.15-.11.25-.22.38-.11.13-.24.29-.34.39-.11.11-.23.24-.1.47.13.23.59.97 1.27 1.57.87.78 1.6 1.02 1.83 1.13.23.11.36.1.49-.06.13-.15.57-.66.72-.89.15-.23.3-.19.51-.11.21.08 1.33.63 1.56.74.23.11.38.17.43.27.06.1.06.55-.12 1.07z"/></svg>'
 };
 const NUDGES=[
-  {kind:'messages',title:'AI Coach · New text',time:'now',msg:'Saw you grabbed the 7-Day Reset — want me to set up day 1 around your schedule?'},
-  {kind:'whatsapp',title:'AI Coach · WhatsApp',time:'now',msg:"Hey! Saw your message come through — happy to help. What would you want to fix first?"},
-  {kind:'messages',title:'AI Coach · New text',time:'2m ago',msg:"Morning! Here's today's 10-minute start — short and doable. I'll check in tonight."},
+  {kind:'messages',title:'AI Coach · New text',time:'now',msg:'Saw you grabbed the 7-Day Reset. Want me to set up day 1 around your schedule?'},
+  {kind:'whatsapp',title:'AI Coach · WhatsApp',time:'now',msg:"Hey! Saw your message come through, happy to help. What would you want to fix first?"},
+  {kind:'messages',title:'AI Coach · New text',time:'2m ago',msg:"Morning! Here's today's 10-minute start, short and doable. I'll check in tonight."},
   {kind:'mail',title:'AI Coach · New email',time:'14m ago',msg:'The one number most people get wrong — and the 2-minute fix that changes it.'},
-  {kind:'messages',title:'AI Coach · New text',time:'now',msg:"Still here when you're ready — no rush."},
-  {kind:'calendar',title:'AI Coach · Call booked',time:'now',msg:'Thursday at 2:00 PM — added to your calendar.'},
+  {kind:'messages',title:'AI Coach · New text',time:'now',msg:"Still here when you're ready. No rush."},
+  {kind:'calendar',title:'AI Coach · Call booked',time:'now',msg:'Thursday at 2:00 PM, added to your calendar.'},
   {kind:'mail',title:'AI Coach · New email',time:'1h ago',msg:'Your week-one recap is ready — small wins add up faster than you think.'},
-  {kind:'messages',title:'AI Coach · New text',time:'3h ago',msg:"Quick one: which feels easier tomorrow — morning or evening? I'll build around it."},
-  {kind:'whatsapp',title:'AI Coach · WhatsApp',time:'22m ago',msg:"No rush — I'll keep your spot. Just reply here whenever you're ready to start."}
+  {kind:'messages',title:'AI Coach · New text',time:'3h ago',msg:"Quick one: which feels easier tomorrow, morning or evening? I'll build around it."},
+  {kind:'whatsapp',title:'AI Coach · WhatsApp',time:'22m ago',msg:"No rush, I'll keep your spot. Just reply here whenever you're ready to start."}
 ];
 const nStack=document.getElementById('nudgeStack');
 let nI=2,nTimer=null;
