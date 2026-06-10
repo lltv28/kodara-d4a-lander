@@ -110,6 +110,30 @@
 #kdr-lp .subhead{font-size:var(--fs-lead);color:var(--ink-2);max-width:56ch;margin:0 auto var(--sp-6);line-height:1.6;font-weight:400}
 #kdr-lp .hero-glow{position:absolute;left:50%;top:300px;transform:translateX(-50%);width:1100px;height:700px;z-index:1;pointer-events:none;background:radial-gradient(60% 50% at 50% 30%,rgba(30,122,84,.07),rgba(30,122,84,0) 70%);filter:blur(20px)}
 #kdr-lp .mockup-stage{position:relative;z-index:2;margin-top:var(--sp-6);padding-bottom:0}
+#kdr-lp .lp-head{text-align:center;max-width:760px;margin:0 auto}
+#kdr-lp .lp-head .eyebrow{justify-content:center}
+#kdr-lp .lp-head .sub{margin-inline:auto}
+#kdr-lp .lp-scene{margin-top:clamp(28px,4vw,46px);position:relative;display:flex;flex-direction:column;align-items:center}
+#kdr-lp .lp-scene::before{content:"";position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);width:min(1150px,120vw);height:560px;background:radial-gradient(50% 55% at 50% 45%,rgba(22,164,108,.13),transparent 70%);filter:blur(14px);z-index:0;pointer-events:none}
+#kdr-lp .lp-lid{position:relative;z-index:2;width:min(840px,100%);background:#0E0F0E;border-radius:clamp(14px,2vw,22px) clamp(14px,2vw,22px) 0 0;padding:clamp(8px,1.6vw,14px) clamp(8px,1.6vw,14px) clamp(7px,1.4vw,12px);box-shadow:0 60px 110px -38px rgba(46,43,38,.55),0 4px 14px rgba(46,43,38,.14),inset 0 1px 0 rgba(255,255,255,.09)}
+#kdr-lp .lp-cam{position:absolute;top:6px;left:50%;transform:translateX(-50%);width:6px;height:6px;border-radius:50%;background:#1c211e;box-shadow:inset 0 0 2px #000,0 0 0 1.5px rgba(255,255,255,.04)}
+#kdr-lp .lp-chip{position:absolute;z-index:5;top:-14px;left:50%;transform:translateX(-50%);display:inline-flex;align-items:center;gap:7px;background:#1d1c19;color:#fff;font-size:var(--fs-micro);font-weight:600;padding:7px 15px;border-radius:var(--r-pill);box-shadow:0 10px 24px rgba(0,0,0,.25);white-space:nowrap}
+#kdr-lp .lp-chip .d{width:7px;height:7px;border-radius:50%;background:var(--accent-mint);box-shadow:0 0 0 3px rgba(91,201,152,.25)}
+#kdr-lp .lp-screen{position:relative;aspect-ratio:3024/1964;border-radius:10px;overflow:hidden;background:#050606;display:flex;align-items:center;justify-content:center}
+#kdr-lp .lp-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:clamp(72px,12.4%,104px);height:clamp(10px,1.8vw,15px);background:#050606;border-radius:0 0 9px 9px;z-index:6}
+#kdr-lp .lp-viewport{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;background:linear-gradient(150deg,#211f1c,#161514)}
+#kdr-lp .lp-base{position:relative;z-index:3;width:min(1000px,calc(100% + 48px));height:clamp(12px,2.4vw,22px);border-radius:0 0 18px 18px;background:linear-gradient(180deg,#E4E2DD 0%,#C9C6BF 55%,#AEABA3 100%);box-shadow:0 18px 34px -16px rgba(46,43,38,.45)}
+#kdr-lp .lp-base::before{content:"";position:absolute;left:50%;top:0;transform:translateX(-50%);width:15%;height:42%;border-radius:0 0 10px 10px;background:linear-gradient(180deg,#B6B3AC,#D8D5CF)}
+#kdr-lp .lp-card{position:absolute;z-index:5;display:flex;align-items:center;gap:9px;background:#fff;border:1px solid var(--line-2);border-radius:var(--r-md);padding:10px 14px;box-shadow:0 18px 40px -14px rgba(46,43,38,.35)}
+#kdr-lp .lp-card .ic{width:26px;height:26px;border-radius:50%;background:var(--accent-soft);border:1px solid var(--accent-line);color:var(--accent-ink);display:flex;align-items:center;justify-content:center;flex:none}
+#kdr-lp .lp-card .ic svg{width:13px;height:13px}
+#kdr-lp .lp-card .t{font-size:13px;font-weight:600;color:var(--ink);line-height:1.3}
+#kdr-lp .lp-card .s{font-size:11px;color:var(--ink-3);margin-top:1px}
+#kdr-lp .lp-card.left{left:-118px;top:120px}
+#kdr-lp .lp-card.right{right:-104px;top:268px}
+@media(max-width:1140px){#kdr-lp .lp-card{display:none}
+}
+#kdr-lp .lp-disclaimer{margin:var(--sp-5) auto 0;max-width:920px;text-align:center;font-size:var(--fs-micro);line-height:1.55;color:var(--ink-3)}
 #kdr-lp .timeline{--tl-node:60px;--tl-gap:clamp(26px,3.4vw,38px);position:relative;margin:clamp(8px,1.5vw,20px) 0 0}
 #kdr-lp .tl-step{position:relative;display:grid;grid-template-columns:var(--tl-node) 1fr;gap:clamp(18px,2.6vw,28px);padding-bottom:var(--tl-gap)}
 #kdr-lp .tl-node{position:relative}
@@ -307,6 +331,42 @@
     </div>
   </div>
 
+</section>
+
+<!-- BIG DEMO (laptop stage) -->
+<section class="section tint" id="demo">
+  <div class="wrap">
+    <div class="lp-head rv">
+      <div class="eyebrow">See it sell</div>
+      <h2>Watch the full demo.</h2>
+      <p class="sub">One lead's journey from first hello to paid and booked — exactly what your AI would do in your business.</p>
+    </div>
+    <div class="lp-scene rv">
+      <div class="lp-lid">
+        <span class="lp-cam" aria-hidden="true"></span>
+        <span class="lp-chip"><span class="d"></span>Live demo</span>
+        <div class="lp-screen">
+          <span class="lp-notch" aria-hidden="true"></span>
+          <div class="lp-viewport">
+            <!-- drop the 1280×720 demo embed here (mp4 / Vidalytics / YouTube) -->
+            <span class="player-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg></span>
+            <span class="player-watch">Watch the demo</span>
+          </div>
+        </div>
+        <div class="lp-card left">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>
+          <div><div class="t">Audit purchased · $27</div><div class="s">Paid in chat, 40 seconds</div></div>
+        </div>
+        <div class="lp-card right">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg></span>
+          <div><div class="t">Call booked · Thu 2:00 PM</div><div class="s">While you were asleep</div></div>
+        </div>
+      </div>
+      <div class="lp-base"></div>
+    </div>
+    <div class="section-cta rv"><a href="#book" class="btn btn-primary">Get a free live demo</a></div>
+    <p class="lp-disclaimer rv">DISCLAIMER: We make no representation regarding the likelihood or probability that any actual or hypothetical business activity will achieve a particular outcome or perform in any predictable manner. Any individual experiences presented are not typical. The information shared is for example purposes and is not a guarantee of a rate of return or a specific result. Your results may vary.</p>
+  </div>
 </section>
 
 <!-- WHAT IT IS + DEMO -->
