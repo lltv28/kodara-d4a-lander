@@ -86,7 +86,7 @@
 #kdr-lp h2{font-family:var(--font-display);font-weight:700;font-size:var(--fs-h2);line-height:1.1;letter-spacing:var(--track-tighter);color:var(--ink);text-shadow:0.3px 0 0 currentColor}
 #kdr-lp h3{font-family:var(--font-body);font-weight:700;font-size:var(--fs-h3);letter-spacing:var(--track-tight);line-height:1.2;color:var(--ink)}
 #kdr-lp h1.headline,#kdr-lp h2,#kdr-lp h3{text-wrap:balance}
-#kdr-lp .sub,#kdr-lp .subhead,#kdr-lp .glead,#kdr-lp .story-q,#kdr-lp .tl-title,#kdr-lp .tl-done,#kdr-lp .tl-yourpart,#kdr-lp .ev-followup,#kdr-lp .chan-d,#kdr-lp .deliver li,#kdr-lp .faq summary,#kdr-lp .faq-ans p,#kdr-lp .proof-note .pn-text,#kdr-lp .footer-legal p{text-wrap:balance}
+#kdr-lp .sub,#kdr-lp .subhead,#kdr-lp .glead,#kdr-lp .cs-h,#kdr-lp .tl-title,#kdr-lp .tl-done,#kdr-lp .tl-yourpart,#kdr-lp .ev-followup,#kdr-lp .chan-d,#kdr-lp .deliver li,#kdr-lp .faq summary,#kdr-lp .faq-ans p,#kdr-lp .proof-note .pn-text,#kdr-lp .footer-legal p{text-wrap:balance}
 #kdr-lp .sub{font-size:var(--fs-lead);color:var(--ink-2);line-height:1.6;margin-top:var(--space-heading);max-width:60ch}
 #kdr-lp p{color:var(--ink-2);text-wrap:pretty;max-width:var(--measure)}
 #kdr-lp .hero p,#kdr-lp .final p,#kdr-lp .gwrap p,#kdr-lp .seal p{margin-inline:auto}
@@ -115,7 +115,7 @@
 #kdr-lp .tl-node{position:relative}
 #kdr-lp .timeline>:not(:last-child) .tl-node::after{content:"";position:absolute;left:50%;transform:translateX(-50%);top:var(--tl-node);bottom:calc(-1 * var(--tl-gap));width:2px;background:var(--accent-line)}
 #kdr-lp .tl-num{width:var(--tl-node);height:var(--tl-node);border-radius:50%;border:1px solid var(--accent-line);background:var(--accent-soft);color:var(--accent-ink);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;font-size:var(--fs-title);line-height:1}
-#kdr-lp .tl-card,#kdr-lp .sandra{background:#fff;border:1px solid var(--line-2);border-radius:var(--r-md)}
+#kdr-lp .tl-card{background:#fff;border:1px solid var(--line-2);border-radius:var(--r-md)}
 #kdr-lp .tl-card{padding:clamp(20px,2.4vw,28px);transition:transform var(--dur-base) ease-in-out,box-shadow var(--dur-base) ease-in-out}
 #kdr-lp .tl-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-mockup)}
 #kdr-lp .tl-title{font-family:var(--font-body);font-weight:500;font-size:var(--fs-title);letter-spacing:-.01em;line-height:1.18;color:var(--ink)}
@@ -150,27 +150,35 @@
 }
 #kdr-lp .fd-embed{margin-top:0}
 #kdr-lp .fd-frame{display:block;width:100%;border:0;background:transparent;height:auto;min-height:600px;transition:height .25s ease}
-#kdr-lp .sandra{padding:clamp(22px,3vw,36px);gap:clamp(28px,4vw,48px)}
-#kdr-lp .player{position:relative;aspect-ratio:16/10;background:linear-gradient(150deg,#2b2824,#3c372f);border-radius:var(--r-md);overflow:hidden}
+#kdr-lp .player{position:relative;aspect-ratio:16/9;background:linear-gradient(150deg,#2b2824,#3c372f);border-radius:var(--r-md);overflow:hidden}
 #kdr-lp .player-tag{position:absolute;top:12px;left:12px;background:rgba(0,0,0,.42);color:#fff;font-size:var(--fs-micro);font-weight:500;padding:4px 9px;border-radius:100px;backdrop-filter:blur(4px)}
 #kdr-lp .player-dur{position:absolute;top:12px;right:12px;background:rgba(0,0,0,.42);color:#fff;font-size:var(--fs-micro);padding:4px 8px;border-radius:6px}
 #kdr-lp .player-play{position:absolute;inset:0;margin:auto;width:56px;height:56px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;color:var(--ink);box-shadow:0 8px 24px rgba(0,0,0,.3)}
 #kdr-lp .player-play svg{margin-left:3px}
 #kdr-lp .player-watch{position:absolute;left:0;right:0;bottom:16px;text-align:center;color:rgba(255,255,255,.85);font-size:var(--fs-xs)}
-#kdr-lp .stories{margin-top:var(--space-block);border-top:1px solid var(--line)}
-#kdr-lp .story{display:grid;grid-template-columns:140px 1fr;gap:clamp(24px,4vw,52px);align-items:center;padding:var(--space-block) 0;border-bottom:1px solid var(--line)}
-#kdr-lp .story:nth-child(even){grid-template-columns:1fr 140px}
-#kdr-lp .story:nth-child(even) .story-photo{order:2}
-#kdr-lp .story-photo{width:140px;height:140px;border-radius:50%;overflow:hidden;flex:none;background:var(--accent-soft);border:1px solid var(--accent-line);display:flex;align-items:center;justify-content:center;color:var(--accent-ink);font-family:var(--font-body);font-weight:700;font-size:46px;line-height:1}
-#kdr-lp .story-photo img{width:100%;height:100%;object-fit:cover;display:block}
-#kdr-lp .story .stars{color:var(--accent);letter-spacing:4px;font-size:var(--fs-lead);margin-bottom:var(--sp-4)}
-#kdr-lp .story-q{font-family:var(--font-display);font-weight:500;font-size:clamp(2.25rem, 1.4rem + 3vw, 3.5rem);line-height:1.22;letter-spacing:-.01em;color:var(--ink)}
-#kdr-lp .story-who{margin-top:var(--sp-5);display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
-#kdr-lp .story-name{font-weight:600;font-size:var(--fs-lead);color:var(--ink)}
-#kdr-lp .story-role{font-size:var(--fs-sm);color:var(--ink-2)}
-@media(max-width:760px){#kdr-lp .story,#kdr-lp .story:nth-child(even){grid-template-columns:1fr;gap:16px}
-#kdr-lp .story:nth-child(even) .story-photo{order:0}
-#kdr-lp .story-photo{width:88px;height:88px;font-size:32px}
+#kdr-lp .cases{margin-top:var(--space-block)}
+#kdr-lp .cs{display:grid;grid-template-columns:1fr minmax(380px,540px);gap:clamp(36px,5vw,72px);align-items:center;padding:var(--space-block) 0;border-top:1px solid var(--line)}
+#kdr-lp .cs:nth-child(even){grid-template-columns:minmax(380px,540px) 1fr}
+#kdr-lp .cs:nth-child(even) .cs-media{order:1}
+#kdr-lp .cs:nth-child(even) .cs-txt{order:2}
+#kdr-lp .cs-txt .eyebrow{margin-bottom:var(--sp-4)}
+#kdr-lp .cs-h{font-family:var(--font-display);font-weight:700;font-size:var(--fs-h3);line-height:1.12;letter-spacing:-.015em;color:var(--ink);max-width:18ch;text-shadow:0.3px 0 0 currentColor}
+#kdr-lp .cs-h em{font-style:italic;color:var(--accent-ink)}
+#kdr-lp .cs-desc{margin-top:var(--sp-4);font-size:var(--fs-sm);line-height:1.6;color:var(--ink-2);max-width:48ch}
+#kdr-lp .cs-who{margin-top:var(--sp-5);display:flex;align-items:center;gap:12px}
+#kdr-lp .cs-av{width:44px;height:44px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;background:var(--accent-soft);border:1px solid var(--accent-line);color:var(--accent-ink);font-weight:700;font-size:17px;overflow:hidden}
+#kdr-lp .cs-av img{width:100%;height:100%;object-fit:cover;display:block}
+#kdr-lp .cs-nm{font-weight:600;font-size:var(--fs-xs);color:var(--ink)}
+#kdr-lp .cs-rl{font-size:var(--fs-micro);color:var(--ink-3);margin-top:1px}
+#kdr-lp .cs-ledger{margin-top:var(--sp-5);border-top:1px solid var(--line);display:flex;gap:22px;padding-top:22px;flex-wrap:wrap}
+#kdr-lp .cs-led{flex:0 0 auto}
+#kdr-lp .cs-v{font-family:var(--font-display);font-weight:700;font-size:clamp(2.25rem,1.7rem+1.8vw,3.125rem);line-height:1;letter-spacing:-.01em;display:block;color:var(--ink);text-shadow:0.3px 0 0 currentColor}
+#kdr-lp .cs-k{display:block;margin-top:8px;font-size:var(--fs-micro);line-height:1.45;color:var(--ink-3)}
+#kdr-lp .cs-vr{width:1px;align-self:stretch;background:var(--line-2);flex:none}
+#kdr-lp .cs-nt{margin-top:var(--sp-4);font-size:11px;color:var(--ink-3)}
+@media(max-width:860px){#kdr-lp .cs,#kdr-lp .cs:nth-child(even){grid-template-columns:1fr;gap:28px}
+#kdr-lp .cs .cs-media,#kdr-lp .cs:nth-child(even) .cs-media{order:-1}
+#kdr-lp .cs:nth-child(even) .cs-txt{order:0}
 }
 #kdr-lp .proof-note{margin-top:var(--space-block);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--sp-6);border-top:1px solid var(--line);padding-top:var(--sp-7)}
 #kdr-lp .proof-note .pn-text{max-width:58ch;font-size:var(--fs-sm);flex:1;min-width:280px}
@@ -422,67 +430,119 @@
       <h2>This is already working for business owners like you.</h2>
       <p style="margin-top:var(--sp-4);font-size:var(--fs-xs);color:var(--ink-3);line-height:1.5">The information shared is for example purposes and is not a guarantee of a specific result.<br>Your results may vary.</p>
     </div>
-    <div class="stories rv-g">
-      <div class="story">
-        <div class="story-photo"><!-- swap for <img src="https://lltv28.github.io/kodara-d4a-lander/scotty.jpg" alt="Scotty T"> -->S</div>
-        <div class="story-body">
-          <div class="stars">★★★★★</div>
-          <p class="story-q">Pre-sold 17 clients at full price before his AI was even finished.</p>
-          <div class="story-who"><span class="story-name">Scotty T</span><span class="story-role">Business funding consultant</span></div>
+    <div class="cases">
+
+      <div class="cs rv">
+        <div class="cs-txt">
+          <div class="eyebrow">Case study · 01</div>
+          <h3 class="cs-h">She stopped doing sales calls. Her AI <em>didn't.</em></h3>
+          <p class="cs-desc">She's a sobriety coach. The AI version of her sells her own <strong>£17 product (about $22)</strong> that helps people understand why they have a drinking problem. Then it soft-pitches her <strong>£6,000 coaching program (about $7,600)</strong>. Sandra doesn't talk to a lead until one is ready to buy.</p>
+          <div class="cs-who"><span class="cs-av"><!-- swap for <img src="https://lltv28.github.io/kodara-d4a-lander/sandra.jpg" alt="Sandra Parker"> -->S</span><div><div class="cs-nm">Sandra Parker</div><div class="cs-rl">Sobriety coach · Just The Tonic</div></div></div>
+          <div class="cs-ledger">
+            <div class="cs-led"><span class="cs-v">£17</span><span class="cs-k" style="max-width:86px">sold entirely by her AI</span></div>
+            <i class="cs-vr"></i>
+            <div class="cs-led"><span class="cs-v">£6,000</span><span class="cs-k" style="max-width:150px">soft-pitched to warm buyers</span></div>
+            <i class="cs-vr"></i>
+            <div class="cs-led"><span class="cs-v">0</span><span class="cs-k" style="max-width:120px">sales calls until a lead is ready</span></div>
+          </div>
+          <p class="cs-nt">Individual experience — results not typical.</p>
+        </div>
+        <div class="cs-media">
+          <div class="player" role="img" aria-label="Sandra Parker case study video">
+            <span class="player-tag">Sandra Parker · sobriety coach</span>
+            <span class="player-dur">2:31</span>
+            <span class="player-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg></span>
+            <span class="player-watch">Watch the 2-min story</span>
+          </div>
         </div>
       </div>
-      <div class="story">
-        <div class="story-photo"><!-- swap for <img src="https://lltv28.github.io/kodara-d4a-lander/mike.jpg" alt="Mike B"> -->M</div>
-        <div class="story-body">
-          <div class="stars">★★★★★</div>
-          <p class="story-q">Replaced six figures of contractors and agencies with his AI.</p>
-          <div class="story-who"><span class="story-name">Mike B</span><span class="story-role">Marketing agency owner</span></div>
+
+      <div class="cs rv">
+        <div class="cs-txt">
+          <div class="eyebrow">Case study · 02</div>
+          <h3 class="cs-h">Pre-sold 17 clients at full price — <em>before his AI was finished.</em></h3>
+          <p class="cs-desc">He's a business funding consultant. Scotty announced the AI version of himself to his audience, and they bought the outcome before the build was even done. No discounting, no webinar, no launch sequence.</p>
+          <div class="cs-who"><span class="cs-av"><!-- swap for <img src="https://lltv28.github.io/kodara-d4a-lander/scotty.jpg" alt="Scotty T"> -->S</span><div><div class="cs-nm">Scotty T</div><div class="cs-rl">Business funding consultant</div></div></div>
+          <div class="cs-ledger">
+            <div class="cs-led"><span class="cs-v">17</span><span class="cs-k" style="max-width:96px">clients pre-sold before launch</span></div>
+            <i class="cs-vr"></i>
+            <div class="cs-led"><span class="cs-v">0</span><span class="cs-k" style="max-width:130px">discounts — every sale at full price</span></div>
+          </div>
+          <p class="cs-nt">Individual experience — results not typical.</p>
+        </div>
+        <div class="cs-media">
+          <div class="player" role="img" aria-label="Scotty T case study video">
+            <span class="player-tag">Scotty T · business funding consultant</span>
+            <span class="player-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg></span>
+            <span class="player-watch">Watch the story</span>
+          </div>
         </div>
       </div>
-      <div class="story">
-        <div class="story-photo"><!-- swap for <img src="https://lltv28.github.io/kodara-d4a-lander/leanne.jpg" alt="Leanne E"> -->L</div>
-        <div class="story-body">
-          <div class="stars">★★★★★</div>
-          <p class="story-q">Replaced a free webinar that wasn't converting with an AI that sells around the clock.</p>
-          <div class="story-who"><span class="story-name">Leanne E</span><span class="story-role">Women's weight loss coach</span></div>
+
+      <div class="cs rv">
+        <div class="cs-txt">
+          <div class="eyebrow">Case study · 03</div>
+          <h3 class="cs-h">Replaced six figures of contractors and agencies <em>with his AI.</em></h3>
+          <p class="cs-desc">He's a marketing agency owner. The work Mike used to pay contractors and outside agencies for, the AI version of him now handles — the same output, without the overhead walking out the door every month.</p>
+          <div class="cs-who"><span class="cs-av"><!-- swap for <img src="https://lltv28.github.io/kodara-d4a-lander/mike.jpg" alt="Mike B"> -->M</span><div><div class="cs-nm">Mike B</div><div class="cs-rl">Marketing agency owner</div></div></div>
+          <div class="cs-ledger">
+            <div class="cs-led"><span class="cs-v">6 figures</span><span class="cs-k" style="max-width:210px">of contractor &amp; agency spend, replaced by his AI</span></div>
+          </div>
+          <p class="cs-nt">Individual experience — results not typical.</p>
+        </div>
+        <div class="cs-media">
+          <div class="player" role="img" aria-label="Mike B case study video">
+            <span class="player-tag">Mike B · marketing agency owner</span>
+            <span class="player-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg></span>
+            <span class="player-watch">Watch the story</span>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="sandra two-col rv" style="margin-top:var(--space-block)">
-      <div>
-        <h3 style="font-size:var(--fs-h3)">Sandra Parker</h3>
-        <p style="margin-top:var(--space-heading);font-size:var(--fs-body)">She's a sobriety coach. The AI version of her sells her own <strong>£17 product (about $22)</strong> that helps people understand why they have a drinking problem. Then it soft-pitches her <strong>£6,000 coaching program (about $7,600)</strong>. Sandra doesn't talk to a lead until one is ready to buy.</p>
+
+      <div class="cs rv">
+        <div class="cs-txt">
+          <div class="eyebrow">Case study · 04</div>
+          <h3 class="cs-h">Her free webinar wasn't converting. Her AI sells <em>at any hour.</em></h3>
+          <p class="cs-desc">She's a women's weight loss coach. Leanne replaced a webinar that wasn't converting with the AI version of her: it has the conversation her webinar was supposed to have, one-on-one with every lead, then walks the right ones to her program.</p>
+          <div class="cs-who"><span class="cs-av"><!-- swap for <img src="https://lltv28.github.io/kodara-d4a-lander/leanne.jpg" alt="Leanne Ellington"> -->L</span><div><div class="cs-nm">Leanne Ellington</div><div class="cs-rl">Women's weight loss coach · Stressless Eating</div></div></div>
+          <div class="cs-ledger">
+            <div class="cs-led"><span class="cs-v">24/7</span><span class="cs-k" style="max-width:106px">selling, not one webinar slot</span></div>
+            <i class="cs-vr"></i>
+            <div class="cs-led"><span class="cs-v">1:1</span><span class="cs-k" style="max-width:130px">with every lead, not a broadcast</span></div>
+          </div>
+          <p class="cs-nt">Individual experience — results not typical.</p>
+        </div>
+        <div class="cs-media">
+          <div class="player" role="img" aria-label="Leanne Ellington case study video">
+            <span class="player-tag">Leanne Ellington · women's weight loss coach</span>
+            <span class="player-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg></span>
+            <span class="player-watch">Watch the story</span>
+          </div>
+        </div>
       </div>
-      <div class="player" role="img" aria-label="Sandra Parker case study video">
-        <span class="player-tag">Sandra Parker · sobriety coach</span>
-        <span class="player-dur">2:31</span>
-        <span class="player-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg></span>
-        <span class="player-watch">Watch the 2-min story</span>
+
+      <div class="cs rv">
+        <div class="cs-txt">
+          <div class="eyebrow">Case study · 05</div>
+          <h3 class="cs-h">[Jose's result headline]</h3>
+          <p class="cs-desc">He's a [Jose's niche]. The AI version of him sells his own <strong>[low-ticket offer — price]</strong> that [core outcome]. Then it soft-pitches his <strong>[signature program — price]</strong>. Jose doesn't talk to a lead until one is ready to buy.</p>
+          <div class="cs-who"><span class="cs-av"><!-- swap for <img src="https://lltv28.github.io/kodara-d4a-lander/jose.jpg" alt="Jose Fang"> -->J</span><div><div class="cs-nm">Jose Fang</div><div class="cs-rl">[Niche]</div></div></div>
+          <div class="cs-ledger">
+            <div class="cs-led"><span class="cs-v">[price]</span><span class="cs-k" style="max-width:120px">first offer, sold by his AI</span></div>
+            <i class="cs-vr"></i>
+            <div class="cs-led"><span class="cs-v">[price]</span><span class="cs-k" style="max-width:140px">program soft-pitched to warm buyers</span></div>
+          </div>
+          <p class="cs-nt">Individual experience — results not typical.</p>
+        </div>
+        <div class="cs-media">
+          <div class="player" role="img" aria-label="Jose Fang case study video">
+            <span class="player-tag">Jose Fang · [niche]</span>
+            <span class="player-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg></span>
+            <span class="player-watch">Watch the story</span>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="sandra two-col rv" style="margin-top:var(--space-block)">
-      <div>
-        <h3 style="font-size:var(--fs-h3)">Leanne Ellington</h3>
-        <p style="margin-top:var(--space-heading);font-size:var(--fs-body)">She's a women's weight loss coach. The AI version of her sells her own <strong>[low-ticket offer — price]</strong> that helps women [core outcome]. Then it soft-pitches her <strong>[signature program — price]</strong>. Leanne doesn't talk to a lead until one is ready to buy.</p>
-      </div>
-      <div class="player" role="img" aria-label="Leanne Ellington case study video">
-        <span class="player-tag">Leanne Ellington · women's weight loss coach</span>
-        <span class="player-dur">0:00</span>
-        <span class="player-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg></span>
-        <span class="player-watch">Watch the 2-min story</span>
-      </div>
-    </div>
-    <div class="sandra two-col rv" style="margin-top:var(--space-block)">
-      <div>
-        <h3 style="font-size:var(--fs-h3)">Jose Fang</h3>
-        <p style="margin-top:var(--space-heading);font-size:var(--fs-body)">He's a [Jose's niche]. The AI version of him sells his own <strong>[low-ticket offer — price]</strong> that [core outcome]. Then it soft-pitches his <strong>[signature program — price]</strong>. Jose doesn't talk to a lead until one is ready to buy.</p>
-      </div>
-      <div class="player" role="img" aria-label="Jose Fang case study video">
-        <span class="player-tag">Jose Fang · [niche]</span>
-        <span class="player-dur">0:00</span>
-        <span class="player-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg></span>
-        <span class="player-watch">Watch the 2-min story</span>
-      </div>
+
     </div>
     <div class="proof-note rv">
       <p class="pn-text"><strong>Can we promise you the same results? No.</strong> You're smart, so you know this changes from one business to the next. Here's what we can promise: our team does the hard work, and you only pay after you've seen what your AI can do.</p>
