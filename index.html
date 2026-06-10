@@ -140,10 +140,7 @@ h1.headline{font-family:var(--font-display);font-weight:700;font-size:var(--fs-d
 .lp-chip .d{width:7px;height:7px;border-radius:50%;background:var(--accent-mint);box-shadow:0 0 0 3px rgba(91,201,152,.25)}
 .lp-screen{position:relative;border-radius:clamp(6px,1vw,9px);overflow:hidden;background:#050606}
 .lp-viewport{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;background:linear-gradient(150deg,#211f1c,#161514)}
-/* stand: neck + foot */
-.lp-neck{position:relative;z-index:1;width:clamp(64px,9vw,90px);height:clamp(40px,6vw,64px);background:linear-gradient(90deg,#B9B6AF,#E8E6E1 50%,#B0ADA6);box-shadow:inset 0 -8px 12px -8px rgba(46,43,38,.35)}
-.lp-foot{position:relative;z-index:2;width:clamp(190px,26vw,270px);height:clamp(10px,1.4vw,14px);border-radius:var(--r-pill);background:linear-gradient(180deg,#E4E2DD 0%,#C9C6BF 55%,#AEABA3 100%);box-shadow:0 14px 28px -12px rgba(46,43,38,.45)}
-/* in-demo proof chips, anchored to the hardware (desktop only) */
+/* in-demo proof chips, anchored to the frame (desktop only) */
 .lp-card{position:absolute;z-index:5;display:flex;align-items:center;gap:9px;background:#fff;border:1px solid var(--line-2);border-radius:var(--r-md);padding:10px 14px;box-shadow:0 18px 40px -14px rgba(46,43,38,.35)}
 .lp-card .ic{width:26px;height:26px;border-radius:50%;background:var(--accent-soft);border:1px solid var(--accent-line);color:var(--accent-ink);display:flex;align-items:center;justify-content:center;flex:none}
 .lp-card .ic svg{width:13px;height:13px}
@@ -417,8 +414,6 @@ h1.headline{font-family:var(--font-display);font-weight:700;font-size:var(--fs-d
           <div><div class="t">Call booked · Thu 2:00 PM</div><div class="s">While you were asleep</div></div>
         </div>
       </div>
-      <div class="lp-neck" aria-hidden="true"></div>
-      <div class="lp-foot" aria-hidden="true"></div>
     </div>
     <div class="section-cta rv"><a href="#book" class="btn btn-primary">Get a free live demo</a></div>
     <p class="lp-disclaimer rv">DISCLAIMER: We make no representation regarding the likelihood or probability that any actual or hypothetical business activity will achieve a particular outcome or perform in any predictable manner. Any individual experiences presented are not typical. The information shared is for example purposes and is not a guarantee of a rate of return or a specific result. Your results may vary.</p>
